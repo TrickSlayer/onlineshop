@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,11 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return "Hello";
-    // return view('welcome');
-});
+Route::get('home', function () {return View('common.home');})->name('home');
 
-Route::get('hello', function () {
-    return view('hello');
+Route::get('login', function () {return View('common.login');})->name('login');
+Route::post('loginStore', [AccountController::class, 'login']);
+
+Route::get('register', function () {return View('common.register');});
+Route::post('registerStore', [AccountController::class, 'register']);
+
+Route::middleware(['auth']) -> group(function(){
+    Route::get('dashboard', function () {return View('user.dashboard');});
+    Route::get('logout', [AccountController::class, 'logout']);
+    
 });
