@@ -50,7 +50,7 @@ class AccountController extends Controller
             'email' => $request->input('email'),
             'password' => $request->input('password')
         ], $request->input('remember'))) {
-            if (Auth::user()->confirm != 1){
+            if (Auth::user()->confirmed == 0){
                 Auth::logout();
                 Session::flash('error', "Must verify email");
                 return redirect()->back();
