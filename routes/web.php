@@ -27,6 +27,17 @@ Route::prefix('register')-> group(function(){
     Route::get('verify/{code}', [AccountController::class, 'verify']);
 });
 
+Route::prefix('password')->group(function(){
+    Route::prefix('forgot')->group(function(){
+        Route::get('/', function () {return View('common.forgotpassword');});
+        Route::post('/', [AccountController::class, 'sendResetLink']);
+    });
+    Route::prefix('reset')->group(function(){
+        Route::get('/{token}', [AccountController::class, 'showResetForm'])->name('user.password.reset');
+        Route::post('/', [AccountController::class, 'resetPassword']);
+    });
+});
+
 Route::middleware(['auth']) -> group(function(){
     Route::get('dashboard', function () {return View('user.dashboard');});
     Route::get('logout', [AccountController::class, 'logout']);

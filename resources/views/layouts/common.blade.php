@@ -49,7 +49,7 @@
     <main>
         <section class="relative w-full h-full py-40 min-h-screen">
             <div class="absolute top-0 w-full h-full bg-blueGray-800 bg-full bg-no-repeat"
-                style="background-image: url(../img/register_bg_2.png)"></div>
+                style="background-image: url({{ asset('img/register_bg_2.png') }})"></div>
             @yield('content')
             
         </section>

@@ -40,7 +40,7 @@
                                     htmlFor="grid-password">
                                     Name
                                 </label>
-                                <input type="text" name="name"
+                                <input type="text" name="name" value="{{ old('name') }}"
                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     placeholder="Name" />
                             </div>
@@ -50,7 +50,7 @@
                                     htmlFor="grid-password">
                                     Email
                                 </label>
-                                <input type="email" name="email"
+                                <input type="email" name="email" value="{{ old('email') }}"
                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     placeholder="Email" />
                             </div>
@@ -60,7 +60,7 @@
                                     htmlFor="grid-password">
                                     Password
                                 </label>
-                                <input type="password" name="password" autocomplete="on"
+                                <input type="password" name="password" autocomplete="on" value="{{ old('password') }}"
                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     placeholder="Password" />
                             </div>
@@ -70,7 +70,7 @@
                                     htmlFor="grid-password">
                                     Confirm Password
                                 </label>
-                                <input type="password" name="password_confirmation" autocomplete="on"
+                                <input type="password" name="password_confirmation" autocomplete="on" value="{{ old('password_confirmation') }}"
                                     class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                                     placeholder="Password" />
                             </div>
@@ -97,6 +97,14 @@
                             </div>
                             @csrf
                         </form>
+                        <div class="flex flex-wrap">
+                            <div class="w-1/2">
+                                <a href="password/forgot" class="text-blueGray-500 text-sm font-bold"><small>Forgot password?</small></a>
+                            </div>
+                            <div class="w-1/2 text-right">
+                                <a href="login" class="text-blueGray-500 text-sm font-bold"><small>Login</small></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
