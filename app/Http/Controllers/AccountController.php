@@ -48,13 +48,17 @@ class AccountController extends Controller
 
         if (Auth::attempt([
             'email' => $request->input('email'),
-            'password' => $request->input('password'),
-            'confirmed' => 1
+            'password' => $request->input('password')
         ], $request->input('remember'))) {
+            if (Auth::user()->confirm != 1){
+                Auth::logout();
+                Session::flash('error', "Must verify email");
+                return redirect()->back();
+            }
             return redirect('dashboard');
         }
 
-        Session::flash('error', "Can't login");
+        Session::flash('error', "Email or password wrong");
 
         return redirect()->back();
     }
@@ -135,5 +139,22 @@ class AccountController extends Controller
             return redirect()->route('login')->withSuccess('Your password has been changed!')
                 ->with('verifiedEmail', $request->email);
         }
+    }
+
+    public function changePassword(Request $request){
+        $request->validate([
+            'old_password' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+
+        if(!Hash::check($request->old_password, Auth::user()->password)){
+            return back()->withErrors("Old Password Doesn't match!");
+        }
+
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->withSuccess("Password changed successfully!");
     }
 }

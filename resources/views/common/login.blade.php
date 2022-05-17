@@ -31,7 +31,7 @@
                             <small>Or sign in with credentials</small>
                         </div>
                         @include('layouts.alert')
-                        <form action="login/store" method="post">
+                        <form action="login" method="post">
                             <div class="relative w-full mb-3">
                                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                     for="grid-password">Email</label><input type="email"

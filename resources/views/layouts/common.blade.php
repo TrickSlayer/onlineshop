@@ -5,7 +5,7 @@
         <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
             <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
                 <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                    href="../../index.html">Notus JS</a><button
+                    href="/dashboard">Shop</a><button
                     class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                     type="button" onclick="toggleNavbar('example-collapse-navbar')">
                     <i class="text-white fas fa-bars"></i>
@@ -13,14 +13,6 @@
             </div>
             <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
                 id="example-collapse-navbar">
-                <ul class="flex flex-col lg:flex-row list-none mr-auto">
-                    <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="https://www.creative-tim.com/learning-lab/tailwind/js/overview/notus?ref=njs-login"><i
-                                class="lg:text-blueGray-200 text-blueGray-400 far fa-file-alt text-lg leading-lg mr-2"></i>
-                            Docs</a>
-                    </li>
-                </ul>
                 <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
                     <li class="flex items-center">
                         <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"

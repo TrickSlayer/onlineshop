@@ -34,7 +34,7 @@
                             <small>Or sign up with credentials</small>
                         </div>
                         @include('layouts.alert')
-                        <form action="register/store" method="post">
+                        <form action="register" method="post">
                             <div class="relative w-full mb-3">
                                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                     htmlFor="grid-password">
