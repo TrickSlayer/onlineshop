@@ -17,13 +17,13 @@
                             <button
                                 class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                                 type="button">
-                                <img alt="..." class="w-5 mr-1" src="../../assets/img/github.svg" />
+                                <img alt="..." class="w-5 mr-1" src="{{ asset('img/github.svg') }}" />
                                 Github
                             </button>
                             <button
                                 class="bg-white active:bg-blueGray-50 text-blueGray-700 font-normal px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                                 type="button">
-                                <img alt="..." class="w-5 mr-1" src="../../assets/img/google.svg" />
+                                <img alt="..." class="w-5 mr-1" src="{{ asset('img/google.svg') }}" />
                                 Google
                             </button>
                         </div>
@@ -34,7 +34,7 @@
                             <small>Or sign up with credentials</small>
                         </div>
                         @include('layouts.alert')
-                        <form action="/registerStore" method="post">
+                        <form action="register/store" method="post">
                             <div class="relative w-full mb-3">
                                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                     htmlFor="grid-password">

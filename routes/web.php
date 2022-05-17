@@ -16,14 +16,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('home', function () {return View('common.home');})->name('home');
 
-Route::get('login', function () {return View('common.login');})->name('login');
-Route::post('loginStore', [AccountController::class, 'login']);
+Route::prefix('login')->group(function(){
+    Route::get('/', function () {return View('common.login');})->name('login');
+    Route::post('store', [AccountController::class, 'login']);
+});
 
-Route::get('register', function () {return View('common.register');});
-Route::post('registerStore', [AccountController::class, 'register']);
+Route::prefix('register')-> group(function(){
+    Route::get('/', function () {return View('common.register');});
+    Route::post('store', [AccountController::class, 'register']);
+    Route::get('verify/{code}', [AccountController::class, 'verify']);
+});
 
 Route::middleware(['auth']) -> group(function(){
     Route::get('dashboard', function () {return View('user.dashboard');});
     Route::get('logout', [AccountController::class, 'logout']);
-    
 });

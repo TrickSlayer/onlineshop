@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class AccountController extends Controller
@@ -19,13 +20,23 @@ class AccountController extends Controller
             'check' => 'accepted'
         ]);
 
+        $confirmation_code = time().uniqid(true);
+
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password'))
+            'password' => Hash::make($request->input('password')),
+            'confirmation_code' => $confirmation_code,
+            'confirmed' => 0,
         ]);
 
-        return redirect("dashboard")->withSuccess('have signed-in');
+        $data = ['confirmation_code' => $confirmation_code];
+
+        Mail::send('mail.confirm', $data, function($message) use ($request){
+            $message->to($request->email, $request->name)->subject('Welcome to the Shop');;
+        });
+
+        return redirect("login")->withSuccess('Please confirm email');
     }
 
     public function Login(Request $request)
@@ -37,13 +48,13 @@ class AccountController extends Controller
 
         if (Auth::attempt([
             'email' => $request->input('email'),
-            'password' => $request->input('password')
+            'password' => $request->input('password'),
+            'confirmed' => 1
         ], $request->input('remember'))) {
             return redirect('dashboard');
         }
 
-
-        Session::flash('error', 'Email hoặc password không đúng');
+        Session::flash('error', "Can't login");
 
         return redirect()->back();
     }
@@ -53,5 +64,20 @@ class AccountController extends Controller
         Auth::logout();
 
         return redirect('/home');
+    }
+
+    public function verify($code)
+    {
+        $user = User::where('confirmation_code', $code);
+
+        if ($user->count() > 0) {
+            $user->update([
+                'confirmed' => 1,
+                'confirmation_code' => null
+            ]);
+            return redirect(route('login'))->withSuccess('Bạn đã xác nhận thành công');
+        } else {
+            return redirect(route('login'))->withError('Mã xác nhận không chính xác');
+        }
     }
 }

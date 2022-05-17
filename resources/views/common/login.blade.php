@@ -18,10 +18,10 @@
                                 class="bg-white active:bg-blueGray-50 text-blueGray-700 px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                                 type="button">
                                 <img alt="..." class="w-5 mr-1"
-                                    src="../../assets/img/github.svg" />Github</button><button
+                                    src="{{ asset('img/github.svg') }}" />Github</button><button
                                 class="bg-white active:bg-blueGray-50 text-blueGray-700 px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 uppercase shadow hover:shadow-md inline-flex items-center font-bold text-xs ease-linear transition-all duration-150"
                                 type="button">
-                                <img alt="..." class="w-5 mr-1" src="../../assets/img/google.svg" />Google
+                                <img alt="..." class="w-5 mr-1" src="{{ asset('img/google.svg') }}" />Google
                             </button>
                         </div>
                         <hr class="mt-6 border-b-1 border-blueGray-300" />
@@ -31,7 +31,7 @@
                             <small>Or sign in with credentials</small>
                         </div>
                         @include('layouts.alert')
-                        <form action="loginStore" method="post">
+                        <form action="login/store" method="post">
                             <div class="relative w-full mb-3">
                                 <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                                     for="grid-password">Email</label><input type="email"
@@ -66,7 +66,8 @@
                                 <a href="" class="text-blueGray-500 text-sm font-bold"><small>Forgot password?</small></a>
                             </div>
                             <div class="w-1/2 text-right">
-                                <a href="register" class="text-blueGray-500 text-sm font-bold"><small>Create new account</small></a>
+                                <a href="register" class="text-blueGray-500 text-sm font-bold"><small>Create new
+                                        account</small></a>
                             </div>
                         </div>
                     </div>
