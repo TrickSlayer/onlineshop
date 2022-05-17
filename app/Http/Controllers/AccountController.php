@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Jobs\VerifyMail;
 
 class AccountController extends Controller
 {
@@ -22,19 +22,15 @@ class AccountController extends Controller
 
         $confirmation_code = time().uniqid(true);
 
+        VerifyMail::dispatch($request->input('email'), $request->input('name'), $confirmation_code);
+
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'confirmation_code' => $confirmation_code,
             'confirmed' => 0,
-        ]);
-
-        $data = ['confirmation_code' => $confirmation_code];
-
-        Mail::send('mail.confirm', $data, function($message) use ($request){
-            $message->to($request->email, $request->name)->subject('Welcome to the Shop');;
-        });
+        ]);        
 
         return redirect("login")->withSuccess('Please confirm email');
     }

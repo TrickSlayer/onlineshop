@@ -283,7 +283,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="../assets/img/team-2-800x800.jpg"
+                            <img alt="..." src="{{ asset('img/team-2-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Romina Hadid</h5>
@@ -305,7 +305,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="../assets/img/team-3-800x800.jpg"
+                            <img alt="..." src="{{ asset('img/team-3-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Alexa Smith</h5>
@@ -330,7 +330,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="../assets/img/team-4-470x470.png"
+                            <img alt="..." src="{{ asset('img/team-4-470x470.png') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Jenna Kardi</h5>

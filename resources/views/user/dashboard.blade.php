@@ -18,12 +18,6 @@
                 <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
                     <li class="inline-block relative">
                         <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="login">
-                            Login
-                        </a>
-                    </li>
-                    <li class="inline-block relative">
-                        <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                             href="/logout">
                             Logout
                         </a>
@@ -244,7 +238,7 @@
                 <div class="flex flex-wrap">
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="../assets/img/team-1-800x800.jpg"
+                            <img alt="..." src="{{ asset('img/team-1-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Ryan Tompson</h5>
@@ -269,7 +263,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="../assets/img/team-2-800x800.jpg"
+                            <img alt="..." src="{{ asset('img/team-2-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Romina Hadid</h5>
@@ -291,7 +285,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="../assets/img/team-3-800x800.jpg"
+                            <img alt="..." src="{{ asset('img/team-3-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Alexa Smith</h5>
@@ -316,7 +310,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="../assets/img/team-4-470x470.png"
+                            <img alt="..." src="{{ asset('img/team-4-470x470.png') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Jenna Kardi</h5>
