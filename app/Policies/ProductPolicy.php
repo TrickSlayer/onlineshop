@@ -18,7 +18,7 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user && $user->hasPermission('review_product');
     }
 
     /**
@@ -47,7 +47,7 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        return $user->hasVerifiedEmail();
+        return $user->verifiedEmail();
     }
 
     /**

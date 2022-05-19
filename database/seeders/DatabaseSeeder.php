@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         //         'confirmed' => 0
         //     ],
         // ]);
-        
+
         // DB::table('permissions')->insert([
         //     ['name' => 'review_product'],
         //     ['name' => 'update_product'],
@@ -49,17 +49,17 @@ class DatabaseSeeder extends Seeder
         //     ['name' => 'restore_product'],
         //     ['name' => 'force_delete_product'],
         // ]);
-        //
+
         // DB::table('roles')->insert([
         //     ['name' => 'admin'],
         //     ['name' => 'user'],
         // ]);
-        //
+
         // DB::table('role_user')->insert([
         //     'role_id' => 1,
         //     'user_id' => 1,
         // ]);
-        //
+
         // DB::table('permission_role')->insert([
         //     ['permission_id' => 1, 'role_id' => 1],
         //     ['permission_id' => 2, 'role_id' => 1],
@@ -67,5 +67,38 @@ class DatabaseSeeder extends Seeder
         //     ['permission_id' => 4, 'role_id' => 1],
         //     ['permission_id' => 5, 'role_id' => 1],
         // ]);
+
+        // DB::table('categories')->insert([
+        //     'name' => 'Phone',
+        //     'description' => 'Mobile phone',
+        //     'content' => 'If you like',
+        //     'active' => 1,
+        //     'thumb' => 'none',
+        // ]);
+
+        DB::table('products')->insert([
+            [
+                'category_id' => 1,
+                'user_id' => 1,
+                'name' => 'Xiaomi',
+                'price' => 10.3,
+                'sale_price' => 10.3,
+                'description' => 'China Phone',
+                'content' => 'Flashship',
+                'active' => 1,
+                'thumb' => 'none',
+            ],
+            [
+                'category_id' => 1,
+                'user_id' => 1,
+                'name' => 'Redmi',
+                'price' => 10.3,
+                'sale_price' => 10.3,
+                'description' => 'China Phone',
+                'content' => 'Flashship 2',
+                'active' => 1,
+                'thumb' => 'none',
+            ],
+        ]);
     }
 }

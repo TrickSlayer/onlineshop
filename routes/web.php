@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,4 +48,11 @@ Route::prefix('password')->group(function(){
 Route::middleware(['auth']) -> group(function(){
     Route::get('dashboard', function () {return View('user.dashboard');});
     Route::get('logout', [AccountController::class, 'logout']);
+
+    Route::prefix('product')->group(function(){
+        Route::get('test/{product}', [ProductController::class, 'index']);
+        
+    });
 });
+
+Route::get('test', [ProductController::class, 'index']);

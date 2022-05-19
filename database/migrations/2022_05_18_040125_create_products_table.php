@@ -23,6 +23,7 @@ return new class extends Migration
             $table->text('description');
             $table->longText('content');
             $table->integer('active');
+            $table->timestamp('deleted_at')->nullable();
             $table->string('thumb');
             $table->timestamps();
         });
