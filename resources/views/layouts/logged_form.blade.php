@@ -1,5 +1,9 @@
 @extends('layouts.logged')
 
+@section('head')
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+@endsection
+
 @section('body')
     <main>
         <section class="relative w-full h-full py-40 min-h-screen">
@@ -12,4 +16,12 @@
             </div>
         </section>
     </main>
+@endsection
+
+@section('footer')
+    <script>
+        CKEDITOR.replace('content');
+    </script>
+
+    <script src="{{ asset('js/main.js') }}"></script>
 @endsection
