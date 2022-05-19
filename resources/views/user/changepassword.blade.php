@@ -1,4 +1,4 @@
-@extends('layouts.common')
+@extends('layouts.logged_form')
 @section('title', 'Reset Password')
 
 @section('content')

@@ -149,7 +149,7 @@
                     </div>
                     <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
                         <div
-                            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-500">
+                            class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-pink-500">
                             <img alt="..."
                                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80"
                                 class="w-full align-middle rounded-t-lg" />
@@ -258,7 +258,7 @@
                 <div class="flex flex-wrap">
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="../assets/img/team-1-800x800.jpg"
+                            <img alt="..." src="{{ asset('assets/img/team-1-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Ryan Tompson</h5>
@@ -283,7 +283,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="{{ asset('img/team-2-800x800.jpg') }}"
+                            <img alt="..." src="{{ asset('assets/img/team-2-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Romina Hadid</h5>
@@ -305,7 +305,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="{{ asset('img/team-3-800x800.jpg') }}"
+                            <img alt="..." src="{{ asset('assets/img/team-3-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Alexa Smith</h5>
@@ -330,7 +330,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="{{ asset('img/team-4-470x470.png') }}"
+                            <img alt="..." src="{{ asset('assets/img/team-4-470x470.png') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Jenna Kardi</h5>

@@ -1,36 +1,13 @@
-@extends('layouts.layout')
+@extends('layouts.logged')
 
-@section('title', 'Home')
+@section('title', 'Dashboard')
 
-@section('main')
-    <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
-        <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-            <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-                <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
-                    href="../home">Shop</a><button
-                    class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-                    type="button" onclick="toggleNavbar('example-collapse-navbar')">
-                    <i class="text-white fas fa-bars"></i>
-                </button>
-            </div>
-            <div class="lg:flex flex-grow items-center bg-white lg:bg-opacity-0 lg:shadow-none hidden"
-                id="example-collapse-navbar">
-                <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
-                    <li class="inline-block relative">
-                        <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
-                            href="/logout">
-                            Logout
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+@section('body')
     <main>
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
             <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
-              background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80');
-            ">
+                      background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80');
+                    ">
                 <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
             </div>
             <div class="container relative mx-auto">
@@ -129,7 +106,7 @@
                     </div>
                     <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
                         <div
-                            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-pink-500">
+                            class="relative flex flex-col min-w-0 break-words  w-full mb-6 shadow-lg rounded-lg bg-pink-500">
                             <img alt="..."
                                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1051&amp;q=80"
                                 class="w-full align-middle rounded-t-lg" />
@@ -238,7 +215,7 @@
                 <div class="flex flex-wrap">
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="{{ asset('img/team-1-800x800.jpg') }}"
+                            <img alt="..." src="{{ asset('assets/img/team-1-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Ryan Tompson</h5>
@@ -263,7 +240,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="{{ asset('img/team-2-800x800.jpg') }}"
+                            <img alt="..." src="{{ asset('assets/img/team-2-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Romina Hadid</h5>
@@ -285,7 +262,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="{{ asset('img/team-3-800x800.jpg') }}"
+                            <img alt="..." src="{{ asset('assets/img/team-3-800x800.jpg') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Alexa Smith</h5>
@@ -310,7 +287,7 @@
                     </div>
                     <div class="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
                         <div class="px-6">
-                            <img alt="..." src="{{ asset('img/team-4-470x470.png') }}"
+                            <img alt="..." src="{{ asset('assets/img/team-4-470x470.png') }}"
                                 class="shadow-lg rounded-full mx-auto max-w-120-px" />
                             <div class="pt-6 text-center">
                                 <h5 class="text-xl font-bold">Jenna Kardi</h5>
@@ -443,31 +420,4 @@
         </section>
     </main>
     <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-    <script>
-        /* Make dynamic date appear */
-        (function() {
-            if (document.getElementById("get-current-year")) {
-                document.getElementById(
-                    "get-current-year"
-                ).innerHTML = new Date().getFullYear();
-            }
-        })();
-        /* Function for opning navbar on mobile */
-        function toggleNavbar(collapseID) {
-            document.getElementById(collapseID).classList.toggle("hidden");
-            document.getElementById(collapseID).classList.toggle("block");
-        }
-        /* Function for dropdowns */
-        function openDropdown(event, dropdownID) {
-            let element = event.target;
-            while (element.nodeName !== "A") {
-                element = element.parentNode;
-            }
-            Popper.createPopper(element, document.getElementById(dropdownID), {
-                placement: "bottom-start",
-            });
-            document.getElementById(dropdownID).classList.toggle("hidden");
-            document.getElementById(dropdownID).classList.toggle("block");
-        }
-    </script>
 @endsection
