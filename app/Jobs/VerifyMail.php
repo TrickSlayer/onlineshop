@@ -38,7 +38,6 @@ class VerifyMail implements ShouldQueue, ShouldBeUnique
     public function handle()
     {
         $data = ['confirmation_code' => $this->confirmation_code];
-        echo($this->confirmation_code);
         Mail::send('mail.confirm', $data, function($message){
             $message->to($this->email, $this->name)->subject('Welcome to the Shop');;
         });

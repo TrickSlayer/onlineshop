@@ -2,13 +2,13 @@
 @section('title', 'Create Category')
 
 @section('content')
-    <div class="w-full lg:w-6/12 px-4">
+    <div class="w-full lg:w-8/12 px-4">
         <div class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
             <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
                 <div class="mt-5">
                     @include('layouts.alert')
                 </div>
-                <form action="/upload" method="post" enctype="multipart/form-data">
+                <form action="/categories/create" method="post" enctype="multipart/form-data">
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">Menu
                             Name</label>
@@ -28,20 +28,6 @@
                             for="grid-password">Detail</label>
                         <textarea name="content" id="content"
                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">{{ old('content') }}</textarea>
-                    </div>
-
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                            for="grid-password">Price</label>
-                        <input type="text" name="price" value="{{ old('price') }}"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
-                    </div>
-
-                    <div class="relative w-full mb-3">
-                        <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" for="grid-password">Price
-                            Sale</label>
-                        <input type="text" name="price_sale" value="{{ old('price_sale') }}"
-                            class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
                     </div>
 
                     <div class="flex">
@@ -70,11 +56,11 @@
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                             for="grid-password">Picture</label>
-                        <input type="file" id="upload"
+                        <input type="file" id="upload" name="file"
                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
                         <div class="mt-2" id="image_show">
                         </div>
-                        <input type="hidden" name="file" id="file">
+                        <input type="hidden" name="thumb" id="file">
                     </div>
 
                     <div class="text-center mt-6">

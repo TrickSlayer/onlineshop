@@ -104,11 +104,6 @@ class AccountController extends Controller
         return back()->withSuccess("We have e-mail your password reset link!");
     }
 
-    public function showResetForm(Request $request, $token = null)
-    {
-        return view('common.resetpassword')->with(['token' => $token, 'email' => $request->email]);
-    }
-
     public function resetPassword(Request $request)
     {
         $request->validate([

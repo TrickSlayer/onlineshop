@@ -22,6 +22,12 @@
                             Login
                         </a>
                     </li>
+                    <li class="inline-block relative">
+                        <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                            href="register">
+                            Register
+                        </a>
+                    </li>
                     <li class="flex items-center">
                         <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-js%2F"
