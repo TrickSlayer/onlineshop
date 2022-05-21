@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/', [ViewController::class, 'categoriesCreate']);
             Route::post('/', [CategoryController::class, 'create']);
         });
+
+        Route::get('list', [CategoryController::class, 'list']);
         
         
     });
@@ -75,4 +77,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //Test funtion
-Route::get('test', [HomeController::class, 'home']);
+Route::get('test', [ViewController::class, 'test']);

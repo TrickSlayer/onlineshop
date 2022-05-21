@@ -12,6 +12,7 @@
     <title>@yield('title', 'layout')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/icon.png') }}"/>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     @yield('head')
 </head>
 

@@ -1,4 +1,4 @@
-@extends('layouts.logged_form')
+@extends('layouts.logged.form')
 @section('title', 'Create Category')
 
 @section('content')

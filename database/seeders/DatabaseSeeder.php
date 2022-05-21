@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
@@ -76,29 +77,30 @@ class DatabaseSeeder extends Seeder
         //     'thumb' => 'none',
         // ]);
 
-        DB::table('products')->insert([
-            [
-                'category_id' => 1,
-                'user_id' => 1,
-                'name' => 'Xiaomi',
-                'price' => 10.3,
-                'sale_price' => 10.3,
-                'description' => 'China Phone',
-                'content' => 'Flashship',
-                'active' => 1,
-                'thumb' => 'none',
-            ],
-            [
-                'category_id' => 1,
-                'user_id' => 1,
-                'name' => 'Redmi',
-                'price' => 10.3,
-                'sale_price' => 10.3,
-                'description' => 'China Phone',
-                'content' => 'Flashship 2',
-                'active' => 1,
-                'thumb' => 'none',
-            ],
-        ]);
+        // DB::table('products')->insert([
+        //     [
+        //         'category_id' => 1,
+        //         'user_id' => 1,
+        //         'name' => 'Xiaomi',
+        //         'price' => 10.3,
+        //         'sale_price' => 10.3,
+        //         'description' => 'China Phone',
+        //         'content' => 'Flashship',
+        //         'active' => 1,
+        //         'thumb' => 'none',
+        //     ],
+        //     [
+        //         'category_id' => 1,
+        //         'user_id' => 1,
+        //         'name' => 'Redmi',
+        //         'price' => 10.3,
+        //         'sale_price' => 10.3,
+        //         'description' => 'China Phone',
+        //         'content' => 'Flashship 2',
+        //         'active' => 1,
+        //         'thumb' => 'none',
+        //     ],
+        // ]);
+
     }
 }

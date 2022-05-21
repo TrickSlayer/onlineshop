@@ -19,4 +19,9 @@ class CategoryController extends Controller
 
         return redirect()->back()->withSuccess('Create category successfully!');
     }
+
+    public function list(){
+        $categories = Category::paginate(15);
+        return View('admin.categories.list', ["categories" => $categories]);
+    }
 }

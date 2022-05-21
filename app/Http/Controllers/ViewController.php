@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class ViewController extends Controller
 {
+    public function test(){
+        return Category::factory()->count(10)->create();
+    }
+
     public function home(){
         DeleteImg::dispatch()->delay(now()->addMonth());
         return View('common.home');
@@ -43,6 +47,6 @@ class ViewController extends Controller
         return View('admin.categories.create');
     }
 
-
+    
     
 }
