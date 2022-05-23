@@ -56,11 +56,11 @@
                     <div class="relative w-full mb-3">
                         <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
                             for="grid-password">Picture</label>
-                        <input type="file" id="upload" name="file"
+                        <input type="file" id="upload" name="file" value="{{ old('file') }}"
                             class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
                         <div class="mt-2" id="image_show">
                         </div>
-                        <input type="hidden" name="thumb" id="file">
+                        <input type="hidden" name="thumb" id="file" value="{{ old('thumb') }}">
                     </div>
 
                     <div class="text-center mt-6">

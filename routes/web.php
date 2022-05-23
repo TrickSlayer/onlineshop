@@ -67,9 +67,11 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/', [CategoryController::class, 'create']);
         });
 
-        Route::get('list', [CategoryController::class, 'list']);
-        
-        
+        Route::prefix('list')->group(function () {
+            Route::get('/', [CategoryController::class, 'list']);
+            Route::post('search', [CategoryController::class, 'search']);
+            Route::delete('destroy', [CategoryController::class, 'destroy']);
+        });
     });
 
     

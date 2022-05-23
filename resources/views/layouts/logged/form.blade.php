@@ -21,5 +21,5 @@
         CKEDITOR.replace('content');
     </script>
 
-    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/upload.js') }}"></script>
 @endsection
