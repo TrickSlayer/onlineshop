@@ -9,10 +9,10 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Category name
+                            @sortablelink('name','Category name') 
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Description
+                            @sortablelink('description','Description')
                         </th>
                         <th scope="col" class="px-6 py-3">
                         </th>
@@ -50,7 +50,8 @@
                     @endforeach
                 </tbody>
             </table>
-            {{ $categories->links('pagination::tailwind'); }}
+            {{-- {{ $categories->links('pagination::tailwind'); }} --}}
+            {!! $categories->appends(\Request::except('page'))->render() !!}
         </div>
     </div>
 @endsection

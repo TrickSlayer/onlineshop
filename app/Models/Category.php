@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory,Sortable;
 
     protected $fillable = [
         'name',
@@ -16,6 +17,8 @@ class Category extends Model
         'active',
         'thumb',
     ];
+
+    public $sortable = ['id', 'name', 'description', 'active'];
 
     public function products(){
         return $this->hasMany(Product::class);

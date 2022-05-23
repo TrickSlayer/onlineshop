@@ -21,7 +21,7 @@ class CategoryController extends Controller
     }
 
     public function list(){
-        $categories = Category::paginate(15);
+        $categories = Category::sortable()->paginate(15);
         return View('admin.categories.list', ["categories" => $categories]);
     }
 }
