@@ -11,7 +11,7 @@
                     value="{{ $filter }}">
             </div>
             <div id="table">
-                @include('admin.categories.table')
+                @include('logged.admin.categories.table')
             </div>
         </div>
     </div>

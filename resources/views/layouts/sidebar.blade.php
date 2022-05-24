@@ -82,7 +82,7 @@
             </h6>
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 <li class="items-center">
-                    <a href="/categories/list"
+                    <a href="/admin/categories/list"
                         class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                         <i class="fas fa-clipboard-list mr-2 text-sm text-blueGray-300"></i>
                         List Categories
@@ -90,7 +90,7 @@
                 </li>
 
                 <li class="items-center">
-                    <a href="/categories/create"
+                    <a href="/admin/categories/create"
                         class="text-xs uppercase py-3 font-bold block text-blueGray-700 hover:text-blueGray-500">
                         <i class="fas fa-plus mr-2 text-sm text-blueGray-300"></i>
                         Add Category

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use App\Jobs\SendMailForgotPassword;
 use Illuminate\Support\Facades\Hash;
@@ -12,9 +12,31 @@ use App\Jobs\VerifyMail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Http\Controllers\Controller;
 
 class AccountController extends Controller
 {
+    public function loginView(){
+        return View('common.login');
+    }
+
+    public function registerView(){
+        return View('common.register');
+    }
+
+    public function forgotpasswordView(){
+        return View('common.forgotpassword');
+    }
+
+    public function resetpasswordView(Request $request, $token = null)
+    {
+        return view('common.resetpassword')->with(['token' => $token, 'email' => $request->email]);
+    }
+
+    public function changepasswordView(){
+        return View('logged.user.changepassword');
+    }
+
     public function Register(Request $request)
     {
         $request->validate([

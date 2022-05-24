@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Product;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ProductPolicy
+class CategoryPolicy
 {
     use HandlesAuthorization;
 
@@ -18,21 +18,19 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        return $user && $user->hasPermission('review_product');
+        return $user && $user->hasPermission('review_category');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Product $product)
+    public function view(User $user, Category $category)
     {
-        return ($user && ($user->id == $product->user_id
-            || $user->hasPermission('review_product')
-        ));
+        return $user && $user->hasPermission('review_category');
     }
 
     /**
@@ -50,47 +48,47 @@ class ProductPolicy
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Product $product)
+    public function update(User $user, Category $category)
     {
-        return ($user->id == $product->user_id || $user->hasPermission('update_product'));
+        return $user->hasPermission('update_category');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Product $product)
+    public function delete(User $user, Category $category)
     {
-        return ($user->id == $product->user_id || $user->hasPermission('delete_product'));
+        return $user->hasPermission('delete_category');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Product $product)
+    public function restore(User $user, Category $category)
     {
-        return ($user->id == $product->user_id || $user->hasPermission('restore_product'));
+        //
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Product $product)
+    public function forceDelete(User $user, Category $category)
     {
-        return ($user->id == $product->user_id || $user->hasPermission('force_delete_product'));
+        return $user->hasPermission('restore_category');
     }
 }

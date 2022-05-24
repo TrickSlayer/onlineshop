@@ -10,10 +10,6 @@ class Product extends Model
 {
     use HasFactory, SoftDeletes;
 
-    const STATUS_DRAFT = 'draft';
-    const STATUS_UNPUBLISHED = 'unpublished';
-    const STATUS_PUBLISHED = 'published';
-
     public function user()
     {
         return $this->belongsTo(User::class);

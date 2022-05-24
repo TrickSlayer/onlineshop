@@ -51,6 +51,14 @@ class DatabaseSeeder extends Seeder
         //     ['name' => 'force_delete_product'],
         // ]);
 
+        // DB::table('permissions')->insert([
+        //     ['name' => 'review_category'],
+        //     ['name' => 'update_category'],
+        //     ['name' => 'delete_category'],
+        //     ['name' => 'restore_category'],
+        //     ['name' => 'force_delete_category'],
+        // ]);
+
         // DB::table('roles')->insert([
         //     ['name' => 'admin'],
         //     ['name' => 'user'],
@@ -67,6 +75,14 @@ class DatabaseSeeder extends Seeder
         //     ['permission_id' => 3, 'role_id' => 1],
         //     ['permission_id' => 4, 'role_id' => 1],
         //     ['permission_id' => 5, 'role_id' => 1],
+        // ]);
+
+        // DB::table('permission_role')->insert([
+        //     ['permission_id' => 6, 'role_id' => 1],
+        //     ['permission_id' => 7, 'role_id' => 1],
+        //     ['permission_id' => 8, 'role_id' => 1],
+        //     ['permission_id' => 9, 'role_id' => 1],
+        //     ['permission_id' => 10, 'role_id' => 1],
         // ]);
 
         // DB::table('categories')->insert([

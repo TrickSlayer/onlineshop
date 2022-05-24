@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\AccountController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\ViewController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\UploadController;
+use App\Http\Controllers\User\AccountController;
+use App\Http\Controllers\User\ProductController;
+use App\Http\Controllers\Common\ViewController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Common\UploadController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,29 +21,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('home', [ViewController::class, 'home'])->name('home');
 
 Route::prefix('login')->group(function () {
-    Route::get('/', [ViewController::class, 'login'])->name('login');
+    Route::get('/', [AccountController::class, 'loginView'])->name('login');
     Route::post('/', [AccountController::class, 'login']);
 });
 
 Route::prefix('register')->group(function () {
-    Route::get('/', [ViewController::class, 'register']);
+    Route::get('/', [AccountController::class, 'registerView']);
     Route::post('/', [AccountController::class, 'register']);
     Route::get('verify/{code}', [AccountController::class, 'verify']);
 });
 
 Route::prefix('password')->group(function () {
     Route::prefix('forgot')->group(function () {
-        Route::get('/', [ViewController::class, 'forgotpassword']);
+        Route::get('/', [AccountController::class, 'forgotpasswordView']);
         Route::post('/', [AccountController::class, 'sendResetLink']);
     });
 
     Route::prefix('reset')->group(function () {
-        Route::get('/{token}', [ViewController::class, 'resetpassword'])->name('user.password.reset');
+        Route::get('/{token}', [AccountController::class, 'resetpasswordView'])->name('user.password.reset');
         Route::post('/', [AccountController::class, 'resetPassword']);
     });
 
     Route::prefix('change')->middleware(['auth'])->group(function () {
-        Route::get('/', [ViewController::class, 'changepassword']);
+        Route::get('/', [AccountController::class, 'changepasswordView']);
         Route::post('/', [AccountController::class, 'changepassword']);
     });
 });
@@ -59,23 +59,28 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('delete', [UploadController::class, 'delete']);
     });
 
+    Route::prefix('admin')->group(function () {
 
-    Route::prefix('categories')->group(function () {
+        Route::prefix('categories')->group(function () {
 
-        Route::prefix('create')->group(function () {
-            Route::get('/', [ViewController::class, 'categoriesCreate']);
-            Route::post('/', [CategoryController::class, 'create']);
+            Route::prefix('create')->group(function () {
+                Route::get('/', [CategoryController::class, 'createView']);
+                Route::post('/', [CategoryController::class, 'create']);
+            });
+
+            Route::prefix('list')->group(function () {
+                Route::get('/', [CategoryController::class, 'list']);
+                Route::post('search', [CategoryController::class, 'search']);
+                Route::delete('destroy', [CategoryController::class, 'destroy']);
+            });
+
+            Route::prefix('edit/{category}')->group(function () {
+                Route::get('/', [CategoryController::class, 'editView']);
+                Route::post('/', [CategoryController::class, 'edit']);
+            });
         });
 
-        Route::prefix('list')->group(function () {
-            Route::get('/', [CategoryController::class, 'list']);
-            Route::post('search', [CategoryController::class, 'search']);
-            Route::delete('destroy', [CategoryController::class, 'destroy']);
-        });
     });
-
-    
-    
 });
 
 //Test funtion

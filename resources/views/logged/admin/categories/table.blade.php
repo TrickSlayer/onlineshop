@@ -38,7 +38,7 @@
                     @endif
                 </td>
                 <td class="px-6 py-4 text-right flex space-x-3">
-                    <a class="font-medium text-green-500 hover:text-green-700" href="">Edit</a>
+                    <a class="font-medium text-green-500 hover:text-green-700" href="/admin/categories/edit/{{ $category->id }}">Edit</a>
                     <a class="font-medium text-red-500 hover:text-red-700 cursor-pointer" onclick="removeRow( {{ $category->id }}, 'category {{ $category->name }}' )">Delete</a>
                 </td>
             </tr>

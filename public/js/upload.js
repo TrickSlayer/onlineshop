@@ -44,7 +44,7 @@ $('#upload').change(function(){
             if (results.error === false){
                 let results_url = "/storage/" + results.url;
                 $('#image_show').html(
-                    '<a href="'+ results_url +'">'+
+                    '<a  target="_blank" href="'+ results_url +'">'+
                         '<img src="'+ results_url +'" target="_blank">' +
                     '</a>');
                 $('#file').val(results_url);
