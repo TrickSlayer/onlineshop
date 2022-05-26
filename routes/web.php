@@ -5,6 +5,7 @@ use App\Http\Controllers\User\ProductController;
 use App\Http\Controllers\Common\ViewController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Common\UploadController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -84,4 +85,5 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //Test funtion
-Route::get('test', [ViewController::class, 'test']);
+Route::get('test', [MessageController::class, 'index']);
+Route::post('test', [MessageController::class, 'post']);
