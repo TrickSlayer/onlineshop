@@ -20,7 +20,7 @@ class CategoryController extends Controller
     }
 
     public function editView(Category $category){
-        $this->authorize('create',$category);
+        $this->authorize('update',$category);
         return View('logged.admin.categories.edit',[
             'category' => $category,
             'title' => "Edit Category ".$category->name,
@@ -29,6 +29,7 @@ class CategoryController extends Controller
 
     public function create(FormCategoryRequest $request)
     {
+        $this->authorize('create',Category::class);
         Category::create([
             "name" => $request->input("name"),
             "description" => $request->input("description"),
@@ -52,6 +53,7 @@ class CategoryController extends Controller
 
     public function search(Request $request)
     {
+        $this->authorize('viewAny',Category::class);
         $value = $request->input('value', '');
         $categories = Category::sortable()->where('name', 'like', '%' . $value . '%')->paginate(15);
 
@@ -89,6 +91,7 @@ class CategoryController extends Controller
     }
 
     public function edit(FormCategoryRequest $request, Category $category){
+        $this->authorize('update',$category);
         try{
             $category->fill($request->input());
             $category->save();

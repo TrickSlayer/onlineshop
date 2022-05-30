@@ -80,10 +80,9 @@ Route::middleware(['auth'])->group(function () {
                 Route::post('/', [CategoryController::class, 'edit']);
             });
         });
-
     });
-});
 
-//Test funtion
-Route::get('test', [MessageController::class, 'index']);
-Route::post('test', [MessageController::class, 'post']);
+    //Test funtion
+    Route::get('test/{groupChat}', [MessageController::class, 'index']);
+    Route::post('test/{groupChat}', [MessageController::class, 'post']);
+});

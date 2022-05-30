@@ -49,4 +49,8 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->confirmed != 0;
     }
+
+    public function groupchats(){
+        return $this->belongsToMany(GroupChat::class);
+    }
 }
