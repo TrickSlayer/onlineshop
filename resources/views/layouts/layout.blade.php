@@ -9,10 +9,10 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/apple-icon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/fortawesome/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}" />
     <title>@yield('title', 'layout')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/icon.png') }}"/>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     @yield('head')
 </head>
 
