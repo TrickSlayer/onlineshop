@@ -1,0 +1,13 @@
+{
+    "name": "laraveldaily/timezones",
+    "description": "Demo-package to show time",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "TrickSlayer",
+            "email": "90195916+TrickSlayer@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
