@@ -15,23 +15,23 @@
                 id="example-collapse-navbar">
                 <ul class="flex flex-col lg:flex-row list-none lg:ml-auto items-center">
                     <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                        <a class="lg:text-white lg:hover:text-gray-200 text-gray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                             href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-js%2F"
                             target="_blank"><i
-                                class="lg:text-blueGray-200 text-blueGray-400 fab fa-facebook text-lg leading-lg"></i><span
+                                class="lg:text-gray-200 text-gray-400 fab fa-facebook text-lg leading-lg"></i><span
                                 class="lg:hidden inline-block ml-2">Share</span></a>
                     </li>
                     <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                        <a class="lg:text-white lg:hover:text-gray-200 text-gray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                             href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fnotus-js%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20JavaScript%20UI%20Kit%20and%20Admin.%20Let%20Notus%20JS%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level."
                             target="_blank"><i
-                                class="lg:text-blueGray-200 text-blueGray-400 fab fa-twitter text-lg leading-lg"></i><span
+                                class="lg:text-gray-200 text-gray-400 fab fa-twitter text-lg leading-lg"></i><span
                                 class="lg:hidden inline-block ml-2">Tweet</span></a>
                     </li>
                     <li class="flex items-center">
-                        <a class="lg:text-white lg:hover:text-blueGray-200 text-blueGray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
+                        <a class="lg:text-white lg:hover:text-gray-200 text-gray-700 px-3 py-4 lg:py-2 flex items-center text-xs uppercase font-bold"
                             href="https://github.com/creativetimofficial/notus-js?ref=njs-login" target="_blank"><i
-                                class="lg:text-blueGray-200 text-blueGray-400 fab fa-github text-lg leading-lg"></i><span
+                                class="lg:text-gray-200 text-gray-400 fab fa-github text-lg leading-lg"></i><span
                                 class="lg:hidden inline-block ml-2">Star</span></a>
                     </li>
                 </ul>
@@ -40,7 +40,7 @@
     </nav>
     <main>
         <section class="relative w-full h-full py-40 min-h-screen">
-            <div class="absolute top-0 w-full h-full bg-blueGray-800 bg-full bg-no-repeat"
+            <div class="absolute top-0 w-full h-full bg-gray-800 bg-full bg-no-repeat"
                 style="background-image: url({{ asset('assets/img/register_bg_2.png') }})"></div>
             <div class="container mx-auto px-4 h-full">
                 <div class="flex content-center items-center justify-center h-full">
