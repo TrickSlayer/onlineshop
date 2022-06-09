@@ -14,17 +14,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-include(__DIR__.'\web\home.php');
+include __DIR__.'\web\home.php';
 
-include(__DIR__.'\web\auth.php');
+include __DIR__.'\web\auth.php';
 
 Route::middleware(['auth'])->group(function () {
  
     //Upload file   
-    include(__DIR__.'\web\uploadFile.php');
+    include __DIR__.'\web\uploadFile.php';
 
-    //Login admin account
-    include(__DIR__.'\web\admin.php');
+    include __DIR__.'\web\product.php';
+
+    include __DIR__.'\web\admin.php';
 
     //Test funtion
     Route::get('test/{groupChat}', [MessageController::class, 'index']);

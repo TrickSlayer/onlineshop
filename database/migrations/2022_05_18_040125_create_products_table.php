@@ -21,7 +21,7 @@ return new class extends Migration
             $table->double('price');
             $table->double('sale_price');
             $table->text('description');
-            $table->longText('content');
+            $table->longText('content')->nullable();
             $table->integer('active');
             $table->timestamp('deleted_at')->nullable();
             $table->string('thumb');

@@ -5,13 +5,11 @@ namespace App\Http\Controllers\Common;
 use App\Jobs\DeleteImg;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ViewController extends Controller
 {
-    public function test(){
-        return Category::factory()->count(10)->create();
-    }
 
     public function home(){
         DeleteImg::dispatch()->delay(now()->addMonth());
@@ -19,7 +17,20 @@ class ViewController extends Controller
     }
 
     public function dashboard(){
-        return View('logged.user.dashboard');
+        $products1 = View('logged.user.products.products_nonwrap', [
+            "category" => Category::first(),
+            "products" =>  Product::paginate(5)
+        ])->render();
+
+        $products2 = View('logged.user.products.products_wrap', [
+            "category" => Category::first(),
+            "products" =>  Product::paginate(20)
+        ])->render();
+
+        return View('logged.user.dashboard',[
+            "products1" => $products1,
+            "products2" => $products2
+        ]);
     }
     
 }

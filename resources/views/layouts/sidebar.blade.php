@@ -106,7 +106,7 @@
             </h6>
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 <li class="items-center">
-                    <a href="products/list"
+                    <a href="/products/list"
                         class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
                         <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
                         List Products
@@ -114,7 +114,7 @@
                 </li>
 
                 <li class="items-center">
-                    <a href="products/add"
+                    <a href="/products/create"
                         class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
                         <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
                         Add Product
