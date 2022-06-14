@@ -1,7 +1,13 @@
 <div class="bg-white rounded-md">
-    <a href="/categories/{{ $category->id }}">
-        <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Str::title($category->name) }}</h2>
-    </a>
+
+    @if (isset($category))
+        <a href="/categories/{{ $category->id }}">
+            <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Str::title($category->name) }}</h2>
+        </a>
+    @else
+        <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Str::title($title) }}</h2>
+    @endif
+
     <div class="flex flex-nowrap overflow-hidden">
         @foreach ($products as $product)
             <a href="/products/{{ $product->id }}" class="m-4">
@@ -10,7 +16,8 @@
                         <img class="object-cover w-full h-full" src="{{ $product->thumb }}">
                     </div>
                     <div class="box-border h-16 w-40 border-1 truncate mx-auto">
-                        <h2 class="mt-1 font-medium leading-tight text-base mb-2">{{  Str::title($product->name) }}</h2>
+                        <h2 class="mt-1 font-medium leading-tight text-base mb-2">{{ Str::title($product->name) }}
+                        </h2>
                     </div>
                 </div>
             </a>

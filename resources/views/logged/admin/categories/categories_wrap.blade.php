@@ -4,7 +4,7 @@
     </a>
     <div class="flex flex-wrap overflow-hidden">
         @foreach ($products as $product)
-            <a href="/products/{{ $product->id }}" class="m-4">
+            <a href="/categories/{{ $product->id }}" class="m-4">
                 <div class="box-border h-72 w-52 p-4 border-4 justify-center rounded-md">
                     <div class="box-border h-40 w-40 border-1 mx-auto">
                         <img class="object-cover w-full h-full" src="{{ $product->thumb }}">

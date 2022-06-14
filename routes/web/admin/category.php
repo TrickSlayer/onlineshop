@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 
+
 Route::prefix('categories')->group(function () {
 
     Route::prefix('create')->group(function () {
@@ -20,4 +21,5 @@ Route::prefix('categories')->group(function () {
         Route::get('/', [CategoryController::class, 'editView']);
         Route::post('/', [CategoryController::class, 'edit']);
     });
+
 });

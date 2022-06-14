@@ -24,12 +24,12 @@ class ViewController extends Controller
             "categories" => Category::paginate(7),
         ])->render();
 
-        $products1 = View('logged.user.products.products_nonwrap', [
+        $products1 = View('logged.shop.products.products_nonwrap', [
             "category" => Category::first(),
             "products" =>  Product::paginate(5)
         ])->render();
 
-        $products2 = View('logged.user.products.products_wrap', [
+        $products2 = View('logged.shop.products.products_wrap', [
             "category" => Category::first(),
             "products" =>  Product::paginate(20)
         ])->render();

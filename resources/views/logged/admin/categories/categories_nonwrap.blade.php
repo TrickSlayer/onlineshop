@@ -2,7 +2,7 @@
     <h2 class="font-medium leading-tight text-xl pt-4 pl-4">Categories</h2>
     <div class="flex flex-nowrap overflow-hidden">
         @foreach ($categories as $category)
-            <a href="/products/{{ $category->id }}" class="m-4">
+            <a href="/categories/{{ $category->id }}" class="m-4">
                 <div class="box-border h-32 w-32 p-5 justify-center rounded-md">
                     <div class="box-border h-20 w-20 border-1 mx-auto rounded-full overflow-hidden">
                         <img class="object-cover w-full h-full" src="{{ $category->thumb }}">

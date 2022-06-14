@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\ProductController;
+use App\Http\Controllers\Shop\ProductController;
 
 Route::prefix('products')->group(function () {
     
@@ -20,8 +20,5 @@ Route::prefix('products')->group(function () {
         Route::get('/', [ProductController::class, 'editView']);
         Route::post('/', [ProductController::class, 'edit']);
     });
-
-    Route::get('{product}', [ProductController::class, 'product']);
-
-    Route::get("/", [ProductController::class, 'products']);
+    
 });
