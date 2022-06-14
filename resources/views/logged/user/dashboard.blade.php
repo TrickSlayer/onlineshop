@@ -36,6 +36,9 @@
         </div>
         <section class="pb-20 bg-gray-200">
             <div class="container mx-auto px-4">
+                <div class="pt-5">
+                    {!! $categories !!}
+                </div>
                 {{-- @include('logged.user.products.products') --}}
                 <div class="pt-5">
                     {!! $products1 !!}

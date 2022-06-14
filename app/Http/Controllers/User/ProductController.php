@@ -64,15 +64,6 @@ class ProductController extends Controller
         ]);
     }
 
-    public function products(Request $request)
-    {
-        $this->authorize('viewAny',Product::class);
-        $products = Product::paginate(15);
-        return View('logged.user.products.products_nonwrap', [
-            "products" => $products,
-        ]);
-    }
-
     public function search(Request $request)
     {
         $this->authorize('viewAny',Product::class);
@@ -127,4 +118,11 @@ class ProductController extends Controller
 
         return redirect()->back();
     }
+
+    public function product(Product $product)
+    {
+        $this->authorize('view',$product);
+        return $product;
+    }
+    
 }

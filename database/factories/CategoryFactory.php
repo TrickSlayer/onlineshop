@@ -21,7 +21,7 @@ class CategoryFactory extends Factory
             'description' => $this->faker->paragraph(),
             'content' => $this->faker->paragraph(),
             'active' => random_int(0,1),
-            'thumb'=> 'none',
+            'thumb'=> '/storage/uploads/2022/06/08/04/03/10/Ảnh chụp màn hình 2021-12-07 142140.png',
         ];
     }
 }

@@ -132,6 +132,16 @@
 
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li class="items-center">
+                    <a href="/password/change"
+                        class="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block">
+                        <i class="fas fa-fingerprint text-gray-300 mr-2 text-sm"></i>
+                        Change Password
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+                <li class="items-center">
                     <a href="/logout"
                         class="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block">
                         <i class="fas fa-fingerprint text-gray-300 mr-2 text-sm"></i>

@@ -17,6 +17,13 @@ class ViewController extends Controller
     }
 
     public function dashboard(){
+        
+        // Category::factory()->count(10)->create();
+
+        $categories = View('logged.admin.categories.categories_nonwrap', [
+            "categories" => Category::paginate(7),
+        ])->render();
+
         $products1 = View('logged.user.products.products_nonwrap', [
             "category" => Category::first(),
             "products" =>  Product::paginate(5)
@@ -28,6 +35,7 @@ class ViewController extends Controller
         ])->render();
 
         return View('logged.user.dashboard',[
+            "categories" => $categories,
             "products1" => $products1,
             "products2" => $products2
         ]);
