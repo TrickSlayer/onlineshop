@@ -54,16 +54,6 @@ class ProductController extends Controller
         return redirect()->back()->withSuccess('Create product successfully!');
     }
 
-    // public function list(Request $request)
-    // {
-    //     $this->authorize('viewAny',Product::class);
-    //     $products = Product::sortable()->paginate(15);
-    //     return View('logged.shop.products.list', [
-    //         "products" => $products,
-    //         "filter" => $request->input("filter"),
-    //     ]);
-    // }
-
     public function search(Request $request)
     {
         $this->authorize('viewAny',Product::class);

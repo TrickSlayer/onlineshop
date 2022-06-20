@@ -11,6 +11,8 @@ class Message extends Model
 {
     use HasFactory;
 
+    public $timestamps = true;
+
     protected $fillable = [
         'group_chat_id',
         'user_id',

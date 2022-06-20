@@ -1,11 +1,8 @@
-@extends('layouts.logged')
-
-@section('title', 'Dashboard')
-
-@section('body')
-    <main>
+<x-logged :title="'Dashboard'">
+    <x-slot name="main">
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
-            <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
+            <div class="absolute top-0 w-full h-full bg-center bg-cover"
+                style="
                       background-image: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1267&amp;q=80');
                     ">
                 <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
@@ -28,8 +25,8 @@
             </div>
             <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px"
                 style="transform: translateZ(0px)">
-                <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-                    version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
                     <polygon class="text-gray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
                 </svg>
             </div>
@@ -37,15 +34,20 @@
         <section class="pb-20 bg-gray-200">
             <div class="container mx-auto px-4">
                 <div class="pt-5">
-                    {!! $categories !!}
+                    <x-category.data-list :categories='$categories'>
+                    </x-category.data-list>
                 </div>
-                {{-- @include('logged.user.products.products') --}}
+
                 <div class="pt-5">
-                    {!! $products1 !!}
+                    <x-product.data-list :data='$products1'>
+                    </x-product.data-list>
                 </div>
+
                 <div class="pt-5">
-                    {!! $products2 !!}
+                    <x-product.data-list :data='$products2' :wrap='"wrap"'>
+                    </x-product.data-list>
                 </div>
+
                 <div class="flex flex-wrap items-center mt-32">
                     <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
                         <div
@@ -76,7 +78,8 @@
                             <blockquote class="relative p-8 mb-4">
                                 <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 583 95"
                                     class="absolute left-0 w-full block h-95-px -top-94-px">
-                                    <polygon points="-30,95 583,95 583,65" class="text-pink-500 fill-current"></polygon>
+                                    <polygon points="-30,95 583,95 583,65" class="text-pink-500 fill-current">
+                                    </polygon>
                                 </svg>
                                 <h4 class="text-xl font-bold text-white">
                                     Top Notch Services
@@ -95,8 +98,8 @@
         <section class="relative py-20">
             <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20 h-20"
                 style="transform: translateZ(0px)">
-                <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-                    version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
                     <polygon class="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
                 </svg>
             </div>
@@ -365,7 +368,8 @@
                                 <div class="relative w-full mb-3">
                                     <label class="block uppercase text-gray-600 text-xs font-bold mb-2"
                                         for="message">Message</label>
-                                    <textarea rows="4" cols="80" class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
+                                    <textarea rows="4" cols="80"
+                                        class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full"
                                         placeholder="Type a message..."></textarea>
                                 </div>
                                 <div class="text-center mt-6">
@@ -381,6 +385,11 @@
                 </div>
             </div>
         </section>
-    </main>
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
-@endsection
+
+
+    </x-slot>
+
+    <x-slot name="footer">
+        <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.js"></script>
+    </x-slot>
+</x-logged>

@@ -1,8 +1,6 @@
-@extends('layouts.logged.datatable')
+<x-logged.database :title="'List Products'">
 
-@section('title', 'List Categories')
-
-@section('content')
+    <x-slot name="main">
     <div class="w-full px-4 mt-5">
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-white rounded">
             <div class="my-5 ml-6">
@@ -15,4 +13,6 @@
             </div>
         </div>
     </div>
-@endsection
+</x-slot>
+
+</x-logged.database>

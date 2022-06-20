@@ -10,6 +10,8 @@ class Category extends Model
 {
     use HasFactory,Sortable;
 
+    public $timestamps = true;
+
     protected $fillable = [
         'name',
         'description',

@@ -30,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
     include __DIR__ . '\web\admin.php';
 
     //Test funtion
-    Route::get('test/{groupChat}', [MessageController::class, 'index']);
-    Route::post('test/{groupChat}', [MessageController::class, 'post']);
+    Route::get('mess/{groupChat}', [MessageController::class, 'index']);
+    Route::post('mess/{groupChat}', [MessageController::class, 'post']);
+    
 });
+
+Route::get('test', function(){return view('component');});

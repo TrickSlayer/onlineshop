@@ -10,25 +10,27 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/fortawesome/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/styles/tailwind.css') }}" />
-    <title>@yield('title', 'layout')</title>
+    <title>{{ isset($title) ? $title : 'Online shop' }}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/icon.png') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/icon.png') }}" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    @yield('head')
+    {{ isset($head) ? $head : '' }}
 </head>
 
 <body>
 
     <header>
-
+        {{ isset($header) ? $header : '' }}
     </header>
 
     <main>
-        @yield('main')
+        {{ isset($main) ? $main : '' }}
     </main>
 
-    @yield('footer')
+    <footer>
+        {{ isset($footer) ? $footer : '' }}
+    </footer>
 
     <script src="{{ asset('js/app.js') }}"></script>
 

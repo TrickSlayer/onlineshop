@@ -20,20 +20,17 @@ class ViewController extends Controller
         
         // Category::factory()->count(10)->create();
 
-        $categories = View('logged.admin.categories.box_categories', [
-            "categories" => Category::paginate(7),
-        ])->render();
+        $categories = Category::paginate(7);
 
-        $products1 = View('logged.shop.products.box_products', [
+        $products1 = [
             "category" => Category::first(),
             "products" =>  Product::paginate(5)
-        ])->render();
+        ];
 
-        $products2 = View('logged.shop.products.box_products', [
+        $products2 = [
             "category" => Category::first(),
             "products" =>  Product::paginate(20),
-            "wrap" => true
-        ])->render();
+        ];
 
         return View('logged.user.dashboard',[
             "categories" => $categories,
