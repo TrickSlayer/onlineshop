@@ -30,6 +30,7 @@ class CategoryController extends Controller
             "category" => $category,
             "products" => $this->productService->get($category, $request),
             'size' => $this->size,
+            'sortprice' => $request->input('sale_price'),
         ]);
     }
 

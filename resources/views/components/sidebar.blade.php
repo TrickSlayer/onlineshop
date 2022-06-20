@@ -74,53 +74,58 @@
                 </li>
             </ul>
 
-            <!-- Divider -->
-            <hr class="my-4 md:min-w-full" />
-            <!-- Heading -->
-            <h6 class="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                Categories
-            </h6>
-            <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-                <li class="items-center">
-                    <a href="/admin/categories/list"
-                        class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                        <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
-                        List Categories
-                    </a>
-                </li>
 
-                <li class="items-center">
-                    <a href="/admin/categories/create"
-                        class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                        <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
-                        Add Category
-                    </a>
-                </li>
-            </ul>
+            @if (Auth::user()->hasRole('admin'))
+                <!-- Divider -->
+                <hr class="my-4 md:min-w-full" />
+                <!-- Heading -->
+                <h6 class="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                    Categories
+                </h6>
+                <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+                    <li class="items-center">
+                        <a href="/admin/categories/list"
+                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                            <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
+                            List Categories
+                        </a>
+                    </li>
 
-            <!-- Divider -->
-            <hr class="my-4 md:min-w-full" />
-            <!-- Heading -->
-            <h6 class="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                Products
-            </h6>
-            <ul class="md:flex-col md:min-w-full flex flex-col list-none">
-                <li class="items-center">
-                    <a href="/products/list"
-                        class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                        <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
-                        List Products
-                    </a>
-                </li>
+                    <li class="items-center">
+                        <a href="/admin/categories/create"
+                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                            <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
+                            Add Category
+                        </a>
+                    </li>
+                </ul>
+            @endif
 
-                <li class="items-center">
-                    <a href="/products/create"
-                        class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                        <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
-                        Add Product
-                    </a>
-                </li>
-            </ul>
+            @if (Auth::user()->hasRole('shop'))
+                <!-- Divider -->
+                <hr class="my-4 md:min-w-full" />
+                <!-- Heading -->
+                <h6 class="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
+                    Products
+                </h6>
+                <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+                    <li class="items-center">
+                        <a href="/products/list"
+                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                            <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
+                            List Products
+                        </a>
+                    </li>
+
+                    <li class="items-center">
+                        <a href="/products/create"
+                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                            <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
+                            Add Product
+                        </a>
+                    </li>
+                </ul>
+            @endif
 
             <!-- Divider -->
             <hr class="my-4 md:min-w-full" />
@@ -138,12 +143,8 @@
                         Change Password
                     </a>
                 </li>
-            </ul>
-
-            <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li class="items-center">
-                    <a href="/logout"
-                        class="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block">
+                    <a href="/logout" class="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block">
                         <i class="fas fa-fingerprint text-gray-300 mr-2 text-sm"></i>
                         Logout
                     </a>
@@ -201,7 +202,8 @@
                 </li>
 
                 <li class="inline-flex">
-                    <a href="https://www.creative-tim.com/learning-lab/tailwind/angular/overview/notus" target="_blank"
+                    <a href="https://www.creative-tim.com/learning-lab/tailwind/angular/overview/notus"
+                        target="_blank"
                         class="text-gray-700 hover:text-gray-500 text-sm block mb-4 no-underline font-semibold">
                         <i class="fab fa-angular mr-2 text-gray-300 text-base"></i>
                         Angular
