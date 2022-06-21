@@ -15,6 +15,7 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('assets/img/icon.png') }}" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/49dcd2e6d5.js" crossorigin="anonymous"></script>
     {{ isset($head) ? $head : '' }}
 </head>
 

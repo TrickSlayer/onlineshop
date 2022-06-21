@@ -1,12 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\User\CategoryController;
-use App\Http\Controllers\User\ProductController;
+include(__DIR__.'\user\product.php');
 
-Route::prefix('categories')->group(function(){
-    Route::get('view/{category}', [CategoryController::class, 'view'] );
-    Route::post('load-product/{category}', [CategoryController::class, 'load']);
-});
-
-Route::get('products/view/{product}', [ProductController::class, 'view']);
+include(__DIR__.'\user\category.php');

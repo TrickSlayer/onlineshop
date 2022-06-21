@@ -36,7 +36,7 @@
             <hr class="my-4 md:min-w-full" />
             <!-- Heading -->
             <h6 class="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                Admin Layout Pages
+                Layout Pages
             </h6>
             <!-- Navigation -->
 
@@ -50,6 +50,14 @@
                 </li>
 
                 <li class="items-center">
+                    <a href="/shop/register"
+                        class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                        <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
+                        Start selling
+                    </a>
+                </li>
+
+                {{-- <li class="items-center">
                     <a href="./settings.html"
                         class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
                         <i class="fas fa-tools mr-2 text-sm text-gray-300"></i>
@@ -71,7 +79,7 @@
                         <i class="fas fa-map-marked mr-2 text-sm text-gray-300"></i>
                         Maps
                     </a>
-                </li>
+                </li> --}}
             </ul>
 
 
@@ -151,7 +159,7 @@
                 </li>
             </ul>
 
-            <!-- Divider -->
+            {{-- <!-- Divider -->
             <hr class="my-4 md:min-w-full" />
             <!-- Heading -->
             <h6 class="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
@@ -249,7 +257,7 @@
                         VueJS
                     </a>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
     </div>
 </nav>

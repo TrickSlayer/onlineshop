@@ -1,6 +1,7 @@
 <x-common :title="'Reset Password'">
     <x-slot name='main'>
         <div class="w-full lg:w-4/12 px-4">
+            <div class="pt-32"></div>
             <div
                 class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-gray-200 border-0">
                 <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
