@@ -49,13 +49,25 @@
                     </a>
                 </li>
 
-                <li class="items-center">
-                    <a href="/shop/register"
-                        class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                        <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
-                        Start selling
-                    </a>
-                </li>
+                @if (!Auth::user()->hasRole('shop'))
+                    <li class="items-center">
+                        <a href="/shop/register"
+                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                            <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
+                            Start selling
+                        </a>
+                    </li>
+                @endif
+
+                @if (Auth::user()->hasRole('shop'))
+                    <li class="items-center">
+                        <a href="/shop/view/{{ Auth::user()->shop->id }}"
+                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                            <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
+                            My shop
+                        </a>
+                    </li>
+                @endif
 
                 {{-- <li class="items-center">
                     <a href="./settings.html"
