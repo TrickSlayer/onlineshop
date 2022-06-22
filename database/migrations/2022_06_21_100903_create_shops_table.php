@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->unique('user_id');
-            $table->string('location');
+            $table->string('address')->nullable();
+            $table->double('address_latitude')->nullable();
+            $table->double('address_longitude')->nullable();
             $table->string('avatar')->nullable();
             $table->string('background')->nullable();
             $table->longText('content')->nullable();

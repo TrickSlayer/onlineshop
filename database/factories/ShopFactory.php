@@ -19,7 +19,6 @@ class ShopFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'user_id' => $this->faker->unique()->numberBetween(1, 3),
-            'location' => '',
             'active' => 1,
         ];
     }

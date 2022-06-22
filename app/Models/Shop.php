@@ -14,10 +14,13 @@ class Shop extends Model
     protected $fillable = [
         'name',
         'user_id',
+        'address',
+        'address_latitude',
+        'address_longitude',
         'avatar',
         'background',
         'content',
-        'active'
+        'active',
     ];
 
     public function user(){
