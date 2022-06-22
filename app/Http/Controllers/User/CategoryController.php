@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
         return view('logged.user.categories.category', [
             "category" => $category,
-            "products" => $this->productService->get($category, $request),
+            "products" => $this->productService->getList($category, $request),
             'size' => $this->product_size,
             'sortprice' => $request->input('sale_price'),
         ]);
@@ -43,7 +43,7 @@ class CategoryController extends Controller
     public function load(Category $category, Request $request)
     {
         $page = $request->input('page', 0);
-        $products = $this->productService->get($category, $request, $page);
+        $products = $this->productService->getList($category, $request, $page);
 
         if ($products) {
             $html = view('layouts.products.data', [

@@ -4,21 +4,55 @@ namespace App\Http\Services;
 
 use App\Models\Category;
 use App\Models\Product;
+use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {
     const LIMIT = 12;
-    
-    public function getProducts(Category $category, $request){
-        $products = View('logged.shop.products.products_wrap', [
-            "title" => $category->name,
-            "products" => $this->get($category, $request)
-        ])->render();
-        return $products;
+
+    public function create(Request $request){
+        if ($request->price < $request->sale_price){
+            Session::flash("error", "Sale price must be smaller price");
+            return false;
+        }
+
+        Product::create([
+            "name" => $request->input("name"),
+            "description" => $request->input("description"),
+            "category_id" => $request->input("category_id"),
+            "shop_id" => Auth::user()->shop->id,
+            "quantity" =>  $request->input("quantity"),
+            "price" => $request->input("price"),
+            "sale_price" => $request->input("sale_price"),
+            "content" => $request->input("content"),
+            "thumb" => $request->input("thumb"),
+            "active" => $request->input("active"),
+        ]);
+
+        Session::flash("error", "Create product successfully!");
+
+        return true;
     }
 
-    public function get(Category $category, $request, $page = 0)
+    public function edit(Request $request, Product $product){
+        try{
+            $product->fill($request->input());
+            $product->save();
+            Session::flash('success', 'Update successfully');
+            return true;
+        } catch (Exception $e){
+            Session::flash('Error', 'Error. Try again!!');
+            Log::info($e->getMessage());
+            return false;
+        }
+    }
+
+    public function getList(Category $category, $request, $page = 0)
     {
         $collection = self::fillter($category, $request)
             ->skip(self::LIMIT * $page)

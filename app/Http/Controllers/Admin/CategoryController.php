@@ -6,6 +6,7 @@ use App\Http\Requests\FormCategoryRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Services\CategoryService;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Session;
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\Log;
 
 class CategoryController extends Controller
 {
+
+    private $categoryService;
+
+    public function __construct(CategoryService $categoryService)
+    {
+        $this->categoryService = $categoryService;
+    }
+
     public function createView(){
         $this->authorize('create',Category::class);
         return View('logged.admin.categories.create');
@@ -30,13 +39,8 @@ class CategoryController extends Controller
     public function create(FormCategoryRequest $request)
     {
         $this->authorize('create',Category::class);
-        Category::create([
-            "name" => $request->input("name"),
-            "description" => $request->input("description"),
-            "content" => $request->input("content"),
-            "thumb" => $request->input("thumb"),
-            "active" => $request->input("active"),
-        ]);
+        
+        $this->categoryService->create($request);
 
         return redirect()->back()->withSuccess('Create category successfully!');
     }

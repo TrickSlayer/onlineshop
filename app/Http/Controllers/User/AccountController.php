@@ -2,20 +2,27 @@
 
 namespace App\Http\Controllers\User;
 
+
 use App\Jobs\SendMailForgotPassword;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Jobs\VerifyMail;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
+use App\Http\Services\AccountService;
 
 class AccountController extends Controller
 {
+    private $accountService;
+
+    public function __construct(AccountService $accountService)
+    {
+        $this->accountService = $accountService;
+    }
+
     public function loginView(){
         return View('common.login');
     }
@@ -50,13 +57,7 @@ class AccountController extends Controller
 
         VerifyMail::dispatch($request->input('email'), $request->input('name'), $confirmation_code);
 
-        User::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password' => Hash::make($request->input('password')),
-            'confirmation_code' => $confirmation_code,
-            'confirmed' => 0,
-        ]);
+        $this->accountService->create($request, $confirmation_code);
 
         return redirect("login")->withSuccess('Please confirm email');
     }
@@ -97,13 +98,10 @@ class AccountController extends Controller
         $user = User::where('confirmation_code', $code);
 
         if ($user->count() > 0) {
-            $user->update([
-                'confirmed' => 1,
-                'confirmation_code' => null
-            ]);
-            return redirect(route('login'))->withSuccess('Bạn đã xác nhận thành công');
+            $this->accountService->verify($user);
+            return redirect(route('login'))->withSuccess('You have successfully confirmed');
         } else {
-            return redirect(route('login'))->withError('Mã xác nhận không chính xác');
+            return redirect(route('login'))->withError('Confirmation code is incorrect');
         }
     }
 
@@ -117,11 +115,7 @@ class AccountController extends Controller
 
         SendMailForgotPassword::dispatch($request->email, $token);
 
-        DB::table('password_resets')->insert([
-            'email' => $request->email,
-            'token' =>  $token,
-            'created_at' => Carbon::now(),
-        ]);
+        $this->accountService->sendRequestResetPassword($request, $token);
 
         return back()->withSuccess("We have e-mail your password reset link!");
     }
@@ -134,24 +128,19 @@ class AccountController extends Controller
             'password_confirmation' => 'required',
         ]);
 
-        $check_token = DB::table('password_resets')->where([
-            'email' => $request->email,
-            'token' => $request->token,
-        ])-> first();
+        $check_token = $this->accountService->checkRequestResetPassword($request);
 
         if(!$check_token){
             return back()->withInput()->withErrors('Invalid token');
         } else {
+
             $date = new Carbon($check_token->created_at);
+
             if ($date->diffInHours(now()) > 1){
                 return back()->withInput()->withErrors('Timeout');
             }
 
-            User::where('email', $request->email)->update([
-                'password' => Hash::make($request->password)
-            ]);
-
-            DB::table('password_resets')->where('email', $request->email)->delete();
+            $this->accountService->handleResetPassword($request);
 
             return redirect()->route('login')->withSuccess('Your password has been changed!')
                 ->with('verifiedEmail', $request->email);
@@ -159,19 +148,14 @@ class AccountController extends Controller
     }
 
     public function changePassword(Request $request){
+
         $request->validate([
             'old_password' => 'required',
             'password' => 'required|confirmed',
         ]);
 
-        if(!Hash::check($request->old_password, Auth::user()->password)){
-            return back()->withErrors("Old Password Doesn't match!");
-        }
+        $this->accountService->changePassword($request);
 
-        User::whereId(auth()->user()->id)->update([
-            'password' => Hash::make($request->new_password)
-        ]);
-
-        return back()->withSuccess("Password changed successfully!");
+        return redirect()->back();
     }
 }
