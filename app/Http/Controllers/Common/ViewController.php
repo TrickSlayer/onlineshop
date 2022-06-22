@@ -12,14 +12,12 @@ class ViewController extends Controller
 {
 
     public function home(){
-        DeleteImg::dispatch()->delay(now()->addMonth());
+        DeleteImg::dispatch()->delay(now()->addSecond());
         return View('common.home');
     }
 
     public function dashboard(){
         
-        // Category::factory()->count(10)->create();
-
         $categories = Category::paginate(7);
 
         $products1 = [

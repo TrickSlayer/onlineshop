@@ -31,6 +31,7 @@ class FormProductRequest extends FormRequest
             "description" => "required",
             "thumb" => "required",
             "category_id" => "min:1",
+            "quantity" => "min:1",
         ];
     }
 
@@ -44,6 +45,7 @@ class FormProductRequest extends FormRequest
             "thumb.required" => "Picture is required",
             "file.image" => "File must be image",
             "category_id.min:1" => "Must choose category",
+            "quantity.min:1" => "Quantity must lagger than 1",
         ];
     }
 }

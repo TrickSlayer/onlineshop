@@ -17,6 +17,13 @@
                         </div>
 
                         <div class="relative w-full mb-3">
+                            <label class="block uppercase text-gray-600 text-xs font-bold mb-2" for="grid-password">
+                                Quantity</label>
+                            <input type="number" name="quantity" value="{{ old('quantity') }}"
+                                class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
+                        </div>
+
+                        <div class="relative w-full mb-3">
                             <label class="block uppercase text-gray-600 text-xs font-bold mb-2">Category</label>
                             <select name="category_id"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">

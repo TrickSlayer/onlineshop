@@ -43,7 +43,7 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        return $user->verifiedEmail();
+        return $user->verifiedEmail() && $user->hasPermission('create_product');
     }
 
     /**

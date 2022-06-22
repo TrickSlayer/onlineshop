@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->unique('user_id');
+            $table->string('avatar')->nullable();
+            $table->string('background')->nullable();
+            $table->longText('content')->nullable();
+            $table->integer('active');
             $table->timestamps();
         });
     }

@@ -22,8 +22,9 @@ class ProductFactory extends Factory
             'content' => $this->faker->paragraph(),
             'active' => random_int(0,1),
             'thumb'=> '/storage/uploads/2022/06/08/04/03/10/Ảnh chụp màn hình 2021-12-07 142140.png',
-            'user_id' => 1,
-            'category_id' => 1,
+            'shop_id' => random_int(1,3),
+            'category_id' => random_int(1,10),
+            'quantity' => random_int(0,1000),
             'price' => random_int(10,21),
             'sale_price' => random_int(5,10),
         ];

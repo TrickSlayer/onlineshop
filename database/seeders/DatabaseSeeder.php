@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\Shop;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
@@ -53,15 +55,18 @@ class DatabaseSeeder extends Seeder
 
         DB::table('permissions')->insert([
             ['name' => 'review_product'],
+            ['name' => 'create_product'],
             ['name' => 'update_product'],
             ['name' => 'delete_product'],
             ['name' => 'restore_product'],
             ['name' => 'force_delete_product'],
+
             ['name' => 'review_category'],
             ['name' => 'update_category'],
             ['name' => 'delete_category'],
             ['name' => 'restore_category'],
             ['name' => 'force_delete_category'],
+
             ['name' => 'review_group_chat'],
             ['name' => 'update_group_chat'],
             ['name' => 'delete_group_chat'],
@@ -71,66 +76,46 @@ class DatabaseSeeder extends Seeder
 
         DB::table('roles')->insert([
             ['name' => 'admin'],
-            ['name' => 'user'],
             ['name' => 'shop'],
-        ]);
-
-        DB::table('role_user')->insert([
-            ['role_id' => 1,'user_id' => 1,],
-            ['role_id' => 1,'user_id' => 2,],
-            ['role_id' => 1,'user_id' => 3,],
+            ['name' => 'user'],            
         ]);
 
         DB::table('permission_role')->insert([
-            ['permission_id' => 1, 'role_id' => 1],
-            ['permission_id' => 2, 'role_id' => 1],
-            ['permission_id' => 3, 'role_id' => 1],
-            ['permission_id' => 4, 'role_id' => 1],
-            ['permission_id' => 5, 'role_id' => 1],
-            ['permission_id' => 6, 'role_id' => 1],
+            ['permission_id' => 1, 'role_id' => 3],
+            ['permission_id' => 2, 'role_id' => 2],
+            ['permission_id' => 3, 'role_id' => 2],
+            ['permission_id' => 4, 'role_id' => 2],
+            ['permission_id' => 5, 'role_id' => 2],
+            ['permission_id' => 6, 'role_id' => 2],
+
             ['permission_id' => 7, 'role_id' => 1],
             ['permission_id' => 8, 'role_id' => 1],
             ['permission_id' => 9, 'role_id' => 1],
             ['permission_id' => 10, 'role_id' => 1],
             ['permission_id' => 11, 'role_id' => 1],
-            ['permission_id' => 12, 'role_id' => 1],
-            ['permission_id' => 13, 'role_id' => 1],
-            ['permission_id' => 14, 'role_id' => 1],
-            ['permission_id' => 15, 'role_id' => 1],
+            
+            ['permission_id' => 12, 'role_id' => 3],
+            ['permission_id' => 13, 'role_id' => 3],
+            ['permission_id' => 14, 'role_id' => 3],
+            ['permission_id' => 15, 'role_id' => 3],
+            ['permission_id' => 16, 'role_id' => 3],
         ]);
 
-        DB::table('categories')->insert([
-            'name' => 'Phone',
-            'description' => 'Mobile phone',
-            'content' => 'If you like',
-            'active' => 1,
-            'thumb' => 'none',
+        DB::table('role_user')->insert([
+            ['role_id' => 1,'user_id' => 1,],
+            ['role_id' => 2,'user_id' => 1,],
+            ['role_id' => 3,'user_id' => 1,],
+            ['role_id' => 2,'user_id' => 2,],
+            ['role_id' => 3,'user_id' => 2,],
+            ['role_id' => 2,'user_id' => 3,],
+            ['role_id' => 3,'user_id' => 3,],
         ]);
 
-        DB::table('products')->insert([
-            [
-                'category_id' => 1,
-                'user_id' => 1,
-                'name' => 'Xiaomi',
-                'price' => 10.3,
-                'sale_price' => 10.3,
-                'description' => 'China Phone',
-                'content' => 'Flashship',
-                'active' => 1,
-                'thumb' => 'none',
-            ],
-            [
-                'category_id' => 1,
-                'user_id' => 1,
-                'name' => 'Redmi',
-                'price' => 10.3,
-                'sale_price' => 10.3,
-                'description' => 'China Phone',
-                'content' => 'Flashship 2',
-                'active' => 1,
-                'thumb' => 'none',
-            ],
-        ]);
+        Category::factory()->count(10)->create();
+
+        Shop::factory()->count(3)->create();
+
+        Product::factory()->count(100)->create();
 
         DB::table('group_chats')->insert([
             ['name' => '1'],

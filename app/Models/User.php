@@ -43,9 +43,6 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
 
     public function verifiedEmail()
     {
@@ -54,5 +51,9 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function groupchats(){
         return $this->belongsToMany(GroupChat::class);
+    }
+
+    public function shop(){
+        return $this->hasOne(Shop::class);
     }
 }
