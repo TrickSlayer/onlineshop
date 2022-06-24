@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Stevebauman\Location\Facades\Location;
 
 class MapController extends Controller
 {
@@ -22,4 +23,31 @@ class MapController extends Controller
         return self::html($address);
     }
 
+    public function searchByCoordinate(Request $request)
+    {
+        $data = self::ip($request);
+        if ($data) {
+            return self::html($data["latitude"] . ', ' . $data["longitude"]);
+        } else {
+            $request->request->add(['address' => 'Hà Nội']);
+            return self::searchByName($request);
+        }
+    }
+
+    public function ip(Request $request)
+    {
+        if ($request->ip() != "127.0.0.1") {
+            $ip =  $request->ip(); //Dynamic IP address get
+        } else {
+            return false;
+        }
+
+        $data = Location::get($ip);
+
+        return [
+            "ip" => $ip,
+            "latitude" => $data->latitude,
+            "longitude" => $data->longitude
+        ];
+    }
 }

@@ -20,6 +20,7 @@ include __DIR__ . '\web\user\home.php';
 include __DIR__ . '\web\auth.php';
 
 Route::post('map/search', [MapController::class, 'searchByName']);
+Route::post('map/ip', [MapController::class, 'searchByCoordinate']);
 
 Route::middleware(['auth'])->group(function () {
 
@@ -32,10 +33,10 @@ Route::middleware(['auth'])->group(function () {
 
     include __DIR__ . '\web\admin.php';
 
-    //Test funtion
     Route::get('mess/{groupChat}', [MessageController::class, 'index']);
     Route::post('mess/{groupChat}', [MessageController::class, 'post']);
     
 });
 
+//Test funtion
 Route::get('test', function(){return view('component');});

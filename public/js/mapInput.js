@@ -4,6 +4,19 @@ $.ajaxSetup({
     },
 });
 
+$.ajax({
+    type: "post",
+    datatype: "json",
+    data: { address },
+    url: "/map/ip",
+    success: function (result) {
+        $("#address-input").val() = "Hà Nội" ;
+        $("#address-map").replaceWith(
+            '<div id="address-map">' + result + "</div>"
+        );
+    },
+});
+
 $("#address-input").on("input", search);
 
 function search() {
