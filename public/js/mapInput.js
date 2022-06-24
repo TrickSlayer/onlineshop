@@ -7,7 +7,6 @@ $.ajaxSetup({
 $.ajax({
     type: "post",
     datatype: "json",
-    data: { address },
     url: "/map/ip",
     success: function (result) {
         $("#address-input").val() = "Hà Nội" ;

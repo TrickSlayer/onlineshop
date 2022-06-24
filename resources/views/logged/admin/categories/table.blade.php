@@ -38,14 +38,26 @@
                     @endif
                 </td>
                 <td class="px-6 py-4 text-right flex space-x-3">
-                    <a class="font-medium text-green-500 hover:text-green-700" href="/admin/categories/edit/{{ $category->id }}">Edit</a>
-                    <a class="font-medium text-red-500 hover:text-red-700 cursor-pointer" onclick="removeRow( {{ $category->id }}, 'category {{ $category->name }}' )">Delete</a>
+                    <a class="font-medium text-green-500 hover:text-green-700"
+                        href="/admin/categories/edit/{{ $category->id }}">Edit</a>
+                    <a class="font-medium text-red-500 hover:text-red-700 cursor-pointer"
+                        onclick="removeRow( {{ $category->id }}, 'category {{ $category->name }}' )">Delete</a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
-<div class="m-5">
-    {!! $categories->appends(\Request::except('page'))->render() !!}
+<div class="m-5" id="page">
+    {!! $categories->appends($request->except('page'))->render() !!}
 </div>
+<script>
+    const pageBlock = $("#page");
+    const aTags = pageBlock.find("a");
 
+    aTags.attr("href", function() {
+        urlPart = $(this).attr('href').split("?");
+        var url =  urlPart[0].replace("/search","");
+        if (urlPart.length > 1) url = url + "?" + urlPart[1];
+        return url;
+    });
+</script>

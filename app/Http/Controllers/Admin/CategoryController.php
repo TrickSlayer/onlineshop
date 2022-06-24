@@ -48,10 +48,11 @@ class CategoryController extends Controller
     public function list(Request $request)
     {
         $this->authorize('viewAny',Category::class);
-        $categories = Category::sortable()->paginate(15);
+        $categories = Category::sortable()->paginate(7);
         return View('logged.admin.categories.list', [
             "categories" => $categories,
             "filter" => $request->input("filter"),
+            "request" => $request,
         ]);
     }
 
@@ -59,12 +60,14 @@ class CategoryController extends Controller
     {
         $this->authorize('viewAny',Category::class);
         $value = $request->input('value', '');
-        $categories = Category::sortable()->where('name', 'like', '%' . $value . '%')->paginate(15);
+        $page = $request->except('page');
+        $categories = Category::sortable()->where('name', 'like', '%' . $value . '%')->paginate(5);
 
         if ($categories) {
             $html = view('logged.admin.categories.table', [
                 "categories" => $categories,
                 "filter" => $request->input("filter"),
+                "request" => $request,
             ])->render();
         } else {
             $html = '';

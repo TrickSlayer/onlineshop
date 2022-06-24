@@ -2,10 +2,10 @@
     @if (!$products->isEmpty())
         @if (isset($category))
             <a href="/categories/view/{{ $category->id }}">
-                <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Str::title($category->name) }}</h2>
+                <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Illuminate\Support\Str::title($category->name) }}</h2>
             </a>
         @else
-            <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Str::title($title) }}</h2>
+            <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Illuminate\Support\Str::title($title) }}</h2>
         @endif
 
 

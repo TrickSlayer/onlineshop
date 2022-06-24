@@ -1,7 +1,7 @@
-<x-logged.form :title="'Reset Password'">
+<x-logged.form :title="'Reset Password'" :content="false">
 
     <x-slot name="main">
-        <div class="container mx-auto px-4 h-full">
+        <div class="container mx-auto px-4 h-full mt-20">
             <div class="flex content-center items-center justify-center h-full">
                 <div class="w-full lg:w-4/12 px-4">
                     <div
@@ -9,7 +9,7 @@
                         <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
                             <div class="text-gray-400 text-center mb-3 font-bold">
                             </div>
-                            @include('layouts.alert')
+                            <x-alert></x-alert>
                             <form action="/password/change" method="post">
 
                                 <div class="relative w-full mb-3">

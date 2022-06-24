@@ -8,18 +8,18 @@
     </div>
 @endif
 
-@if (Session::has('error'))
+@if ( Illuminate\Support\Facades\Session::has('error'))
     <div>
         <ul>
-            <li style="color: red">{{ Session::get('error') }}</li>
+            <li style="color: red">{{ Illuminate\Support\Facades\Session::get('error') }}</li>
         </ul>
     </div>
 @endif
 
-@if (Session::has('success'))
+@if ( Illuminate\Support\Facades\Session::has('success'))
     <div>
         <ul>
-            <li style="color: green">{{ Session::get('success') }}</li>
+            <li style="color: green">{{ Illuminate\Support\Facades\Session::get('success') }}</li>
         </ul>
     </div>
 @endif

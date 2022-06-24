@@ -9,7 +9,7 @@
                     <div class="box-border border-1 text-ellipsis m-4 flex-1">
 
                         <h2 class="font-medium leading-tight text-2xl mt-0 mb-2">Name:
-                            {{ Str::title($category->name) }}
+                            {{ Illuminate\Support\Str::title($category->name) }}
                         </h2>
 
                         <h2 class="font-medium leading-tight text-2xl mt-0 mb-2 ">Description: </h2>

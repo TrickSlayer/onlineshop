@@ -1,7 +1,7 @@
 <nav
     class="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
     <div
-        class="md:flex-col md:items-stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
+        class="md:flex-col md:items-Illuminate\Support\Stretch md:min-h-full md:flex-nowrap px-0 flex flex-wrap items-center justify-between w-full mx-auto">
 
         <a class="text-gray-500 block" onclick="toggleNavbar('sidebar')">
             <div class="items-center flex space-x-4">
@@ -9,11 +9,11 @@
                     class="w-12 h-12 text-sm text-white bg-gray-200 inline-flex items-center justify-center rounded-full"><img
                         alt="..." class="w-full rounded-full align-middle border-none shadow-lg"
                         src="{{ asset('assets/img/team-1-800x800.jpg') }}" /></span>
-                <div class="justify-center text-xl font-bold">{{ Str::title(Auth::user()->name) }}</div>
+                <div class="justify-center text-xl font-bold">{{ Illuminate\Support\Str::title(Illuminate\Support\Facades\Auth::user()->name) }}</div>
             </div>
         </a>
 
-        <div class="md:flex md:flex-col md:items-stretch md:opacity-100 md:relative md:mt-2 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden bg-white"
+        <div class="md:flex md:flex-col md:items-Illuminate\Support\Stretch md:opacity-100 md:relative md:mt-2 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden bg-white"
             id="sidebar">
             <a class="text-gray-500 md:hidden block" onclick="toggleNavbar('sidebar')">
                 <div class="items-center flex space-x-4">
@@ -49,7 +49,7 @@
                     </a>
                 </li>
 
-                @if (!Auth::user()->hasRole('shop'))
+                @if (!Illuminate\Support\Facades\Auth::user()->hasRole('shop'))
                     <li class="items-center">
                         <a href="/shop/register"
                             class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
@@ -59,9 +59,9 @@
                     </li>
                 @endif
 
-                @if (Auth::user()->hasRole('shop'))
+                @if (Illuminate\Support\Facades\Auth::user()->hasRole('shop'))
                     <li class="items-center">
-                        <a href="/shop/view/{{ Auth::user()->shop->id }}"
+                        <a href="/shop/view/{{ Illuminate\Support\Facades\Auth::user()->shop->id }}"
                             class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
                             <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
                             My shop
@@ -95,7 +95,7 @@
             </ul>
 
 
-            @if (Auth::user()->hasRole('admin'))
+            @if (Illuminate\Support\Facades\Auth::user()->hasRole('admin'))
                 <!-- Divider -->
                 <hr class="my-4 md:min-w-full" />
                 <!-- Heading -->
@@ -121,7 +121,7 @@
                 </ul>
             @endif
 
-            @if (Auth::user()->hasRole('shop'))
+            @if (Illuminate\Support\Facades\Auth::user()->hasRole('shop'))
                 <!-- Divider -->
                 <hr class="my-4 md:min-w-full" />
                 <!-- Heading -->

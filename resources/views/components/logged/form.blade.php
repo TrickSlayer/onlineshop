@@ -26,11 +26,12 @@
     </x-slot>
 
     <x-slot name="footer">
+        @if ($content)
+            <script>
+                CKEDITOR.replace('content');
+            </script>
+        @endif
 
-        <script>
-            CKEDITOR.replace('content');
-        </script>
-    
         <script src="{{ asset('js/upload.js') }}"></script>
 
         {{ isset($footer) ? $footer : '' }}

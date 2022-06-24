@@ -5,7 +5,7 @@
                 <img class="object-cover w-full h-full" src="{{ $category->thumb }}">
             </div>
             <div class="box-border h-16 w-full border-1 truncate mx-auto text-center">
-                <h2 class="mt-1 font-medium leading-tight text-base mb-2">{{ Str::title($category->name) }}
+                <h2 class="mt-1 font-medium leading-tight text-base mb-2">{{ Illuminate\Support\Str::title($category->name) }}
                 </h2>
             </div>
         </div>
