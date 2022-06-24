@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MapController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,7 @@ include __DIR__ . '\web\user\home.php';
 
 include __DIR__ . '\web\auth.php';
 
+Route::post('map/search', [MapController::class, 'searchByName']);
 
 Route::middleware(['auth'])->group(function () {
 

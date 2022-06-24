@@ -24,6 +24,15 @@
                         </div>
 
                         <div class="relative w-full mb-3">
+                            <label class="block uppercase text-gray-600 text-xs font-bold mb-2" for="grid-password">
+                                Address</label>
+                            <input type="text" name="address" value="{{ old('address') }}" id="address-input"
+                                class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
+                            <div id="address-map">
+                            </div>
+                        </div>
+
+                        <div class="relative w-full mb-3">
                             <label class="block uppercase text-gray-600 text-xs font-bold mb-2"
                                 for="grid-password">Avatar</label>
                             <input type="file" id="upload" name="file" value="{{ old('file') }}"
@@ -78,6 +87,10 @@
                 </div>
             </div>
         </div>
+    </x-slot>
+
+    <x-slot name="footer">
+        <script src="{{ asset('/js/mapInput.js') }}"></script>
     </x-slot>
 
 </x-logged.form>
