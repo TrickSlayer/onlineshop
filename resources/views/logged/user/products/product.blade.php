@@ -5,15 +5,15 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-gray-100 rounded">
                 <h2 class="ml-4 mt-4">
                     <a class="font-bold text-blue-700"
-                        href="/categories/view/{{ $product->category->id }}">{{ Str::title($product->category->name) }}</a>
-                    > <p class="font-bold text-blue-700 inline">{{ Str::title($product->name) }}</p>
+                        href="/categories/view/{{ $product->category->id }}">{{ Illuminate\Support\Str::title($product->category->name) }}</a>
+                    > <p class="font-bold text-blue-700 inline">{{ Illuminate\Support\Str::title($product->name) }}</p>
                 </h2>
                 <div class="flex flex-wrap overflow-hidden">
                     <div class="box-border h-96 w-96 border-1 m-4">
                         <img class="object-cover w-full h-full" src="{{ $product->thumb }}">
                     </div>
                     <div class="box-border border-1 text-ellipsis m-4 flex-1">
-                        <h2 class="font-medium leading-tight text-2xl mt-0 mb-2">{{ Str::title($product->name) }}
+                        <h2 class="font-medium leading-tight text-2xl mt-0 mb-2">{{ Illuminate\Support\Str::title($product->name) }}
                         </h2>
     
                         <div class="my-3">
@@ -30,13 +30,13 @@
                         @if ($product->price > $product->sale_price)
                             <div class="inline-block">
                                 <h2 class="font-medium leading-tight text-2xl mt-0 mb-2 text-red-500">
-                                    <p class="line-through inline">{{ Str::title($product->price) }}$</p> -> <p
-                                        class="inline">{{ Str::title($product->sale_price) }}$</p>
+                                    <p class="line-through inline">{{ Illuminate\Support\Str::title($product->price) }}$</p> -> <p
+                                        class="inline">{{ Illuminate\Support\Str::title($product->sale_price) }}$</p>
                                 </h2>
                             </div>
                         @else
                             <h2 class="font-medium leading-tight text-2xl mt-0 mb-2 text-red-500">
-                                {{ Str::title($product->price) }}$
+                                {{ Illuminate\Support\Str::title($product->price) }}$
                             </h2>
                         @endif
     

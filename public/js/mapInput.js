@@ -9,10 +9,12 @@ $.ajax({
     datatype: "json",
     url: "/map/ip",
     success: function (result) {
-        $("#address-input").val() = "Hà Nội" ;
+        
         $("#address-map").replaceWith(
-            '<div id="address-map">' + result + "</div>"
+            '<div id="address-map">' + result[0] + "</div>"
         );
+
+        $("#address-input").val(result[1]);
     },
 });
 

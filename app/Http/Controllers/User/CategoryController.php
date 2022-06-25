@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Services\ProductService;
 use App\Models\Category;
-use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -37,6 +36,7 @@ class CategoryController extends Controller
             "products" => $this->productService->getList($category, $request),
             'size' => $this->product_size,
             'sortprice' => $request->input('sale_price'),
+            'boxInLine' => 4
         ]);
     }
 

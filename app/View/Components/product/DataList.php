@@ -12,15 +12,16 @@ class DataList extends Component
      *
      * @return void
      */
-    public $wrap, $category, $products, $title, $size;
+    public $wrap, $category, $products, $title, $size, $boxInLine;
 
-    public function __construct($data, $wrap = 'nonwrap', $size = [])
+    public function __construct($data, $wrap = 'nonwrap', $size = [], $boxInLine = 0)
     {
         $this->wrap = $wrap;
         $this->category = Arr::exists($data, 'category') ? $data['category'] : null;
         $this->title = Arr::exists($data, 'title') ? $data['title'] : '';
         $this->products = $data['products'];
         $this->size = $size;
+        $this->boxInLine = $boxInLine;
     }
 
     /**

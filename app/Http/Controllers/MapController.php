@@ -27,10 +27,19 @@ class MapController extends Controller
     {
         $data = self::ip($request);
         if ($data) {
-            return self::html($data["latitude"] . ', ' . $data["longitude"]);
+            return [
+                self::html($data["latitude"] . ', ' . $data["longitude"]),
+                [
+                    $data["latitude"],
+                    $data["longitude"]
+                ]
+            ];
         } else {
             $request->request->add(['address' => 'Hà Nội']);
-            return self::searchByName($request);
+            return [
+                self::searchByName($request),
+                "Hà Nội"
+            ];
         }
     }
 

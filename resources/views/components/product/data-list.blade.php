@@ -2,14 +2,19 @@
     @if (!$products->isEmpty())
         @if (isset($category))
             <a href="/categories/view/{{ $category->id }}">
-                <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Illuminate\Support\Str::title($category->name) }}</h2>
+                <h2 class="font-medium leading-tight text-xl pt-4 pl-4">
+                    {{ Illuminate\Support\Str::title($category->name) }}</h2>
             </a>
         @else
             <h2 class="font-medium leading-tight text-xl pt-4 pl-4">{{ Illuminate\Support\Str::title($title) }}</h2>
         @endif
 
+        <?php
+        $rem = 4;
+        ?>
 
-        <div id="load" class="flex overflow-hidden justify-center flex-{{ $wrap }}">
+        <div id="load" class="flex overflow-hidden mx-auto flex-{{ $wrap }}"
+            @if (isset($size['w_box'])) style="width: {{ $size['w_box'] * $rem * $boxInLine + 16 * 2 * $boxInLine }}px" @endif>
             <x-product.data :products='$products' :size='$size'>
             </x-product.data>
         </div>

@@ -25,13 +25,16 @@ class ShopController extends Controller
         // $this->authorize('create',Product::class);
 
         try {
-            DB::table('role_user')->create([
-                'role_id' => Role::where("name", "shop")->id,
-                'user_id' => Auth::id(),
-            ]);
         } catch (Exception $e) {
-            return redirect()->back()->withErrors("One account can only register 1 shop!");
+            return redirect()->back()->withErrors("One account can only register 1 shop! " . $e);
         }
+
+        $shop = Role::where("name", "shop")->first();
+
+        DB::table('role_user')->updateOrInsert([
+            'role_id' => $shop->id,
+            'user_id' => Auth::id(),
+        ]);
 
         Shop::create([
             "name" => $request->input("name"),

@@ -26,11 +26,11 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-gray-100 rounded">
                 <div class="m-4">
                     <h2 class="font-medium leading-tight text-xl mt-0 mb-2 ">Products: </h2>
-                    
+
                     <x-sort :title="'Price:'" :name="'sale_price'" :sort="$sortprice">
                     </x-sort>
 
-                    <x-product.data-list :wrap="'wrap'" :data="['title' => $category->name, 'products' => $products]" :_size="$size">
+                    <x-product.data-list :wrap="'wrap'" :data="['title' => $category->name, 'products' => $products]" :size="$size" :boxInLine="$boxInLine">
                         <x-slot name="slot">
                             <div class="pb-5">
                                 <input type="hidden" value="1" id="page">

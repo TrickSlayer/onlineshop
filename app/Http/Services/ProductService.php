@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {
-    const LIMIT = 12;
+    const LIMIT = 16;
 
     public function create(Request $request){
         if ($request->price < $request->sale_price){
