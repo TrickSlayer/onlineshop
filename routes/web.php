@@ -21,6 +21,7 @@ include __DIR__ . '\web\auth.php';
 
 Route::post('map/search', [MapController::class, 'searchByName']);
 Route::post('map/ip', [MapController::class, 'searchByCoordinate']);
+Route::get('map/test', function(){return view('custom.mapLeafLet');});
 
 Route::middleware(['auth'])->group(function () {
 
