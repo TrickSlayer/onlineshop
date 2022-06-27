@@ -34,8 +34,8 @@ Route::middleware(['auth'])->group(function () {
 
     include __DIR__ . '\web\admin.php';
 
-    Route::get('mess/{groupChat}', [MessageController::class, 'index']);
-    Route::post('mess/{groupChat}', [MessageController::class, 'post']);
+    Route::get('message/{groupChat}', [MessageController::class, 'index']);
+    Route::post('message/{groupChat}', [MessageController::class, 'post']);
     
 });
 

@@ -1,2 +1,5 @@
 - composer install
 - php artisan storage:link
+- php artisan queue:work
+- npm install express
+- node server

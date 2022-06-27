@@ -24,5 +24,7 @@ Route::prefix('shop')->group(function () {
     Route::prefix('view')->group(function () {
         Route::get('{shop}', [ShopController::class, 'view']);
     });
+
+    Route::get('chat/{shop}', [ShopController::class, 'chat']);
     
 });
