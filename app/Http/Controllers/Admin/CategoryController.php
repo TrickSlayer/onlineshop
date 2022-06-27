@@ -60,8 +60,7 @@ class CategoryController extends Controller
     {
         $this->authorize('viewAny',Category::class);
         $value = $request->input('value', '');
-        $page = $request->except('page');
-        $categories = Category::sortable()->where('name', 'like', '%' . $value . '%')->paginate(5);
+        $categories = Category::sortable()->where('name', 'like', '%' . $value . '%')->paginate(7);
 
         if ($categories) {
             $html = view('logged.admin.categories.table', [

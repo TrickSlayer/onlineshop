@@ -1,4 +1,4 @@
-<div class="bg-white rounded-md">
+<div class="bg-white rounded-md shadow-xl">
     <a href="/categories/list">
         <h2 class="font-medium leading-tight text-xl pt-4 pl-4">Categories</h2>
     </a>

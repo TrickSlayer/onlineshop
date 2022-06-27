@@ -24,7 +24,7 @@
                 <td class="px-6 py-4">
                     {{ $category->description }}
                 </td>
-                <td class="px-6 py-4" style="place-content: center">
+                <td class="px-6 py-4 place-content-center">
                     @if ($category->active == 1)
                         <div class="text-center text-white rounded"
                             style="--tw-bg-opacity: 1; background-color: rgb(34 197 94 / var(--tw-bg-opacity)); max-width: 100px; min-width: 70px">
@@ -37,11 +37,13 @@
                         </div>
                     @endif
                 </td>
-                <td class="px-6 py-4 text-right flex space-x-3">
-                    <a class="font-medium text-green-500 hover:text-green-700"
-                        href="/admin/categories/edit/{{ $category->id }}">Edit</a>
-                    <a class="font-medium text-red-500 hover:text-red-700 cursor-pointer"
-                        onclick="removeRow( {{ $category->id }}, 'category {{ $category->name }}' )">Delete</a>
+                <td class="px-6 py-4 place-content-center">
+                    <div class="text-right flex space-x-3">
+                        <a class="font-medium text-green-500 hover:text-green-700"
+                            href="/admin/categories/edit/{{ $category->id }}">Edit</a>
+                        <a class="font-medium text-red-500 hover:text-red-700 cursor-pointer"
+                            onclick="removeRow( {{ $category->id }}, 'category {{ $category->name }}' )">Delete</a>
+                    </div>
                 </td>
             </tr>
         @endforeach
@@ -56,7 +58,7 @@
 
     aTags.attr("href", function() {
         urlPart = $(this).attr('href').split("?");
-        var url =  urlPart[0].replace("/search","");
+        var url = urlPart[0].replace("/search", "");
         if (urlPart.length > 1) url = url + "?" + urlPart[1];
         return url;
     });

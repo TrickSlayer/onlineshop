@@ -9,7 +9,8 @@
                     class="w-12 h-12 text-sm text-white bg-gray-200 inline-flex items-center justify-center rounded-full"><img
                         alt="..." class="w-full rounded-full align-middle border-none shadow-lg"
                         src="{{ asset('assets/img/team-1-800x800.jpg') }}" /></span>
-                <div class="justify-center text-xl font-bold">{{ Illuminate\Support\Str::title(Illuminate\Support\Facades\Auth::user()->name) }}</div>
+                <div class="justify-center text-xl font-bold">
+                    {{ Illuminate\Support\Str::title(Illuminate\Support\Facades\Auth::user()->name) }}</div>
             </div>
         </a>
 
@@ -59,15 +60,6 @@
                     </li>
                 @endif
 
-                @if (Illuminate\Support\Facades\Auth::user()->hasRole('shop'))
-                    <li class="items-center">
-                        <a href="/shop/view/{{ Illuminate\Support\Facades\Auth::user()->shop->id }}"
-                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                            <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
-                            My shop
-                        </a>
-                    </li>
-                @endif
 
                 {{-- <li class="items-center">
                     <a href="./settings.html"
@@ -126,9 +118,18 @@
                 <hr class="my-4 md:min-w-full" />
                 <!-- Heading -->
                 <h6 class="md:min-w-full text-gray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-                    Products
+                    Shop
                 </h6>
                 <ul class="md:flex-col md:min-w-full flex flex-col list-none">
+
+                    <li class="items-center">
+                        <a href="/shop/view/{{ Illuminate\Support\Facades\Auth::user()->shop->id }}"
+                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                            <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
+                            My shop
+                        </a>
+                    </li>
+
                     <li class="items-center">
                         <a href="/products/list"
                             class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
@@ -270,6 +271,9 @@
                     </a>
                 </li>
             </ul> --}}
+            <div class="text-xs font-serif text-gray-400">
+                Created by TrickSlayer
+            </div>
         </div>
     </div>
 </nav>

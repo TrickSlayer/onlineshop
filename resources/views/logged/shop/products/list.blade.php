@@ -6,10 +6,10 @@
             <div class="my-5 ml-6">
                 <label class="font-medium">Search</label>
                 <input type="text" class="" id="filter" name="filter" placeholder="Category name..."
-                    value="{{ $filter }}">
+                    value="{{ $filter ?: $request->input("value") }}">
             </div>
             <div id="table">
-                @include('logged.admin.categories.table')
+                @include('logged.shop.products.table')
             </div>
         </div>
     </div>

@@ -25,6 +25,7 @@ class FormShopRequest extends FormRequest
     {
         return [
             "name" => "required",
+            "address" => "required"
         ];
     }
 }

@@ -9,12 +9,13 @@ $.ajax({
     datatype: "json",
     url: "/map/ip",
     success: function (result) {
-        
         $("#address-map").replaceWith(
             '<div id="address-map">' + result[0] + "</div>"
         );
 
         $("#address-input").val(result[1]);
+
+        showDoc();
     },
 });
 
@@ -32,6 +33,15 @@ function search() {
                 $("#address-map").replaceWith(
                     '<div id="address-map">' + result + "</div>"
                 );
+
+                showDoc();
             },
         });
+}
+
+function showDoc(){
+    const iframe = $("#google-map");
+    iframe.load(function () {
+        console.log(iframe[0].outerHTML);
+    });
 }

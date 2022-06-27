@@ -11,7 +11,7 @@ class MapController extends Controller
 
     public function html($param)
     {
-        return '<iframe width="100%" height="500" id="google-map" 
+        return '<iframe width="100%" height="500" id="google-map" name="map" title="map"
             src="https://maps.google.com/maps?q=' . $param . '&output=embed"></iframe>';
     }
 

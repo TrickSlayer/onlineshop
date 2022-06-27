@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\FormProductRequest;
 use App\Http\Services\ProductService;
 use App\Models\Category;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -51,4 +54,57 @@ class ProductController extends Controller
         return redirect()->back();
     }
     
+    public function list(Request $request){
+        $this->authorize('viewAny',Product::class);
+
+        $shop = Auth::user()->shop;
+        $products = Product::sortable()->where('shop_id', $shop->id)->paginate(7);;
+
+        return view("logged.shop.products.list",[
+            "request" => $request,
+            "filter" => $request->input("filter"),
+            "products" => $products,
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $this->authorize('viewAny',Product::class);
+        $shop = Auth::user()->shop;
+        $value = $request->input('value', '');
+        $products = Product::sortable()->where('shop_id', $shop->id)->where('name', 'like', '%' . $value . '%')->paginate(7);
+
+        if ($products) {
+            $html = view('logged.shop.products.table', [
+                "products" => $products,
+                "filter" => $request->input("filter"),
+                "request" => $request,
+            ])->render();
+        } else {
+            $html = '';
+        }
+
+        return response()->json(['html'=>$html]);
+    }
+
+    public function destroy(Request $request): JsonResponse{
+        $id = $request->input('id');
+        $product = Product::where('id', $id)->first();
+
+        $this->authorize('delete', $product);
+
+        $url = str_replace("storage","public",$product->thumb);
+        if ($product) {
+            Storage::delete($url);
+            $product->delete();
+            return response()->json([
+                'error' => false,
+                'message' => 'Delete successfully'
+            ]);
+        }
+
+        return response() -> json([
+            'error' => true
+        ]);
+    }
 }

@@ -1,4 +1,4 @@
-<div class="bg-white rounded-md">
+<div class="bg-white rounded-md shadow-xl">
     @if (!$products->isEmpty())
         @if (isset($category))
             <a href="/categories/view/{{ $category->id }}">

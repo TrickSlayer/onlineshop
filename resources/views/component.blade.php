@@ -1,34 +1,25 @@
-<x-layout>
-    <x-slot name="title">
-        trick
-    </x-slot>
+<!DOCTYPE html>
+<html lang="en">
 
-    <x-slot name="main">
-        <p>Click the button to get your coordinates.</p>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
 
-        <button onclick="getLocation()">Try It</button>
+<body>
+    <div id="block">
+        <iframe src="/login" width="100%" height="100%" id="iframe"></iframe>
+    </div>
 
-        <p id="demo"></p>
+    <script>
+        const iframe = $("#iframe");
+        iframe.on("load", function() {
+            console.log(iframe);
+        });
+    </script>
+</body>
 
-        <script>
-            var x = document.getElementById("demo");
-
-            function getLocation() {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                } else {
-                    console.log("Geolocation is not supported by this browser.");
-                    x.innerHTML = "Geolocation is not supported by this browser.";
-                }
-            }
-
-            function showPosition(position) {
-                console.log("Geolocation");
-                x.innerHTML = "Latitude: " + position.coords.latitude +
-                    "<br>Longitude: " + position.coords.longitude;
-                console.log("Latitude: " + position.coords.latitude +
-                    "<br>Longitude: " + position.coords.longitude);
-            }
-        </script>
-    </x-slot>
-</x-layout>
+</html>

@@ -20,5 +20,9 @@ Route::prefix('shop')->group(function () {
         Route::get('/', [ShopController::class, 'editView']);
         Route::post('/', [ShopController::class, 'edit']);
     });
+
+    Route::prefix('view')->group(function () {
+        Route::get('{shop}', [ShopController::class, 'view']);
+    });
     
 });

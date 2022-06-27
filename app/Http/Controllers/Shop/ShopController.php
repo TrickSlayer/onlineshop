@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Shop;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FormShopRequest;
+use App\Http\Services\ProductService;
 use App\Models\Role;
 use App\Models\Shop;
 use Exception;
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
+    private $productService;
+    
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
+
     public function registerView()
     {
         // $this->authorize('create',Product::class);
@@ -46,5 +54,16 @@ class ShopController extends Controller
         ]);
 
         return redirect()->back()->withSuccess('Register successfully!');
+    }
+
+    public function view(Request $request, Shop $shop)
+    {
+        // $this->authorize('view',Product::class);
+
+        return view("logged.shop.shops.view", [
+            "title" => "Shop ". $shop->name,
+            "shop" => $shop,
+            // "shop" => Auth::user()->shop,
+        ]);
     }
 }

@@ -30,8 +30,10 @@
     </main>
 
     <footer>
-        {{ isset($footer) ? $footer : '' }}
+        {{ isset($footer) ? $footer : '' }}       
     </footer>
+
+
 
     <script src="{{ asset('js/app.js') }}"></script>
 
