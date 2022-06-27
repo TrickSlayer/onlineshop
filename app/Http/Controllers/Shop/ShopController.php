@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 class ShopController extends Controller
 {
     private $productService;
-    
+
     public function __construct(ProductService $productService)
     {
         $this->productService = $productService;
@@ -23,14 +23,14 @@ class ShopController extends Controller
 
     public function registerView()
     {
-        // $this->authorize('create',Product::class);
+        $this->authorize('create', Shop::class);
         $categories = Shop::all();
         return View('logged.shop.shops.register', ["categories" => $categories]);
     }
 
     public function register(FormShopRequest $request)
     {
-        // $this->authorize('create',Product::class);
+        $this->authorize('create', Shop::class);
 
         try {
         } catch (Exception $e) {
@@ -58,12 +58,12 @@ class ShopController extends Controller
 
     public function view(Request $request, Shop $shop)
     {
-        // $this->authorize('view',Product::class);
-
+        $this->authorize('view', $shop);
+        
         return view("logged.shop.shops.view", [
-            "title" => "Shop ". $shop->name,
+            "title" => "Shop " . $shop->name,
             "shop" => $shop,
-            // "shop" => Auth::user()->shop,
         ]);
+        
     }
 }

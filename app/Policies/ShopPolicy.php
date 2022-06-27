@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Product;
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ProductPolicy
+class ShopPolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +18,19 @@ class ProductPolicy
      */
     public function viewAny(User $user)
     {
-        return $user && $user->hasPermission('review_product');
+        return $user->hasRole('admin') && $user->hasPermission('review_shop');
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Product $product)
+    public function view(User $user, Shop $shop)
     {
-        return $user->hasPermission('review_product') || $product->active == 1;
+        return ($shop->user->id == $user->id && $user->hasPermission('review_shop')) || $shop->active == 1;
     }
 
     /**
@@ -41,54 +41,54 @@ class ProductPolicy
      */
     public function create(User $user)
     {
-        return $user->verifiedEmail() && $user->hasPermission('create_product');
+        return $user->verifiedEmail() && $user->hasPermission('create_shop');
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Product $product)
+    public function update(User $user, Shop $shop)
     {
-        return ($user->id == $product->shop->user->id && $user->hasPermission('update_product'));
+        return $shop->user->id == $user->id  && $user->hasPermission('update_category');
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Product $product)
+    public function delete(User $user, Shop $shop)
     {
-        return ($user->id == $product->shop->user->id && $user->hasPermission('delete_product'));
+        return $shop->user->id == $user->id && $user->hasPermission('delete_category');
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Product $product)
+    public function restore(User $user, Shop $shop)
     {
-        return $user->hasPermission('restore_product');
+        return $user->hasPermission('restore_shop');
     }
 
     /**
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Product  $product
+     * @param  \App\Models\Shop  $shop
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Product $product)
+    public function forceDelete(User $user, Shop $shop)
     {
-        return $user->hasPermission('force_delete_product');
+        $user->hasPermission('force_delete_shop');
     }
 }

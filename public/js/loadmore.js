@@ -7,7 +7,6 @@ $.ajaxSetup({
 function loadMore(){
     const page = $('#page').val();
     const price = getParameterByName('price');
-    const category_id = 0;
     $.ajax({
         type: 'post',
         datatype: 'json',
@@ -17,6 +16,9 @@ function loadMore(){
             if (result !== ''){
                 $('#load').append(result.html);
                 $('#page').val(1 + Number(page));
+                if (!result.more){
+                    $('#more').hide();
+                }
             }
         }
     })

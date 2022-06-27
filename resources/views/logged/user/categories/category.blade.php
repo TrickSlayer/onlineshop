@@ -34,9 +34,11 @@
                         <x-slot name="slot">
                             <div class="pb-5">
                                 <input type="hidden" value="1" id="page">
-                                <a class="font-semibold ml-10 text-lg" onclick="loadMore()">
-                                    Load More
-                                </a>
+                                @if ($more)
+                                    <a id="more" class="font-semibold ml-10 text-lg" onclick="loadMore()">
+                                        Load More
+                                    </a>
+                                @endif
                             </div>
                         </x-slot>
                     </x-product.data-list>

@@ -18,7 +18,7 @@ class CategoryPolicy
      */
     public function viewAny(User $user)
     {
-        return $user && $user->hasPermission('review_category');
+        return $user->hasPermission('review_category');
     }
 
     /**
@@ -30,7 +30,7 @@ class CategoryPolicy
      */
     public function view(User $user, Category $category)
     {
-        return $user && $user->hasPermission('review_category');
+        return $user->hasPermission('review_category') || $category->active == 1;
     }
 
     /**
@@ -41,7 +41,7 @@ class CategoryPolicy
      */
     public function create(User $user)
     {
-        return $user->verifiedEmail();
+        return $user->verifiedEmail() && $user->hasPermission('create_category');
     }
 
     /**
@@ -77,7 +77,7 @@ class CategoryPolicy
      */
     public function restore(User $user, Category $category)
     {
-        //
+        return $user->hasPermission('restore_category');
     }
 
     /**
@@ -89,6 +89,6 @@ class CategoryPolicy
      */
     public function forceDelete(User $user, Category $category)
     {
-        return $user->hasPermission('restore_category');
+        return $user->hasPermission('force_delete_category');
     }
 }

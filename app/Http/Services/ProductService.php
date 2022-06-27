@@ -15,8 +15,9 @@ class ProductService
 {
     const LIMIT = 16;
 
-    public function create(Request $request){
-        if ($request->price < $request->sale_price){
+    public function create(Request $request)
+    {
+        if ($request->price < $request->sale_price) {
             Session::flash("error", "Sale price must be smaller price");
             return false;
         }
@@ -39,13 +40,14 @@ class ProductService
         return true;
     }
 
-    public function edit(Request $request, Product $product){
-        try{
+    public function edit(Request $request, Product $product)
+    {
+        try {
             $product->fill($request->input());
             $product->save();
             Session::flash('success', 'Update successfully');
             return true;
-        } catch (Exception $e){
+        } catch (Exception $e) {
             Session::flash('Error', 'Error. Try again!!');
             Log::info($e->getMessage());
             return false;
@@ -61,13 +63,19 @@ class ProductService
         return $collection;
     }
 
-    protected function fillter(Category $category, $request){
+    protected function fillter(Category $category, $request)
+    {
         $fillter = $request->input('sale_price');
 
         return Product::where('category_id', $category->id)
-        ->when($fillter != null, function ($query) use ($fillter){
-            $query->orderBy('sale_price', $fillter);
-        })->get();
+            ->when($fillter != null, function ($query) use ($fillter) {
+                $query->orderBy('sale_price', $fillter);
+            })
+            // ->where('active', 1)
+            // ->whereHas('shop', function ($query) {
+            //     $query->where('active', 1);
+            // })
+            ->get();
     }
 
     public function destroy($request)

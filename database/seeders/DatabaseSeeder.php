@@ -54,24 +54,29 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('permissions')->insert([
-            ['name' => 'review_product'],
-            ['name' => 'create_product'],
-            ['name' => 'update_product'],
-            ['name' => 'delete_product'],
-            ['name' => 'restore_product'],
-            ['name' => 'force_delete_product'],
-
+            ['name' => 'create_category'],
             ['name' => 'review_category'],
             ['name' => 'update_category'],
             ['name' => 'delete_category'],
-            ['name' => 'restore_category'],
-            ['name' => 'force_delete_category'],
 
+            ['name' => 'create_product'],
+            ['name' => 'review_product'],
+            ['name' => 'update_product'],
+            ['name' => 'delete_product'],
+            ['name' => 'force_delete_product'],
+            ['name' => 'restore_product'],           
+
+            ['name' => 'create_shop'],
+            ['name' => 'review_shop'],
+            ['name' => 'update_shop'],
+            ['name' => 'delete_shop'],
+            ['name' => 'force_delete_shop'],
+            ['name' => 'restore_shop'],   
+
+            ['name' => 'create_group_chat'],
             ['name' => 'review_group_chat'],
             ['name' => 'update_group_chat'],
             ['name' => 'delete_group_chat'],
-            ['name' => 'restore_group_chat'],
-            ['name' => 'force_delete_group_chat'],
         ]);
 
         DB::table('roles')->insert([
@@ -81,24 +86,30 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('permission_role')->insert([
-            ['permission_id' => 1, 'role_id' => 3],
-            ['permission_id' => 2, 'role_id' => 2],
-            ['permission_id' => 3, 'role_id' => 2],
-            ['permission_id' => 4, 'role_id' => 2],
-            ['permission_id' => 5, 'role_id' => 2],
-            ['permission_id' => 6, 'role_id' => 2],
 
-            ['permission_id' => 7, 'role_id' => 1],
-            ['permission_id' => 8, 'role_id' => 1],
-            ['permission_id' => 9, 'role_id' => 1],
-            ['permission_id' => 10, 'role_id' => 1],
-            ['permission_id' => 11, 'role_id' => 1],
+            // Category
+            ['permission_id' => 1, 'role_id' => 1],     
+            ['permission_id' => 2, 'role_id' => 1],     
+            ['permission_id' => 3, 'role_id' => 1],     
+            ['permission_id' => 4, 'role_id' => 1], 
             
+            // Product
+            ['permission_id' => 5, 'role_id' => 2],     
+            ['permission_id' => 6, 'role_id' => 2],   
+            ['permission_id' => 6, 'role_id' => 1], 
+            ['permission_id' => 7, 'role_id' => 2],   
+            ['permission_id' => 8, 'role_id' => 2],
+            ['permission_id' => 9, 'role_id' => 1],  
+            ['permission_id' => 10, 'role_id' => 1], 
+            
+            // Shop
+            ['permission_id' => 11, 'role_id' => 3],      
+            ['permission_id' => 12, 'role_id' => 2],    
             ['permission_id' => 12, 'role_id' => 3],
-            ['permission_id' => 13, 'role_id' => 3],
-            ['permission_id' => 14, 'role_id' => 3],
-            ['permission_id' => 15, 'role_id' => 3],
-            ['permission_id' => 16, 'role_id' => 3],
+            ['permission_id' => 13, 'role_id' => 2],
+            ['permission_id' => 14, 'role_id' => 2],
+            ['permission_id' => 15, 'role_id' => 1],
+            ['permission_id' => 16, 'role_id' => 1],
         ]);
 
         DB::table('role_user')->insert([
@@ -115,7 +126,7 @@ class DatabaseSeeder extends Seeder
 
         Shop::factory()->count(3)->create();
 
-        Product::factory()->count(100)->create();
+        Product::factory()->count(500)->create();
 
         DB::table('group_chats')->insert([
             ['name' => '1'],

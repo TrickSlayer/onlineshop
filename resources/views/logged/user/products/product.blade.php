@@ -24,7 +24,8 @@
                                     </path>
                                 </svg></h3>
                             <h3 class="inline pr-1 border-r-2">0 comment</h3>
-                            <h3 class="inline">0 sale</h3>
+                            <h3 class="inline pr-1 border-r-2">0 sold</h3>
+                            <h3 class="inline">{{ $product->quantity }} in stock</h3>
                         </div>
     
                         @if ($product->price > $product->sale_price)
