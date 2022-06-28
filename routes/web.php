@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\MapController;
-use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +17,6 @@ include __DIR__ . '\web\user\home.php';
 
 include __DIR__ . '\web\auth.php';
 
-Route::post('map/search', [MapController::class, 'searchByName']);
-Route::post('map/ip', [MapController::class, 'searchByCoordinate']);
-Route::get('map/test', function(){return view('custom.mapLeafLet');});
 
 Route::middleware(['auth'])->group(function () {
 
@@ -34,8 +29,6 @@ Route::middleware(['auth'])->group(function () {
 
     include __DIR__ . '\web\admin.php';
 
-    Route::get('message/{groupChat}', [MessageController::class, 'index']);
-    Route::post('message/{groupChat}', [MessageController::class, 'post']);
     
 });
 

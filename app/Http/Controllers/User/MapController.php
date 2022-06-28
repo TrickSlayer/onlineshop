@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Stevebauman\Location\Facades\Location;
+use App\Http\Controllers\Controller;
 
 class MapController extends Controller
 {

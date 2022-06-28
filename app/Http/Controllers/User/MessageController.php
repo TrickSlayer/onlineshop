@@ -1,21 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
-use App\Events\SendMessage;
 use App\Models\GroupChat;
-use App\Models\GroupChatUser;
 use App\Models\Message;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Controllers\Controller;
 
 class MessageController extends Controller
 {
-    public function index(GroupChat $groupChat)
+    public function view(GroupChat $groupChat)
     {
         $this->authorize('view', $groupChat);
 
@@ -27,7 +22,7 @@ class MessageController extends Controller
         ]);
     }
 
-    public function post(Request $request, GroupChat $groupChat)
+    public function sendMessage(Request $request, GroupChat $groupChat)
     {
         $user = Auth::user();
         $messages = Message::create([

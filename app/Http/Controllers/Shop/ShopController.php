@@ -63,16 +63,37 @@ class ShopController extends Controller
     public function view(Request $request, Shop $shop)
     {
         $this->authorize('view', $shop);
+        $myShop = Auth::user()->shop;
 
         return view("logged.shop.shops.view", [
-            "title" => "Shop " . $shop->name,
+            "myShop" => $myShop,
             "shop" => $shop,
         ]);
     }
 
     public function chat(Request $request, Shop $shop)
     {
-        return redirect("/message/".$this->shopService->findIdGC($shop));
+        $id = $this->shopService->findIdGC($shop);
+
+        if ($id) {
+            return redirect("/message/" . $id);
+        }
+
+        $group = GroupChat::create([
+            "name" => $shop->name,
+        ]);
+
+        Db::table("group_chat_user")->insert(
+            [
+                'user_id' => Auth::id(),
+                'group_chat_id' => $group->id,
+            ],
+            [
+                'user_id' => $shop->user->id,
+                'group_chat_id' => $group->id,
+            ]
+        );
+
+        return redirect("/message/" . $group->id);
     }
-    
 }
