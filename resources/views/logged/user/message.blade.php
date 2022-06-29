@@ -17,7 +17,7 @@
                     <ul class="content mt-16 h-5/6 overflow-auto">
                         @foreach ($messages as $message)
                             <li>
-                                <x-message.message :message="$message"></x-message.message>
+                                <x-message.message :message="$message" :user="$user"></x-message.message>
                             </li>
                         @endforeach
                     </ul>
@@ -25,9 +25,6 @@
 
                 <div class="inline-block">
                     <textarea name="content" id="content" class="m-2 rounded w-10/12"></textarea>
-                    <input type="hidden" id="user_id" value="{{ $user->id }}">
-                    <input type="hidden" id="user_name" value="{{ $user->name }}">
-                    <input type="hidden" id="group_chat_id" value="{{ $group_chat->id }}">
                     <button id="send">Send</button>
                 </div>
             </div>

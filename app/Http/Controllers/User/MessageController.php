@@ -38,12 +38,16 @@ class MessageController extends Controller
     public function sendMessage(Request $request, GroupChat $groupChat)
     {
         $user = Auth::user();
-        $messages = Message::create([
+        $message = Message::create([
             "group_chat_id" => $groupChat->id,
             "user_id" => $user->id,
             "content" => $request->input("content"),
         ]);
-        return redirect()->back();
+
+        $current = Message::where('messages.id', $message->id)
+        ->with('user')->with('group_chat')->get();
+
+        return $current;
     }
 
     public function list(){ 

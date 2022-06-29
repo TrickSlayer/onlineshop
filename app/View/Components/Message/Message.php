@@ -2,7 +2,6 @@
 
 namespace App\View\Components\Message;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class Message extends Component
@@ -14,10 +13,10 @@ class Message extends Component
      */
     public $message, $user;
 
-    public function __construct($message)
+    public function __construct($message, $user)
     {
         $this->message = $message;
-        $this->user = Auth::user();
+        $this->user = $user;
     }
 
     /**

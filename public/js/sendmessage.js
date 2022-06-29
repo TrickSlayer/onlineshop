@@ -36,6 +36,7 @@ $(function () {
             },
             url: getUrl(),
             success: function (result) {
+                console.log(result);
                 socket.emit("sendChatToServer", input);
                 html = getHtml(input);
                 $("#chat-content ul").append(html);
