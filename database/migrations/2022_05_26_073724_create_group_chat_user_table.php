@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('group_chat_id')->constrained('group_chats')->onDelete('cascade');
             $table->unique(['user_id', 'group_chat_id']);
+            $table->integer('seen')->default(0);
             $table->timestamps();
         });
     }

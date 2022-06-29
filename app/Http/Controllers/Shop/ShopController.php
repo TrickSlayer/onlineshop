@@ -75,15 +75,15 @@ class ShopController extends Controller
     {
         $id = $this->shopService->findIdGC($shop);
 
-        if ($id) {
-            return redirect("/message/" . $id);
+        if ($id > 0) {
+            return redirect("/message/view/" . $id);
         }
 
         $group = GroupChat::create([
             "name" => $shop->name,
         ]);
 
-        Db::table("group_chat_user")->insert(
+        Db::table("group_chat_user")->insert([
             [
                 'user_id' => Auth::id(),
                 'group_chat_id' => $group->id,
@@ -92,8 +92,8 @@ class ShopController extends Controller
                 'user_id' => $shop->user->id,
                 'group_chat_id' => $group->id,
             ]
-        );
+        ]);
 
-        return redirect("/message/" . $group->id);
+        return redirect("/message/view/" . $group->id);
     }
 }

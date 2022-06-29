@@ -129,9 +129,9 @@ class DatabaseSeeder extends Seeder
         Product::factory()->count(500)->create();
 
         DB::table('group_chats')->insert([
-            ['name' => '1'],
-            ['name' => '2'],
-            ['name' => '3'],
+            ['name' => 'Name AS'],
+            ['name' => 'Aiuhih'],
+            ['name' => 'ioaisod'],
         ]);
 
         DB::table('group_chat_user')->insert([

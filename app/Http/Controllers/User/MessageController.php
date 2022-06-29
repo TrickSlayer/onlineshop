@@ -7,18 +7,31 @@ use App\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Http\Services\GroupChatService;
 
 class MessageController extends Controller
 {
+    private $gcService;
+
+    public function __construct(GroupChatService $gcService)
+    {
+        $this->gcService = $gcService;
+    }
+
     public function view(GroupChat $groupChat)
     {
         $this->authorize('view', $groupChat);
 
+        $this->gcService->seen($groupChat);
+
+        $groups = $this->gcService->getMyGroupChat();
+
         $messages = Message::where("group_chat_id", $groupChat->id)->get();
-        return view('message', [
+        return view('logged.user.message', [
             'messages' => $messages,
             'user' => Auth::user(),
             'group_chat' => $groupChat,
+            'groups' => $groups,
         ]);
     }
 
@@ -31,5 +44,9 @@ class MessageController extends Controller
             "content" => $request->input("content"),
         ]);
         return redirect()->back();
+    }
+
+    public function list(){ 
+        return "List";
     }
 }

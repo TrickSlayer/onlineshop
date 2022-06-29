@@ -50,11 +50,23 @@
                     </a>
                 </li>
 
+                <li class="items-center">
+                    <a href="/message/list"
+                        class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
+                        <i class="fa fa-message text-sm opacity-75 text-gray-300"></i>
+                        Message
+                        @if ($unseen > 0)
+                            <p class="bg-red-500 rounded-full text-white p-1 w-7 text-center inline">{{ $unseen }}
+                            </p>
+                        @endif
+                    </a>
+                </li>
+
                 @if (!Illuminate\Support\Facades\Auth::user()->hasRole('shop'))
                     <li class="items-center">
                         <a href="/shop/register"
                             class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                            <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
+                            <i class="fa fa-shop mr-2 text-sm opacity-75 text-gray-300"></i>
                             Start selling
                         </a>
                     </li>

@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Http\Services\GroupChatService;
 use Illuminate\View\Component;
 
 class Sidebar extends Component
@@ -11,9 +12,13 @@ class Sidebar extends Component
      *
      * @return void
      */
+    public $gcService;
+    public $unseen;
+
     public function __construct()
     {
-        //
+        $this->gcService = new GroupChatService();
+        $this->unseen = $this->gcService->countUnseen();
     }
 
     /**
