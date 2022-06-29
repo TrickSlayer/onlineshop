@@ -32,7 +32,6 @@ $(function () {
             type: "post",
             datatype: "json",
             data: {
-                user_id,
                 content,
             },
             url: getUrl(),

@@ -23,4 +23,8 @@ class Message extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function groupchat(){
+        return $this->belongsTo(GroupChat::class);
+    }
+
 }

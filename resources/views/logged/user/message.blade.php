@@ -17,7 +17,7 @@
                     <ul class="content mt-16 h-5/6 overflow-auto">
                         @foreach ($messages as $message)
                             <li>
-                                <p><strong>{{ $message->user->name }}</strong>: {{ $message->content }}</p>
+                                <x-message.message :message="$message"></x-message.message>
                             </li>
                         @endforeach
                     </ul>
