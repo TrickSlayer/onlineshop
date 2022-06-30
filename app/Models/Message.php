@@ -22,7 +22,7 @@ class Message extends Model
     }
 
     public function groupchat(){
-        return $this->belongsTo(GroupChat::class);
+        return $this->belongsTo(GroupChat::class, 'group_chat_id', 'id');
     }
 
 }

@@ -13,7 +13,7 @@ class Message extends Component
      */
     public $message, $user;
 
-    public function __construct($message, $user)
+    public function __construct($message, $user = null)
     {
         $this->message = $message;
         $this->user = $user;

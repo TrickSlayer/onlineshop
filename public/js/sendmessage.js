@@ -23,10 +23,6 @@ $(function () {
     // Gửi tin nhắn
     function sendMessage() {
         let content = $("#content").val();
-        let user_id = $("#user_id").val();
-        let group_chat_id = $("#group_chat_id").val();
-        let user_name = $("#user_name").val();
-        let input = [user_id, content, group_chat_id, user_name];
 
         $.ajax({
             type: "post",
@@ -36,10 +32,8 @@ $(function () {
             },
             url: getUrl(),
             success: function (result) {
-                console.log(result);
-                socket.emit("sendChatToServer", input);
-                html = getHtml(input);
-                $("#chat-content ul").append(html);
+                socket.emit("sendChatToServer", result);
+                showBoxMessage(result, "server");
             },
         });
 
@@ -62,11 +56,15 @@ $(function () {
     }
 
     //Hiển thị khi gửi
-    function getHtml(input) {
-        user_name = input[3];
-        if (input[2] == getGroupId())
-            return `<li><strong>${user_name}</strong>: ${input[1]}</li>`;
-        return "";
+    function showBoxMessage(data, from) {
+        console.log(data);
+        if (data["message"].groupchat.id == getGroupId()){
+            if (from == "server"){
+                $("#chat-content ul").append(data["htmlA"]);
+            } else {
+                $("#chat-content ul").append(data["htmlB"]);
+            }
+        }
     }
 
     //Reset input content
@@ -76,8 +74,7 @@ $(function () {
         }
     }
 
-    socket.on("sendChatToClient", (input) => {
-        html = getHtml(input);
-        $("#chat-content ul").append(html);
+    socket.on("sendChatToClient", (data) => {
+        showBoxMessage(data, "client");
     });
 });

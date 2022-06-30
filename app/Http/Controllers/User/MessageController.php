@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Services\GroupChatService;
+use App\Models\User;
 
 class MessageController extends Controller
 {
@@ -26,7 +27,7 @@ class MessageController extends Controller
 
         $groups = $this->gcService->getMyGroupChat();
 
-        $messages = Message::where("group_chat_id", $groupChat->id)->get();
+        $messages = Message::where("group_chat_id", $groupChat->id)->with(['user', 'groupchat'])->get();
         return view('logged.user.message', [
             'messages' => $messages,
             'user' => Auth::user(),
@@ -44,13 +45,24 @@ class MessageController extends Controller
             "content" => $request->input("content"),
         ]);
 
-        $current = Message::where('messages.id', $message->id)
-        ->with('user')->with('group_chat')->get();
+        $current = Message::where('id', $message->id)
+            ->with(['user', 'groupchat'])->first();
 
-        return $current;
+        $viewA = view("layouts.messages.message", [
+            "message" => $current,
+            "user" => $user,
+        ])->render();
+
+        $viewB = view("layouts.messages.message", [
+            "message" => $current,
+            "user" => null,
+        ])->render();
+
+        return ["htmlA" => $viewA, "htmlB" => $viewB,"message" => $current];
     }
 
-    public function list(){ 
+    public function list()
+    {
         return "List";
     }
 }

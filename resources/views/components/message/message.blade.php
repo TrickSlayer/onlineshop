@@ -1,5 +1,6 @@
 <div class="mt-2">
-    @if ($user->name != $message->user->name)
+
+    @if ($user == null || $user->name != $message->user->name)
         <p class="ml-5"><strong>{{ Illuminate\Support\Str::title($message->user->name) }}:</strong></p>
         <div class="bg-gray-200 py-2 px-5 max-w-screen-sm ml-5 rounded">
             <div class="text-ellipsis overflow-hidden">
@@ -20,5 +21,5 @@
         </div>
     @endif
 
-    
+
 </div>
