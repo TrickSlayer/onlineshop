@@ -8,7 +8,8 @@ upload();
 upload(1);
 
 $("#image_cancel").click(function() {
-    $("#image_box").hide();
+    $("#image_box").addClass("hidden");
+    $("#file").val('');
 });
 
 //Upload file

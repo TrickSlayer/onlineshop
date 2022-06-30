@@ -9,6 +9,7 @@ $(function () {
     let socket_port = "3000";
     let socket = io(ip_address + ":" + socket_port);
 
+    let userid = $("#userid").val();
 
     //Bấm gửi / Enter
     $("#content").keypress(function (event) {
@@ -34,14 +35,20 @@ $(function () {
             },
             url: getUrl(),
             success: function (result) {
-                socket.emit("sendChatToServer", result);
-                showBoxMessage(result, "server");
+                if (result != null) {
+                    console.log("True");
+                    console.log(result);
+                    socket.emit("sendChatToServer", result);
+                    showBoxMessage(result);
+                } else {
+                    console.log("False");
+                    console.log(result);
+                }
             },
         });
 
-        resetInput(["content"]);
+        resetInput(["content", "file"]);
     }
-
 
     //Lấy url
     function getUrl() {
@@ -51,16 +58,16 @@ $(function () {
         return url;
     }
 
-    function getGroupId(){
+    function getGroupId() {
         url = getUrl();
         url_split = url.split("/");
         return url_split[url_split.length - 1];
     }
 
     //Hiển thị khi gửi
-    function showBoxMessage(data, from) {
-        if (data["message"].groupchat.id == getGroupId()){
-            if (from == "server"){
+    function showBoxMessage(data) {
+        if (data["message"].group_chat_id == getGroupId()) {
+            if (data["message"].user_id == userid) {
                 $("#chat-content ul").append(data["htmlA"]);
             } else {
                 $("#chat-content ul").append(data["htmlB"]);
@@ -73,9 +80,11 @@ $(function () {
         for (const element of input) {
             document.getElementById(element).value = "";
         }
+
+        $("#image_box").addClass("hidden");
     }
 
     socket.on("sendChatToClient", (data) => {
-        showBoxMessage(data, "client");
+        showBoxMessage(data);
     });
 });

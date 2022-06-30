@@ -55,6 +55,7 @@
 
                         {{-- Text --}}
                         <textarea name="content" id="content" class="m-2 rounded w-8/12 flex-1"></textarea>
+                        <input id="userid" class="hidden" value="{{ $user->id }}">
                         <button id="send" class="mr-5">Send</button>
                     </div>
 

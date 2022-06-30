@@ -11,12 +11,13 @@ class Message extends Component
      *
      * @return void
      */
-    public $message, $user;
+    public $message, $user, $check;
 
     public function __construct($message, $user = null)
     {
         $this->message = $message;
         $this->user = $user;
+        $this->check = ($user == null || $user->name != $message->user->name);
     }
 
     /**
