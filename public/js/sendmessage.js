@@ -23,12 +23,14 @@ $(function () {
     // Gửi tin nhắn
     function sendMessage() {
         let content = $("#content").val();
+        let thumb = $("#file").val();
 
         $.ajax({
             type: "post",
             datatype: "json",
             data: {
                 content,
+                thumb,
             },
             url: getUrl(),
             success: function (result) {
@@ -57,7 +59,6 @@ $(function () {
 
     //Hiển thị khi gửi
     function showBoxMessage(data, from) {
-        console.log(data);
         if (data["message"].groupchat.id == getGroupId()){
             if (from == "server"){
                 $("#chat-content ul").append(data["htmlA"]);

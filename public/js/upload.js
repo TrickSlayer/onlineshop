@@ -7,10 +7,14 @@ $.ajaxSetup({
 upload();
 upload(1);
 
+$("#image_cancel").click(function() {
+    $("#image_box").hide();
+});
+
 //Upload file
 function upload(number = "") {
     let checkId = document.getElementById("file" + number);
-    
+
     if (checkId == null) return;
 
     url = checkId.value;
@@ -48,11 +52,12 @@ function upload(number = "") {
             success: function (results) {
                 if (results.error === false) {
                     let results_url = "/storage/" + results.url;
+                    $("#image_box").removeClass('hidden');
                     $("#image_show" + number).html(
                         '<a  target="_blank" href="' +
                             results_url +
                             '">' +
-                            '<img src="' +
+                            '<img class="object-cover w-full h-full" src="' +
                             results_url +
                             '" target="_blank">' +
                             "</a>"

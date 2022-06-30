@@ -15,6 +15,7 @@ class Message extends Model
         'group_chat_id',
         'user_id',
         'content',
+        'thumb',
     ];
 
     public function user(){
