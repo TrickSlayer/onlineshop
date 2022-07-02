@@ -27,6 +27,14 @@ class GroupChatService
             ->update(["seen" => 1]);
     }
 
+    public function unseen(GroupChat $group)
+    {
+        DB::table("group_chat_user")
+            ->where("group_chat_id", $group->id)
+            ->where("user_id", Auth::id())
+            ->update(["seen" => 0]);
+    }
+
     public function countUnseen()
     {
         $unseen = DB::table("group_chat_user")

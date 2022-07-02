@@ -8,15 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Services\GroupChatService;
-use App\Models\User;
+use App\Http\Services\MessageService;
 
 class MessageController extends Controller
 {
-    private $gcService;
+    private $gcService, $messageService;
 
-    public function __construct(GroupChatService $gcService)
+    public function __construct(GroupChatService $gcService, MessageService $messageService)
     {
         $this->gcService = $gcService;
+        $this->messageService = $messageService;
     }
 
     public function view(GroupChat $groupChat)
@@ -28,6 +29,7 @@ class MessageController extends Controller
         $groups = $this->gcService->getMyGroupChat();
 
         $messages = Message::where("group_chat_id", $groupChat->id)->with(['user', 'groupchat'])->get();
+
         return view('logged.user.message', [
             'messages' => $messages,
             'user' => Auth::user(),
@@ -39,36 +41,62 @@ class MessageController extends Controller
     public function sendMessage(Request $request, GroupChat $groupChat)
     {
         $user = Auth::user();
-        $content = $request->input("content");
-        $thumb = $request->input("thumb");
 
-        if ( $content == null && $thumb == null) return null;
+        $message = $this->messageService->create($request, $groupChat);
 
-        $message = Message::create([
-            "group_chat_id" => $groupChat->id,
-            "user_id" => $user->id,
-            "content" => $content,
-            "thumb" => $thumb,
-        ]);
+        return [
+            "htmlA" => self::messageBox($message, $user),
+            "htmlB" => self::messageBox($message),
+            "message" => $message
+        ];
+    }
 
-        $current = Message::where('id', $message->id)
-            ->with(['user', 'groupchat'])->first();
-
-        $viewA = view("layouts.messages.message", [
-            "message" => $current,
+    public function messageBox($message, $user = null)
+    {
+        return view("layouts.messages.message", [
+            "message" => $message,
             "user" => $user,
         ])->render();
+    }
 
-        $viewB = view("layouts.messages.message", [
-            "message" => $current,
-            "user" => null,
-        ])->render();
+    public function checkIfSeen(Request $request, GroupChat $groupChat)
+    {
+        $message = $request->message;
 
-        return ["htmlA" => $viewA, "htmlB" => $viewB,"message" => $current];
+        if ($message["groupchat"]["id"] == $groupChat->id) return false;
+
+        return self::unseen($request);
+    }
+
+    public function unseen(Request $request)
+    {
+        $message = $request->message;
+
+        $group = GroupChat::where('id', $message["groupchat"]["id"])->first();
+
+        $user = Auth::user();
+
+        if ($this->messageService->hasUser($group, $user)) {
+            $this->gcService->unseen($group);
+            return [
+                "check" => true,
+                "id" => $group->id,
+            ];
+        }
+
+        return [
+            "check" => false,
+            "id" => $group->id,
+        ];
+    }
+
+    public function countUnseen()
+    {
+        return $this->gcService->countUnseen();
     }
 
     public function list()
     {
-        return "List";
+        return GroupChat::where('id', 1)->first()->users;
     }
 }

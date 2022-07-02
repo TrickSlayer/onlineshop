@@ -12,6 +12,7 @@
                 <div class="justify-center text-xl font-bold">
                     {{ Illuminate\Support\Str::title(Illuminate\Support\Facades\Auth::user()->name) }}</div>
             </div>
+            <input id="userid" class="hidden" value="{{ Illuminate\Support\Facades\Auth::id() }}">
         </a>
 
         <div class="md:flex md:flex-col md:items-Illuminate\Support\Stretch md:opacity-100 md:relative md:mt-2 md:shadow-none shadow absolute top-0 left-0 right-0 z-40 overflow-y-auto overflow-x-hidden h-auto items-center flex-1 rounded hidden bg-white"
@@ -22,7 +23,8 @@
                         class="w-12 h-12 text-sm text-white bg-gray-200 inline-flex items-center justify-center rounded-full"><img
                             alt="..." class="w-full rounded-full align-middle border-none shadow-lg"
                             src="{{ asset('assets/img/team-1-800x800.jpg') }}" /></span>
-                    <div class="justify-center text-xl font-bold">Name</div>
+                    <div class="justify-center text-xl font-bold">
+                        {{ Illuminate\Support\Str::title(Illuminate\Support\Facades\Auth::user()->name) }}</div>
                 </div>
             </a>
 
@@ -55,10 +57,10 @@
                         class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
                         <i class="fa fa-message text-sm opacity-75 text-gray-300"></i>
                         Message
-                        @if ($unseen > 0)
-                            <p class="bg-red-500 rounded-full text-white p-1 w-7 text-center inline">{{ $unseen }}
-                            </p>
-                        @endif
+                        <p id="unseen"
+                            class="bg-red-500 rounded-full text-white p-1 w-7 text-center inline {{ $unseen > 0 ? '' : 'hidden' }}">
+                            {{ $unseen }}
+                        </p>
                     </a>
                 </li>
 

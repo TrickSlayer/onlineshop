@@ -1,5 +1,9 @@
 <x-logged :title="'Message'">
 
+    <x-slot name="head">
+        <link rel="stylesheet" href="{{ asset('css/message.css') }}" />
+    </x-slot>
+
     <x-slot name="main">
 
         <div id="group" class="flex">
@@ -16,13 +20,16 @@
                         </div>
                     </div>
 
-                    <ul class="content overflow-auto">
-                        @foreach ($messages as $message)
-                            <li>
-                                <x-message.message :message="$message" :user="$user"></x-message.message>
-                            </li>
-                        @endforeach
-                    </ul>
+                        <ul class="content overflow-auto">
+                            @foreach ($messages as $message)
+                                <li>
+                                    <x-message.message :message="$message" :user="$user"></x-message.message>
+                                </li>
+                            @endforeach
+                            <a href="#" class="d-none" id="focus-bottom"></a>
+                        </ul>
+                  
+                    <div id="end-content"></div>
 
                 </div>
 
@@ -30,7 +37,8 @@
 
                     <div id="image_box" class="ml-5 fixed bottom-20 hidden">
                         <div class="relative top-10 left-60 bg-white rounded-full w-5 h-5 border border-gray-500">
-                            <i id="image_cancel" class="fa-solid fa-xmark text-base w-full h-full relative" style="bottom: 3px; left: 4px;"></i>
+                            <i id="image_cancel" class="fa-solid fa-xmark text-base w-full h-full relative"
+                                style="bottom: 3px; left: 4px;"></i>
                         </div>
                         <div class=" w-64 h-40 p-2 bg-white border rounded box-content">
                             <div id="image_show" class="m-auto w-full h-full"></div>
@@ -55,8 +63,7 @@
 
                         {{-- Text --}}
                         <textarea name="content" id="content" class="m-2 rounded w-8/12 flex-1"></textarea>
-                        <input id="userid" class="hidden" value="{{ $user->id }}">
-                        <button id="send" class="mr-5">Send</button>
+                        <button id="send" class="mr-5 bg-blue-400 h-10 my-auto px-2 rounded-lg font-bold text-white">Send</button>
                     </div>
 
                 </div>
@@ -67,9 +74,10 @@
                 class="content overflow-auto flex-col flex-initial w-64 p-2 min-h-screen max-h-screen z-10 hidden lg:flex bg-white">
                 @foreach ($groups as $group)
                     <a href="/message/view/{{ $group->group_chat_id }}">
-                        @if ($group->seen == 0)
-                            <div class="w-2 h-2 rounded-full bg-red-500 relative top-3 left-3/4 ml-10"></div>
-                        @endif
+                        <div id="groupchat{{ $group->group_chat_id }}"
+                            class="w-2 h-2 rounded-full bg-red-500 relative top-3 left-3/4 ml-10 {{ $group->seen == 0 ? '' : 'hidden' }}">
+                        </div>
+
                         <div
                             class="w-full h-20 rounded p-2 
                         @if ($group->group_chat_id == $group_chat->id) bg-blue-200 @endif
@@ -85,51 +93,8 @@
     </x-slot>
 
     <x-slot name="footer">
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"
-            integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous">
-        </script>
         <script src="{{ asset('js/sendmessage.js') }}"></script>
         <script src="{{ asset('js/upload.js') }}"></script>
-        <style>
-            .content::-webkit-scrollbar {
-                display: none;
-            }
-
-            /* Hide scrollbar for IE, Edge and Firefox */
-            .content {
-                -ms-overflow-style: none;
-                /* IE and Edge */
-                scrollbar-width: none;
-                /* Firefox */
-            }
-
-            #chat-content {
-                max-height: calc(100vh - 150px);
-            }
-
-            #group {
-                min-height: calc(100vh - 80px);
-                max-height: calc(100vh - 80px);
-            }
-
-            @media (min-width: 768px) {
-                #chat-content {
-                    max-height: calc(100vh - 70px);
-                }
-
-                #group {
-                    min-height: 100vh;
-                    max-height: 100vh;
-                }
-            }
-
-            ul.content {
-                margin-top: 69px;
-                height: calc(100% - 70px);
-            }
-        </style>
     </x-slot>
 
 </x-logged>

@@ -10,5 +10,14 @@ Route::prefix("message")->group(function () {
         Route::post('{groupChat}', [MessageController::class, 'sendMessage']);
     });
 
+    Route::prefix("seen")->group(function () {
+        Route::post('{groupChat}', [MessageController::class, 'checkIfSeen']);
+        Route::post('', [MessageController::class, 'unseen']);
+    });
+
+    Route::prefix("unseen")->group(function () {
+        Route::post('count', [MessageController::class, 'countUnseen']);
+    });
+
     Route::get('list', [MessageController::class, 'list']);
 });

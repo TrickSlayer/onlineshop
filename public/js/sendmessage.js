@@ -10,6 +10,7 @@ $(function () {
     let socket = io(ip_address + ":" + socket_port);
 
     let userid = $("#userid").val();
+    $("#focus-bottom").focus();
 
     //Bấm gửi / Enter
     $("#content").keypress(function (event) {
@@ -36,13 +37,8 @@ $(function () {
             url: getUrl(),
             success: function (result) {
                 if (result != null) {
-                    console.log("True");
-                    console.log(result);
                     socket.emit("sendChatToServer", result);
                     showBoxMessage(result);
-                } else {
-                    console.log("False");
-                    console.log(result);
                 }
             },
         });
@@ -66,13 +62,20 @@ $(function () {
 
     //Hiển thị khi gửi
     function showBoxMessage(data) {
-        if (data["message"].group_chat_id == getGroupId()) {
-            if (data["message"].user_id == userid) {
-                $("#chat-content ul").append(data["htmlA"]);
-            } else {
-                $("#chat-content ul").append(data["htmlB"]);
+        try {
+            $("#focus-bottom").remove();
+            if (data["message"].group_chat_id == getGroupId()) {
+                if (data["message"].user_id == userid) {
+                    $("#chat-content ul").append(data["htmlA"]);
+                } else {
+                    $("#chat-content ul").append(data["htmlB"]);
+                }
             }
-        }
+            $("#chat-content ul").append(
+                "<a href='#' class='d-none' id='focus-bottom'></a>"
+            );
+            $("#focus-bottom").focus();
+        } catch (e) {}
     }
 
     //Reset input content

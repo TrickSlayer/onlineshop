@@ -1,0 +1,36 @@
+.content::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.content {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+#chat-content {
+    max-height: calc(100vh - 150px);
+}
+
+#group {
+    min-height: calc(100vh - 80px);
+    max-height: calc(100vh - 80px);
+}
+
+@media (min-width: 768px) {
+    #chat-content {
+        max-height: calc(100vh - 70px);
+    }
+
+    #group {
+        min-height: 100vh;
+        max-height: 100vh;
+    }
+}
+
+ul.content {
+    margin-top: 69px;
+    height: calc(100% - 70px);
+}
