@@ -79,7 +79,7 @@
                         </div>
 
                         <div
-                            class="w-full h-20 rounded p-2 
+                            class="w-full h-20 rounded p-2 border mb-2
                         @if ($group->group_chat_id == $group_chat->id) bg-blue-200 @endif
                             @if ($group->seen == 0) font-bold @endif">
                             {{ Illuminate\Support\Str::title($group->name) }}

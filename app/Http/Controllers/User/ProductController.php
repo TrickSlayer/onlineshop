@@ -11,8 +11,9 @@ class ProductController extends Controller
     public function view(Product $product)
     {
         $this->authorize('view',$product);
+        
         return view('logged.user.products.product', [
-            "product" => $product
+            "product" => Product::where('id', $product->id)->with('shop')->first(),
         ]);
     }
 

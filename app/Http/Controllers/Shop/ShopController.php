@@ -67,7 +67,7 @@ class ShopController extends Controller
 
         return view("logged.shop.shops.view", [
             "myShop" => $myShop,
-            "shop" => $shop,
+            "shop" => Shop::where('id', $shop->id)->with('products', 'products.category')->first(),
         ]);
     }
 

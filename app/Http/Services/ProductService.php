@@ -71,10 +71,11 @@ class ProductService
             ->when($fillter != null, function ($query) use ($fillter) {
                 $query->orderBy('sale_price', $fillter);
             })
-            // ->where('active', 1)
-            // ->whereHas('shop', function ($query) {
-            //     $query->where('active', 1);
-            // })
+            ->orderBy('id', 'desc')
+            ->where('active', 1)
+            ->whereHas('shop', function ($query) {
+                $query->where('active', 1);
+            })
             ->get();
     }
 

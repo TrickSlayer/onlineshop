@@ -1,6 +1,6 @@
-<x-logged :title=" $myShop != null && $myShop->id == $shop->id ? 'My Shop' : $shop->name">
+<x-logged :title="$myShop != null && $myShop->id == $shop->id ? 'My Shop' : $shop->name">
     <x-slot name="main">
-        <div class="bg-blue-200 min-h-screen">
+        <div class="bg-blue-200 pb-6 min-h-screen">
             <section class="relative block h-96 mb-10">
                 <div class="absolute top-0 w-full h-full bg-center bg-cover"
                     style="
@@ -17,9 +17,9 @@
                 </div>
             </section>
 
-            <section class="relative pt-16 -mt-56 mb-5">
+            <section class="relative pt-16 -mt-56">
                 <div class="container mx-auto px-4">
-                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg ">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full shadow-xl rounded-lg ">
                         <div class="px-6" style="min-height: 400px">
                             <div class="flex flex-wrap justify-center">
                                 <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
@@ -93,13 +93,15 @@
                 </div>
             </section>
 
-            @foreach ($shop->products->groupBy('category_id') as $products)
-                <section id="products" class="relative mt-5 bg-blue-200 pb-5">
-                    <div class="container mx-auto px-4">
-                        <x-product.data-list :data="['products' => $products, 'title' => $products->first->category->name]" :wrap="'wrap'">
-                        </x-product.data-list>
-                    </div>
-                </section>
+            @foreach ($shop->products->sortByDesc('id')->groupBy('category_id') as $products)
+                @if ($products->first()->category->active == 1)
+                    <section id="products" class="relative mt-5 bg-blue-200 pb-5">
+                        <div class="container mx-auto px-4">
+                            <x-product.data-list :data="['products' => $products, 'title' => $products->first->category->name]" :wrap="'wrap'">
+                            </x-product.data-list>
+                        </div>
+                    </section>
+                @endif
             @endforeach
 
         </div>

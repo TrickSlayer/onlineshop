@@ -30,7 +30,7 @@ class MessageController extends Controller
 
         $messages = Message::where("group_chat_id", $groupChat->id)->with(['user', 'groupchat'])->get();
 
-        return view('logged.user.message', [
+        return view('logged.user.messages.message', [
             'messages' => $messages,
             'user' => Auth::user(),
             'group_chat' => $groupChat,
@@ -97,6 +97,10 @@ class MessageController extends Controller
 
     public function list()
     {
-        return GroupChat::where('id', 1)->first()->users;
+        $groups = $this->gcService->getMyGroupChat();
+        return view('logged.user.messages.list', [
+            'user' => Auth::user(),
+            'groups' => $groups,
+        ]);
     }
 }
