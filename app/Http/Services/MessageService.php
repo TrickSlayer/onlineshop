@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageService
 {
-    public function create(Request $request,GroupChat $groupChat){
+    public function create(Request $request, GroupChat $groupChat)
+    {
         $user = Auth::user();
         $content = $request->input("content");
         $thumb = $request->input("thumb");
 
-        if ( $content == null && $thumb == null) return null;
+        if ($content == null && $thumb == null) return null;
 
         $message = Message::create([
             "group_chat_id" => $groupChat->id,
@@ -25,13 +26,25 @@ class MessageService
 
         $current = Message::where('id', $message->id)
             ->with(['user', 'groupchat'])->first();
-    
+
         return $current;
     }
 
-    public function hasUser($groupChat, $user){
+    const LIMIT = 30;
 
-        if ($groupChat->users->where('id', $user->id)->first()){
+    public function get(GroupChat $groupChat, $page = 0)
+    {
+        return Message::where("group_chat_id", $groupChat->id)
+            ->with(['user', 'groupchat'])->latest()
+            ->skip(self::LIMIT * $page)
+            ->take(self::LIMIT)->get()
+            ->reverse();
+    }
+
+    public function hasUser($groupChat, $user)
+    {
+
+        if ($groupChat->users->where('id', $user->id)->first()) {
             return true;
         }
 

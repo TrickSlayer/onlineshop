@@ -20,16 +20,15 @@
                         </div>
                     </div>
 
-                        <ul class="content overflow-auto">
+                        <ul id="chat" class="content overflow-auto">
+                            <a href="#" class="text-blue-500 w-full text-center block" id="focus-top">Load more</a>
                             @foreach ($messages as $message)
-                                <li>
-                                    <x-message.message :message="$message" :user="$user"></x-message.message>
-                                </li>
+                                @include('layouts.messages.message')
                             @endforeach
-                            <a href="#" class="d-none" id="focus-bottom"></a>
+                            <a href="#" class="hidden" id="focus-bottom"></a>
                         </ul>
                   
-                    <div id="end-content"></div>
+                    <input id="page" value="1" class="hidden">
 
                 </div>
 

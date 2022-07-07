@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Common;
 use App\Jobs\DeleteImg;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Message;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -37,4 +38,9 @@ class ViewController extends Controller
         ]);
     }
     
+    public function test(){
+        return view('component',[
+            'messages' =>  Message::latest()->skip(0)->take(30)->get()->reverse(),
+        ]);
+    }
 }

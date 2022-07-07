@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('img/apple-icon.png') }}" />
@@ -30,19 +30,12 @@
     </main>
 
     <footer>
-        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"
-            integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous">
-        </script>
-
         {{ isset($footer) ? $footer : '' }}
     </footer>
 
 
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('js/server.js') }}"></script>
 
 </body>
 

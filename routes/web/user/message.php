@@ -10,6 +10,10 @@ Route::prefix("message")->group(function () {
         Route::post('{groupChat}', [MessageController::class, 'sendMessage']);
     });
 
+    Route::prefix('load')->group(function(){
+        Route::post('{groupChat}', [MessageController::class, 'load']);
+    });
+
     Route::prefix("seen")->group(function () {
         Route::post('{groupChat}', [MessageController::class, 'checkIfSeen']);
         Route::post('', [MessageController::class, 'unseen']);

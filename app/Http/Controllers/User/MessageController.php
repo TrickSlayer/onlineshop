@@ -28,13 +28,36 @@ class MessageController extends Controller
 
         $groups = $this->gcService->getMyGroupChat();
 
-        $messages = Message::where("group_chat_id", $groupChat->id)->with(['user', 'groupchat'])->get();
+        $messages = $this->messageService->get($groupChat);
 
         return view('logged.user.messages.message', [
             'messages' => $messages,
             'user' => Auth::user(),
             'group_chat' => $groupChat,
             'groups' => $groups,
+        ]);
+    }
+
+    public function load(GroupChat $groupChat, Request $request)
+    {
+        $this->authorize('view', $groupChat);
+
+        $page = $request->input('page');
+
+        $messages = $this->messageService->get($groupChat, $page);
+
+        $html = '';
+
+        foreach ($messages as $message) {
+            $html .= view('layouts.messages.message', [
+                'user' => Auth::user(),
+                'message' => $message,
+            ])->render();
+        }
+
+        return response()->json([
+            "html" => $html,
+            "more" => count($this->messageService->get($groupChat, $page + 1)) > 0
         ]);
     }
 

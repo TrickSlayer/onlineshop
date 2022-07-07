@@ -20,6 +20,12 @@
     </x-slot>
 
     <x-slot name="footer">
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"
+            integrity="sha384-LzhRnpGmQP+lOvWruF/lgkcqD+WDVt9fU3H4BWmwP5u5LTmkUGafMcpZKNObVMLU" crossorigin="anonymous">
+        </script>
+        <script src="{{ asset('js/server.js') }}"></script>
         {{ isset($footer) ? $footer : '' }}
     </x-slot>
 

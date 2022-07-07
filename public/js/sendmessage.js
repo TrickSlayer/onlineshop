@@ -78,6 +78,38 @@ $(function () {
         } catch (e) {}
     }
 
+    $(document).ready(function () {
+        $("#chat").scrollTop($("#chat")[0].scrollHeight);
+
+        $("#chat").scroll(function () {
+            $("#span").text($("#chat").scrollTop());
+
+            if ($("#chat").scrollTop() == 0) {
+                page = $("#page").val();
+
+                $.ajax({
+                    type: 'post',
+                    datatype: 'json',
+                    data: { page },
+                    url: getUrl().replace("view","load"),
+                    success: function (result){
+                        console.log(result);
+                        if (result !== ''){
+                            $('#chat').prepend(result.html);
+                            $('#page').val(1 + Number(page));
+                            $("#focus-top").focus().remove();
+                            if (result.more){
+                                $('#chat').prepend("<a href='#' class='text-blue-500 w-full text-center block' id='focus-top'>Load more</a>");
+                            } else {
+                                $('#chat').prepend("<div href='#' class='text-gray-500 w-full text-center block'>Start chat</div>").removeAttr('id');
+                            }
+                        }
+                    }
+                })
+            }
+        });
+    });
+
     //Reset input content
     function resetInput(input) {
         for (const element of input) {

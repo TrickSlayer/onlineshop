@@ -3,6 +3,8 @@
 namespace App\Jobs;
 
 use App\Models\Category;
+use App\Models\Product;
+use App\Models\Shop;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -34,9 +36,12 @@ class DeleteImg implements ShouldQueue, ShouldBeUnique
     {
         $files = Storage::allFiles("public/uploads");
         foreach ($files as $file){
-            $newstr = str_replace("public","storage",$file);
-            $result = Category::where('thumb','/'.$newstr)->first();
-            if (is_null($result)){
+            $newurl = str_replace("public","storage",$file);
+            $category = Category::where('thumb','/'.$newurl)->first();
+            $product = Product::where('thumb','/'.$newurl)->first();
+            $avatarShop = Shop::where('avatar','/'.$newurl)->first();
+            $backgroundShop = Shop::where('background','/'.$newurl)->first();
+            if (is_null($category) && is_null($product) && is_null($avatarShop) && is_null($backgroundShop)){
                 Storage::delete($file);
             }
         }
@@ -49,4 +54,6 @@ class DeleteImg implements ShouldQueue, ShouldBeUnique
             }
         }
     }
+
+    public $uniqueFor = 60;
 }

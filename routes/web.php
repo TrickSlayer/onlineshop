@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Common\ViewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +34,4 @@ Route::middleware(['auth'])->group(function () {
 });
 
 //Test funtion
-Route::get('test', function(){return view('component');});
+Route::get('test', [ViewController::class, 'test']);
