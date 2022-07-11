@@ -34,7 +34,7 @@
     </footer>
 
 
-
+    <script src="{{ asset('js/url.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
 </body>

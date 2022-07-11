@@ -46,30 +46,53 @@
             <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                 <li class="items-center">
                     <a href="/dashboard"
-                        class="text-xs uppercase py-3 font-bold block text-pink-500 hover:text-pink-600">
-                        <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
-                        Dashboard
+                        class="text-xs uppercase py-3 font-bold flex text-pink-500 hover:text-pink-600">
+                        <div class="w-8">
+                            <i class="fas fa-tv mr-2 text-sm opacity-75"></i>
+                        </div>
+                        <div>
+                            Dashboard
+                        </div>
+                    </a>
+                </li>
+
+                <li class="items-center">
+                    <a href="/cart" class="text-xs uppercase py-3 font-bold flex text-gray-700 hover:text-gray-500">
+                        <div class="w-8">
+                            <i class="fa-solid fa-cart-shopping text-sm opacity-75 text-gray-300"></i>
+                        </div>
+                        <div>
+                            My Cart
+                        </div>
                     </a>
                 </li>
 
                 <li class="items-center">
                     <a href="/message/list"
-                        class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                        <i class="fa fa-message text-sm opacity-75 text-gray-300"></i>
-                        Message
-                        <p id="unseen"
-                            class="bg-red-500 rounded-full text-white p-1 w-7 text-center inline {{ $unseen > 0 ? '' : 'hidden' }}">
-                            {{ $unseen }}
-                        </p>
+                        class="text-xs uppercase py-3 font-bold flex text-gray-700 hover:text-gray-500">
+                        <div class="w-8">
+                            <i class="fa fa-message ml-1 opacity-75 text-gray-300"></i>
+                        </div>
+                        <div>
+                            Message
+                            <p id="unseen"
+                                class="bg-red-500 rounded-full text-white p-1 w-7 text-center inline {{ $unseen > 0 ? '' : 'hidden' }}">
+                                {{ $unseen }}
+                            </p>
+                        </div>
                     </a>
                 </li>
 
                 @if (!Illuminate\Support\Facades\Auth::user()->hasRole('shop'))
                     <li class="items-center">
                         <a href="/shop/register"
-                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                            <i class="fa fa-shop mr-2 text-sm opacity-75 text-gray-300"></i>
-                            Start selling
+                            class="text-xs uppercase py-3 font-bold flex text-gray-700 hover:text-gray-500">
+                            <div class="w-8">
+                                <i class="fa fa-shop mr-2 text-sm opacity-75 text-gray-300"></i>
+                            </div>
+                            <div>
+                                Start selling
+                            </div>
                         </a>
                     </li>
                 @endif
@@ -111,17 +134,25 @@
                 <ul class="md:flex-col md:min-w-full flex flex-col list-none">
                     <li class="items-center">
                         <a href="/admin/categories/list"
-                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                            <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
-                            List Categories
+                            class="text-xs uppercase py-3 font-bold flex text-gray-700 hover:text-gray-500">
+                            <div class="w-8">
+                                <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
+                            </div>
+                            <div>
+                                List Categories
+                            </div>
                         </a>
                     </li>
 
                     <li class="items-center">
                         <a href="/admin/categories/create"
-                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                            <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
-                            Add Category
+                            class="text-xs uppercase py-3 font-bold flex text-gray-700 hover:text-gray-500">
+                            <div class="w-8">
+                                <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
+                            </div>
+                            <div>
+                                Add Category
+                            </div>
                         </a>
                     </li>
                 </ul>
@@ -138,25 +169,37 @@
 
                     <li class="items-center">
                         <a href="/shop/view/{{ Illuminate\Support\Facades\Auth::user()->shop->id }}"
-                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                            <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
-                            My shop
+                            class="text-xs uppercase py-3 font-bold flex text-gray-700 hover:text-gray-500">
+                            <div class="w-8">
+                                <i class="fa fa-shop mr-2 text-sm text-gray-300"></i>
+                            </div>
+                            <div>
+                                My shop
+                            </div>
                         </a>
                     </li>
 
                     <li class="items-center">
                         <a href="/products/list"
-                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                            <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
-                            List Products
+                            class="text-xs uppercase py-3 font-bold flex text-gray-700 hover:text-gray-500">
+                            <div class="w-8">
+                                <i class="fas fa-clipboard-list mr-2 text-sm text-gray-300"></i>
+                            </div>
+                            <div>
+                                List Products
+                            </div>
                         </a>
                     </li>
 
                     <li class="items-center">
                         <a href="/products/create"
-                            class="text-xs uppercase py-3 font-bold block text-gray-700 hover:text-gray-500">
-                            <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
-                            Add Product
+                            class="text-xs uppercase py-3 font-bold flex text-gray-700 hover:text-gray-500">
+                            <div class="w-8">
+                                <i class="fas fa-plus mr-2 text-sm text-gray-300"></i>
+                            </div>
+                            <div>
+                                Add Product
+                            </div>
                         </a>
                     </li>
                 </ul>
@@ -173,15 +216,23 @@
             <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
                 <li class="items-center">
                     <a href="/password/change"
-                        class="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block">
-                        <i class="fas fa-fingerprint text-gray-300 mr-2 text-sm"></i>
-                        Change Password
+                        class="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold flex">
+                        <div class="w-8">
+                            <i class="fas fa-fingerprint text-gray-300 mr-2 text-sm"></i>
+                        </div>
+                        <div>
+                            Change Password
+                        </div>
                     </a>
                 </li>
                 <li class="items-center">
-                    <a href="/logout" class="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold block">
-                        <i class="fas fa-fingerprint text-gray-300 mr-2 text-sm"></i>
-                        Logout
+                    <a href="/logout" class="text-gray-700 hover:text-gray-500 text-xs uppercase py-3 font-bold flex">
+                        <div class="w-8">
+                            <i class="fas fa-fingerprint text-gray-300 mr-2 text-sm"></i>
+                        </div>
+                        <div>
+                            Logout
+                        </div>
                     </a>
                 </li>
             </ul>

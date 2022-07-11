@@ -46,25 +46,11 @@ $(function () {
         resetInput(["content", "file"]);
     }
 
-    //Lấy url
-    function getUrl() {
-        url = location.href;
-        if (!url) url = window.location.href;
-        url = url.split("?")[0];
-        return url;
-    }
-
-    function getGroupId() {
-        url = getUrl();
-        url_split = url.split("/");
-        return url_split[url_split.length - 1];
-    }
-
     //Hiển thị khi gửi
     function showBoxMessage(data) {
         try {
             $("#focus-bottom").remove();
-            if (data["message"].group_chat_id == getGroupId()) {
+            if (data["message"].group_chat_id == getId()) {
                 if (data["message"].user_id == userid) {
                     $("#chat-content ul").append(data["htmlA"]);
                 } else {
@@ -122,4 +108,5 @@ $(function () {
     socket.on("sendChatToClient", (data) => {
         showBoxMessage(data);
     });
+    
 });

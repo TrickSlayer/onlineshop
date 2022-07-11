@@ -11,7 +11,7 @@ function loadMore(){
         type: 'post',
         datatype: 'json',
         data: { page, price },
-        url: '/categories/load-product/' + getCategoryId(),
+        url: '/categories/load-product/' + getId(),
         success: function (result){
             if (result !== ''){
                 $('#load').append(result.html);
@@ -22,23 +22,4 @@ function loadMore(){
             }
         }
     })
-}
-
-function getParameterByName(name) {
-    url = location.href;
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-}
-
-function getCategoryId(){
-    url = location.href;
-    if (!url) url = window.location.href;
-    url = url.split("?")[0];
-    array = url.split("/");
-    return array[array.length - 1];
 }

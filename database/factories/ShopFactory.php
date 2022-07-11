@@ -20,6 +20,7 @@ class ShopFactory extends Factory
             'name' => $this->faker->name(),
             'user_id' => $this->faker->unique()->numberBetween(1, 3),
             'content' => $this->faker->paragraph(),
+            'address' => 'Hà Nội',
             'active' => 1,
         ];
     }

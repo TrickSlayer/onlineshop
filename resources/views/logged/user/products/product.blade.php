@@ -48,25 +48,26 @@
                             <p>{{ $product->description }}</p>
                         </div>
 
-                        <div class="custom-number-input h-10 w-32">
-                            <label for="custom-input-number" class="w-full text-gray-700 text-sm font-semibold">Number
-                            </label>
-                            <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent my-1">
-                                <button data-action="decrement"
-                                    class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
-                                    <span class="m-auto text-2xl font-thin"> - </span>
-                                </button>
-                                <input type="number"
-                                    class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
-                                    name="custom-input-number" value="0">
-                                <button data-action="increment"
-                                    class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
-                                    <span class="m-auto text-2xl font-thin">+</span>
-                                </button>
+                            <div class="custom-number-input h-10 w-32">
+                                <label for="quantity"
+                                    class="w-full text-gray-700 text-sm font-semibold">Number
+                                </label>
+                                <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent my-1">
+                                    <button data-action="decrement"
+                                        class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                                        <span class="m-auto text-2xl font-thin"> - </span>
+                                    </button>
+                                    <input type="number" id="quantity"
+                                        class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
+                                        name="quantity" value="0">
+                                    <button data-action="increment"
+                                        class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                                        <span class="m-auto text-2xl font-thin">+</span>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
 
-                        <button class="rounded-full border-2 border-black p-2 mt-10">Add to Cart</button>
+                            <button id="submit" class="rounded-full border-2 border-blue-200 p-2 mt-10 bg-blue-300">Add to Cart</button>
                     </div>
                 </div>
             </div>
@@ -118,6 +119,7 @@
     <x-slot name="footer">
         <link href="{{ asset('css\inputnumber.css') }}" rel="stylesheet">
         <script src="{{ asset('js\inputnumber.js') }}"></script>
+        <script src="{{ asset('js\addToCart.js') }}"></script>
     </x-slot>
 
 </x-logged>
