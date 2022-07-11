@@ -33,15 +33,13 @@ function search() {
                 $("#address-map").replaceWith(
                     '<div id="address-map">' + result + "</div>"
                 );
-
-                showDoc();
             },
         });
 }
 
-function showDoc(){
-    const iframe = $("#google-map");
-    iframe.load(function () {
-        console.log(iframe[0].outerHTML);
-    });
-}
+// function showDoc(){
+//     const iframe = $("#google-map");
+//     iframe.load(function () {
+//         console.log(iframe[0].outerHTML);
+//     });
+// }

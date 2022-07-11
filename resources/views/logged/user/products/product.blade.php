@@ -81,7 +81,10 @@
                             src="{{ $product->shop->avatar ? asset($product->shop->avatar) : asset('assets/img/defaultStore.jpg') }}">
 
                         <div class="flex flex-col space-x-5">
-                            <h2 class="font-bold text-xl ml-5">{{ $product->shop->name }}</h2>
+                            <a href="/shop/view/{{ $product->shop->id }}">
+                                <h2 class="font-bold text-xl ml-5">{{ $product->shop->name }}</h2>
+                            </a>
+
                             <p>0 followers | {{ count($product->shop->products) }} products</p>
 
                             <div class="flex space-x-5">

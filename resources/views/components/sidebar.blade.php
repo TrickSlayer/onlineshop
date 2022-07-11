@@ -63,6 +63,10 @@
                         </div>
                         <div>
                             My Cart
+                            <p id="cart"
+                                class="bg-red-500 rounded-full text-white p-1 w-7 text-center inline {{ $cart > 0 ? '' : 'hidden' }}">
+                                {{ $cart }}
+                            </p>
                         </div>
                     </a>
                 </li>

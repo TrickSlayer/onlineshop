@@ -31,11 +31,19 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function shop(){
+    public function shop()
+    {
         return $this->belongsTo(Shop::class);
+    }
+
+    public function set($name, $value)
+    {
+        $this->attributes[$name] = $value;
+        return $this;
     }
 }

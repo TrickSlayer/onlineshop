@@ -4,26 +4,22 @@ $.ajaxSetup({
     },
 });
 
-$("#submit").on('click', function(){
+$("#submit").on("click", function () {
     quantity = $("#quantity").val();
     add(quantity, getId());
-})
-
-function add(quantity, id){
-    $.ajax({
-        type: 'post',
-        datatype: 'json',
-        data: { quantity, id},
-        url: '/cart/add',
-        success: function (result){
-            alert(result);
-        }
-    })
-}
-
-
-$(function () {
-    let ip_address = "127.0.0.1";
-    let socket_port = "3000";
-    let socket = io(ip_address + ":" + socket_port);
 });
+
+function add(quantity, id) {
+    if (quantity > 0) {
+        $.ajax({
+            type: "post",
+            datatype: "json",
+            data: { quantity, id },
+            url: "/cart/add",
+            success: function (result) {
+                $("#cart").removeClass("hidden");
+                $("#cart").html(result);
+            },
+        });
+    }
+}

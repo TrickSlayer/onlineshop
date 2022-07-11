@@ -8,4 +8,6 @@ Route::prefix('cart')->group(function () {
     Route::get('/', [CartController::class, 'myCart']);
 
     Route::post('add', [CartController::class, 'add']);
+
+    Route::post('remove', [CartController::class, 'remove']);
 });
