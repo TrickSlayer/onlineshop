@@ -14,8 +14,6 @@ $.ajax({
         );
 
         $("#address-input").val(result[1]);
-
-        showDoc();
     },
 });
 
@@ -31,8 +29,9 @@ function search() {
             url: "/map/search",
             success: function (result) {
                 $("#address-map").replaceWith(
-                    '<div id="address-map">' + result + "</div>"
+                    '<div id="address-map" class="hidden">' + result + "</div>"
                 );
+                $("#address-map").on("load", $(this).removeClass("hidden"));
             },
         });
 }

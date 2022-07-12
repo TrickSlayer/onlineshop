@@ -8,14 +8,14 @@
                 <label for="quantity" class="w-full text-gray-700 text-sm font-semibold">Number
                 </label>
                 <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent my-1">
-                    <button data-action="decrement"
+                    <button data-action="decrement" name="{{ $product->id }}"
                         class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none decrement">
                         <span class="m-auto text-2xl font-thin"> - </span>
                     </button>
-                    <input type="number" id="quantity"
+                    <input type="number" id="quantity-{{ $product->id }}"
                         class="price outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
                         name="{{ $product->sale_price }}" value="{{ $product->quantity }}">
-                    <button data-action="increment"
+                    <button data-action="increment" name="{{ $product->id }}"
                         class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer increment">
                         <span class="m-auto text-2xl font-thin">+</span>
                     </button>

@@ -10,4 +10,8 @@ Route::prefix('cart')->group(function () {
     Route::post('add', [CartController::class, 'add']);
 
     Route::post('remove', [CartController::class, 'remove']);
+
+    Route::post('change', [CartController::class, 'change']);
+
+    Route::post('order', [CartController::class, 'order']);
 });
