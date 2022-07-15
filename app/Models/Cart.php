@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Traits\SetAttribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Cart extends Model
 {
-    use HasFactory;
+    use HasFactory, SetAttribute;
 
     public $timestamps = true;
 
@@ -16,4 +17,8 @@ class Cart extends Model
         'address',
         'note',
     ];
+
+    public function products(){
+        return $this->belongsToMany(Product::class);
+    }
 }

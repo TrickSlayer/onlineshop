@@ -48,26 +48,26 @@
                             <p>{{ $product->description }}</p>
                         </div>
 
-                            <div class="custom-number-input h-10 w-32">
-                                <label for="quantity"
-                                    class="w-full text-gray-700 text-sm font-semibold">Number
-                                </label>
-                                <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent my-1">
-                                    <button data-action="decrement"
-                                        class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
-                                        <span class="m-auto text-2xl font-thin"> - </span>
-                                    </button>
-                                    <input type="number" id="quantity"
-                                        class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
-                                        name="quantity" value="0">
-                                    <button data-action="increment"
-                                        class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
-                                        <span class="m-auto text-2xl font-thin">+</span>
-                                    </button>
-                                </div>
+                        <div class="custom-number-input h-10 w-32">
+                            <label for="quantity" class="w-full text-gray-700 text-sm font-semibold">Number
+                            </label>
+                            <div class="flex flex-row h-10 w-full rounded-lg relative bg-transparent my-1">
+                                <button data-action="decrement"
+                                    class=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none">
+                                    <span class="m-auto text-2xl font-thin"> - </span>
+                                </button>
+                                <input type="number" id="quantity"
+                                    class="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black  md:text-basecursor-default flex items-center text-gray-700"
+                                    name="quantity" value="0">
+                                <button data-action="increment"
+                                    class="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer">
+                                    <span class="m-auto text-2xl font-thin">+</span>
+                                </button>
                             </div>
+                        </div>
 
-                            <button id="submit" class="rounded-full border-2 border-blue-200 p-2 mt-10 bg-blue-300">Add to Cart</button>
+                        <button id="submit" class="rounded-full border-2 border-blue-200 p-2 mt-10 bg-blue-300">Add
+                            to Cart</button>
                     </div>
                 </div>
             </div>
@@ -114,6 +114,30 @@
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-gray-100 rounded">
                 <div class="m-4">
                     <h2 class="font-medium leading-tight text-xl mt-0 mb-2 ">Product Reviews: </h2>
+                    <div class="relative w-full mb-3 mt-2">
+                        <form action="/comment/post" method="POST">
+                            @csrf
+                            <div class="mb-2">
+                                <h2 class="font-bold inline mr-5">You: </h2>
+                                <i id="star-1" class="fa-solid fa-star text-white star"></i>
+                                <i id="star-2" class="fa-solid fa-star text-white star"></i>
+                                <i id="star-3" class="fa-solid fa-star text-white star"></i>
+                                <i id="star-4" class="fa-solid fa-star text-white star"></i>
+                                <i id="star-5" class="fa-solid fa-star text-white star"></i>
+                            </div>
+
+                            <x-alert></x-alert>
+
+                            <div class="flex">
+                                <textarea name="content" id="comment"
+                                    class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 flex-1">{{ old('content') }}</textarea>
+
+                                <button type="submit" class="flex-initial p-2 ml-5 bg-blue-300 rounded border-2 border-blue-400">Comment</button>
+                            </div>
+
+                        </form>
+                    </div>
+                    <x-comment.datalist :product="$product" :request="request()"></x-comment.datalist>
                 </div>
             </div>
         </div>
@@ -123,6 +147,12 @@
         <link href="{{ asset('css\inputnumber.css') }}" rel="stylesheet">
         <script src="{{ asset('js\inputnumber.js') }}"></script>
         <script src="{{ asset('js\addToCart.js') }}"></script>
+        <script src="{{ asset('js\rating.js') }}"></script>
+        <style>
+            .star {
+                text-shadow: 0 0 3px #000;
+            }
+        </style>
     </x-slot>
 
 </x-logged>

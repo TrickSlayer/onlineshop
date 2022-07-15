@@ -14,4 +14,6 @@ Route::prefix('cart')->group(function () {
     Route::post('change', [CartController::class, 'change']);
 
     Route::post('order', [CartController::class, 'order']);
+
+    Route::get('list', [CartController::class, 'list']);
 });

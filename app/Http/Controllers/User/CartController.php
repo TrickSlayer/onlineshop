@@ -18,9 +18,9 @@ class CartController extends Controller
         $carts = $request->session()->get('carts') ?: [];
         [$keys, $values] = Arr::divide($carts);
 
-        $products = Product::whereIn('id', $keys)->get();      
+        $products = Product::whereIn('id', $keys)->get();
 
-        foreach($products as $key => $product){
+        foreach ($products as $key => $product) {
             $product->set('quantity', $values[$key]);
         }
 
@@ -85,9 +85,9 @@ class CartController extends Controller
             "note" => $note,
         ]);
 
-        [$ids, $quantity] = Arr::divide($carts);    
+        [$ids, $quantity] = Arr::divide($carts);
 
-        foreach($ids as $key => $id){
+        foreach ($ids as $key => $id) {
             DB::table("cart_product")->insert([
                 [
                     "cart_id" => $cart->id,
@@ -100,8 +100,22 @@ class CartController extends Controller
         }
 
         $request->session()->forget('carts');
-        Session::flash("success","Order successfully!!");
-        
+        Session::flash("success", "Order successfully!!");
+
         return true;
+    }
+
+    public function list(Request $request)
+    {
+        $carts = Cart::where('user_id', Auth::id())
+            ->orderBy('created_at', 'desc')->get();
+
+        return $carts
+            ->map(function ($cart) {
+
+                $shops = $cart->products->groupBy('shop_id');
+
+                return $cart->set("shops", $shops);
+            });
     }
 }

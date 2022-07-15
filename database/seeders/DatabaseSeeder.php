@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -127,6 +128,8 @@ class DatabaseSeeder extends Seeder
         Shop::factory()->count(3)->create();
 
         Product::factory()->count(500)->create();
+
+        Comment::factory()->count(1000)->create();
 
         DB::table('group_chats')->insert([
             [
