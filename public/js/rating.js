@@ -38,3 +38,17 @@ function show(number) {
         }
     }
 }
+
+$("#delete").click(function(){
+    $.ajax({
+        type: "DELETE",
+        datatype: "JSON",
+        url: "/comment/delete/" + getId(),
+        success: function (result) {
+            location.reload();
+        },
+        error: function (results) {
+            console.log("Error Delete!!");
+        },
+    });
+})

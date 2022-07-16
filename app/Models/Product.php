@@ -42,4 +42,9 @@ class Product extends Model
         return $this->belongsTo(Shop::class);
     }
 
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

@@ -10,7 +10,7 @@
                 {{ $myComment->updated_at }}
             </div>
             @if (Illuminate\Support\Facades\Auth::id() == $myComment->user_id)
-                <div class="inline text-blue-400 text-xs cursor-pointer delete">Delete</div>
+                <div class="inline text-blue-400 text-xs cursor-pointer" id="delete">Delete</div>
             @endif
         </h2>
         <div class="flex mt-2">

@@ -29,9 +29,8 @@ function search() {
             url: "/map/search",
             success: function (result) {
                 $("#address-map").replaceWith(
-                    '<div id="address-map" class="hidden">' + result + "</div>"
+                    '<div id="address-map">' + result + "</div>"
                 );
-                $("#address-map").on("load", $(this).removeClass("hidden"));
             },
         });
 }

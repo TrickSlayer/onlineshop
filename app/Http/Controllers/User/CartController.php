@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Product;
+use ErrorException;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -87,20 +89,45 @@ class CartController extends Controller
 
         [$ids, $quantity] = Arr::divide($carts);
 
+        $error = "";
+
+        DB::beginTransaction();
         foreach ($ids as $key => $id) {
-            DB::table("cart_product")->insert([
-                [
-                    "cart_id" => $cart->id,
-                    "product_id" => $id,
-                    "quantity" => $quantity[$key],
-                    "created_at" => now(),
-                    "updated_at" => now(),
-                ]
-            ]);
+            $product = Product::where("id", $id);
+
+            try {
+                $product->where("quantity", ">", $quantity[$key])
+                    ->update(['quantity' => $product->first()->quantity - $quantity[$key]]);
+
+                DB::table("cart_product")->insert([
+                    [
+                        "cart_id" => $cart->id,
+                        "product_id" => $id,
+                        "quantity" => $quantity[$key],
+                        "created_at" => now(),
+                        "updated_at" => now(),
+                    ]
+                ]);
+
+            } catch (ErrorException $e) {
+
+                if ($error != "") {
+                    $error .= ", ";
+                }
+
+                $error .= Product::where("id", $id)->first()->name;
+
+            }
         }
 
-        $request->session()->forget('carts');
-        Session::flash("success", "Order successfully!!");
+        if ($error != "") {
+            Session::flash("error", $error.' quantity greater than stock');
+            DB::rollBack();
+        } else {
+            DB::commit();
+            $request->session()->forget('carts');
+            Session::flash("success", "Order successfully!!");
+        }
 
         return true;
     }

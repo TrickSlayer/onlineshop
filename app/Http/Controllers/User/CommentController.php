@@ -32,4 +32,13 @@ class CommentController extends Controller
         return redirect()->back();
         
     }
+
+    public function delete(Product $product){
+        Comment::where([
+            ["product_id", $product->id],
+            ["user_id", Auth::id()]
+        ])->delete();
+
+        return true;
+    }
 }
