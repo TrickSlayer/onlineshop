@@ -195,7 +195,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Laraveldaily\Timezones\TimezonesServiceProvider::class,
+        Laraveldaily\Timezones\Provider\PackageServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
     ],
 
