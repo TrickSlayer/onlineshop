@@ -129,7 +129,7 @@ class DatabaseSeeder extends Seeder
 
         Product::factory()->count(500)->create();
 
-        Comment::factory()->count(1000)->create();
+       // Comment::factory()->count(1000)->create();
 
         DB::table('group_chats')->insert([
             [

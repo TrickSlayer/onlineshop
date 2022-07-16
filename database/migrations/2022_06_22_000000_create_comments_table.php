@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            // $table->unique(['user_id', 'product_id']);
+            $table->unique(['user_id', 'product_id']);
             $table->longText('content');
             $table->integer('star');
             $table->string('thumb');

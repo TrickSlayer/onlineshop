@@ -6,6 +6,11 @@ $.ajaxSetup({
 
 var star = 0;
 
+$("#comment-submit").click(function () {
+    $("#star-input").val(parseInt(star));
+    $("#form").submit();
+});
+
 $(".star")
     .click(function () {
         id = $(this).attr("id").split("-")[1];

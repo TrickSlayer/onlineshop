@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Message;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
 class DataList extends Component
@@ -15,7 +16,7 @@ class DataList extends Component
      *
      * @return void
      */
-    public $comments, $request;
+    public $comments, $request, $myComment;
 
     public function __construct(Product $product, Request $request)
     {
@@ -23,7 +24,14 @@ class DataList extends Component
 
         $this->request = $request;
 
+        $this->myComment = Comment::where([
+            ["product_id", $product->id],
+            ["user_id", Auth::id()]
+            ])
+        ->with('user')->first();
+
         $this->comments = Comment::where("product_id", $product->id)
+            ->where("user_id", "!=", Auth::id())
             ->when($fillter != null, function ($query) use ($fillter) {
                 $query->orderBy('star', $fillter);
             })

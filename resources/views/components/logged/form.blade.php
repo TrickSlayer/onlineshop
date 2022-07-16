@@ -32,7 +32,7 @@
             </script>
         @endif
 
-        <script src="{{ asset('js/upload.js') }}"></script>
+        <script src="{{ asset('js\upload.js') }}"></script>
 
         {{ isset($footer) ? $footer : '' }}
     </x-slot>

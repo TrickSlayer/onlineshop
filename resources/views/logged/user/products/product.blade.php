@@ -110,29 +110,61 @@
             </div>
         </div>
 
-        <div class="w-full px-4 mt-5">
+        <div class="w-full px-4 my-5"></div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg bg-gray-100 rounded">
                 <div class="m-4">
                     <h2 class="font-medium leading-tight text-xl mt-0 mb-2 ">Product Reviews: </h2>
                     <div class="relative w-full mb-3 mt-2">
-                        <form action="/comment/post" method="POST">
-                            @csrf
-                            <div class="mb-2">
-                                <h2 class="font-bold inline mr-5">You: </h2>
-                                <i id="star-1" class="fa-solid fa-star text-white star"></i>
-                                <i id="star-2" class="fa-solid fa-star text-white star"></i>
-                                <i id="star-3" class="fa-solid fa-star text-white star"></i>
-                                <i id="star-4" class="fa-solid fa-star text-white star"></i>
-                                <i id="star-5" class="fa-solid fa-star text-white star"></i>
-                            </div>
 
+                        <div class="mb-2">
+                            <h2 class="font-bold inline mr-5">You: </h2>
+                            <i id="star-1" class="fa-solid fa-star text-white star"></i>
+                            <i id="star-2" class="fa-solid fa-star text-white star"></i>
+                            <i id="star-3" class="fa-solid fa-star text-white star"></i>
+                            <i id="star-4" class="fa-solid fa-star text-white star"></i>
+                            <i id="star-5" class="fa-solid fa-star text-white star"></i>
+                        </div>
+
+                        <div class="ml-5">
                             <x-alert></x-alert>
+                        </div>
 
+                        <form action="/comment/post/{{ $product->id }}" method="POST" id="form">
+                            @csrf
                             <div class="flex">
-                                <textarea name="content" id="comment"
-                                    class="border-0 px-3 py-3 placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 flex-1">{{ old('content') }}</textarea>
 
-                                <button type="submit" class="flex-initial p-2 ml-5 bg-blue-300 rounded border-2 border-blue-400">Comment</button>
+                                <input hidden id="star-input" name="star">
+
+                                <div class="mr-3 mt-2">
+                                    <div id="image_box" class="ml-5 mb-20 fixed bottom-20 hidden">
+                                        <div class="relative top-10 left-60 bg-white rounded-full w-5 h-5 border border-gray-500">
+                                            <i id="image_cancel" class="fa-solid fa-xmark text-base w-full h-full relative"
+                                                style="bottom: 3px; left: 4px;"></i>
+                                        </div>
+                                        <div class=" w-64 h-40 p-2 bg-white border rounded box-content">
+                                            <div id="image_show" class="m-auto w-full h-full"></div>
+                                        </div>
+                                    </div>
+
+                                    <label
+                                        class="w-12 h-12 m-auto flex flex-col items-center p-1 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-gray-300">
+                                        <svg class="w-8 h-8 m-auto" fill="currentColor"
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path
+                                                d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                                        </svg>
+                                        <input type='file' id="upload" name="file" class="hidden" />
+
+                                        <input type="hidden" id="file" name="thumb">
+
+                                    </label>
+                                </div>
+
+                                <textarea name="content" id="comment"
+                                    class="border-0 px-3 py-3 min-h-min placeholder-gray-300 text-gray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150 flex-1">{{ old('content') }}</textarea>
+
+                                <div id="comment-submit" type="button"
+                                    class="flex-initial h-12 p-2 ml-5 bg-blue-300 rounded border-2 border-blue-400 cursor-pointer">Comment</div>
                             </div>
 
                         </form>
@@ -146,6 +178,7 @@
     <x-slot name="footer">
         <link href="{{ asset('css\inputnumber.css') }}" rel="stylesheet">
         <script src="{{ asset('js\inputnumber.js') }}"></script>
+        <script src="{{ asset('js\upload.js') }}"></script>
         <script src="{{ asset('js\addToCart.js') }}"></script>
         <script src="{{ asset('js\rating.js') }}"></script>
         <style>

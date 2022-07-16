@@ -9,3 +9,5 @@ include(__DIR__.'\user\map.php');
 include(__DIR__.'\user\message.php');
 
 include(__DIR__.'\user\cart.php');
+
+include(__DIR__.'\user\comment.php');
