@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Common\UploadController;
+use Trick\Upload\Controller\UploadController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('upload')->group(function () {

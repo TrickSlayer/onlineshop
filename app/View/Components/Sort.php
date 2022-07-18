@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class sort extends Component
+class Sort extends Component
 {
     /**
      * Create a new component instance.

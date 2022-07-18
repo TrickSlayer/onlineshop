@@ -4,17 +4,17 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitd62fa6f55fba9bf7582e187d3b1143a2
+class ComposerStaticInitbfecfb9974222a6f9582abfb7b207077
 {
     public static $prefixLengthsPsr4 = array (
-        'L' => 
+        'T' => 
         array (
-            'Laraveldaily\\Timezones\\' => 23,
+            'Trick\\Timezones\\' => 16,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Laraveldaily\\Timezones\\' => 
+        'Trick\\Timezones\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -27,9 +27,9 @@ class ComposerStaticInitd62fa6f55fba9bf7582e187d3b1143a2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitd62fa6f55fba9bf7582e187d3b1143a2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitd62fa6f55fba9bf7582e187d3b1143a2::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitd62fa6f55fba9bf7582e187d3b1143a2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbfecfb9974222a6f9582abfb7b207077::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbfecfb9974222a6f9582abfb7b207077::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitbfecfb9974222a6f9582abfb7b207077::$classMap;
 
         }, null, ClassLoader::class);
     }

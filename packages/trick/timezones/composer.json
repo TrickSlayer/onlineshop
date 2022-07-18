@@ -1,0 +1,21 @@
+{
+    "name": "trick/timezones",
+    "description": "Timezones package",
+    "require": {
+        "php": ">=8.0",
+        "stevebauman/location": ">=6.5"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Trick\\Timezones\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "TrickSlayer",
+            "email": "90195916+TrickSlayer@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

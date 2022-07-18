@@ -33,12 +33,15 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Laraveldaily\\Timezones\\": "packages/laraveldaily/timezones/src"
+            "Trick\\Timezones\\": "packages/trick/timezones/src",
+            "Trick\\Upload\\": "packages/trick/upload/src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "Trick\\Timezones\\": "packages/trick/timezones/src",
+            "Trick\\Upload\\": "packages/trick/upload/src"
         }
     },
     "scripts": {

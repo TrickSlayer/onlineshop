@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Common;
+namespace Trick\Upload\Controller;
 
 use Exception;
 use Illuminate\Http\Request;

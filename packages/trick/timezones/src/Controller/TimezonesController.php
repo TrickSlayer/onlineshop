@@ -1,5 +1,5 @@
 <?php
-namespace Laraveldaily\Timezones\Controller;
+namespace Trick\Timezones\Controller;
  
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;

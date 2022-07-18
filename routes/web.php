@@ -21,15 +21,11 @@ include __DIR__ . '\web\auth.php';
 
 Route::middleware(['auth'])->group(function () {
 
-    //Upload file   
-    include __DIR__ . '\web\uploadFile.php';
-
     include __DIR__ . '\web\user.php';
 
     include __DIR__ . '\web\shop.php';
 
     include __DIR__ . '\web\admin.php';
-
     
 });
 

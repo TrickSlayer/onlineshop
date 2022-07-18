@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Laraveldaily\\Timezones\\' => array($baseDir . '/src'),
+    'Trick\\Timezones\\' => array($baseDir . '/src'),
 );

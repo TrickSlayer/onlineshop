@@ -1,10 +1,10 @@
 <?php
 
-namespace Laraveldaily\Timezones\Provider;
+namespace Trick\Timezones\Provider;
 
 use Illuminate\Support\ServiceProvider;
 
-class PackageServiceProvider extends ServiceProvider
+class TimezonesServiceProvider extends ServiceProvider
 {
     /**
      * Register services.
@@ -14,7 +14,7 @@ class PackageServiceProvider extends ServiceProvider
     public function register()
     {
         include __DIR__ . '\..\router\routes.php';
-        $this->app->make('Laraveldaily\Timezones\Controller\TimezonesController');
+        $this->app->make('Trick\Timezones\Controller\TimezonesController');
     }
 
     /**
@@ -26,7 +26,7 @@ class PackageServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '\..\views', 'timezones');
         $this->publishes([
-            __DIR__ . '\..\views' => base_path('resources\views\laraveldaily\timezones'),
+            __DIR__ . '\..\views' => base_path('resources\views\trick\timezones'),
         ]);
     }
 }

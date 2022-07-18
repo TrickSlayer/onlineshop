@@ -1,0 +1,20 @@
+{
+    "name": "trick/upload",
+    "description": "Upload File",
+    "require": {
+        "php": ">=8.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Trick\\Upload\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "TrickSlayer",
+            "email": "90195916+TrickSlayer@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}
