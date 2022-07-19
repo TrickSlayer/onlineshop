@@ -1,9 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-    },
-});
-
 var star = 0;
 
 $("#comment-submit").click(function () {
@@ -11,10 +5,10 @@ $("#comment-submit").click(function () {
         if (confirm("Rate 0 star??") == false) {
             return;
         }
-
-        $("#star-input").val(parseInt(star));
-        $("#form").submit();
     }
+
+    $("#star-input").val(parseInt(star));
+    $("#form").submit();
 });
 
 $(".star")
@@ -61,7 +55,6 @@ function deleteComment(userId) {
         data: { userId },
         url: "/comment/delete/" + getId(),
         success: function (result) {
-            alert(result + " " + userId);
             if (result) {
                 location.reload();
             }

@@ -1,9 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-    },
-});
-
 $(function () {
     let ip_address = "127.0.0.1";
     let socket_port = "3000";

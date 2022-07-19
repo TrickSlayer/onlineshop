@@ -1,9 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
-    },
-});
-
 $("#submit").on("click", function () {
     quantity = $("#quantity").val();
     add(quantity, getId());
