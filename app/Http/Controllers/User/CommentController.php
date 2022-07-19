@@ -33,10 +33,13 @@ class CommentController extends Controller
         
     }
 
-    public function delete(Product $product){
+    public function delete(Product $product, Request $request){
+        $id = $request->input('userId');
+        $id = $id > 0 ? $id : Auth::id();
+        
         Comment::where([
             ["product_id", $product->id],
-            ["user_id", Auth::id()]
+            ["user_id", $id ]
         ])->delete();
 
         return true;

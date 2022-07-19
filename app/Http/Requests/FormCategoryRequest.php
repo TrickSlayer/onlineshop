@@ -25,7 +25,6 @@ class FormCategoryRequest extends FormRequest
     {
         return [
             "name" => "required",
-            "file" => "image",
             "description" => "required",
             "thumb" => "required",
         ];
@@ -37,7 +36,6 @@ class FormCategoryRequest extends FormRequest
             "name.required" => "Category name is required",
             "description.required" => "Short description is required",
             "thumb.required" => "Picture is required",
-            "file.image" => "File must be image",
         ];
     }
 }

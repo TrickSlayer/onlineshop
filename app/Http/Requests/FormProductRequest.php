@@ -27,7 +27,6 @@ class FormProductRequest extends FormRequest
             "name" => "required",
             "price" => "required",
             "sale_price" => "required",
-            "file" => "image",
             "description" => "required",
             "thumb" => "required",
             "category_id" => "min:1",
@@ -43,7 +42,6 @@ class FormProductRequest extends FormRequest
             "name.required" => "Category name is required",
             "description.required" => "Short description is required",
             "thumb.required" => "Picture is required",
-            "file.image" => "File must be image",
             "category_id.min:1" => "Must choose category",
             "quantity.min:1" => "Quantity must lagger than 1",
         ];

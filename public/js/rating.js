@@ -7,8 +7,14 @@ $.ajaxSetup({
 var star = 0;
 
 $("#comment-submit").click(function () {
-    $("#star-input").val(parseInt(star));
-    $("#form").submit();
+    if (star == 0) {
+        if (confirm("Rate 0 star??") == false) {
+            return;
+        }
+
+        $("#star-input").val(parseInt(star));
+        $("#form").submit();
+    }
 });
 
 $(".star")
@@ -39,16 +45,29 @@ function show(number) {
     }
 }
 
-$("#delete").click(function(){
+$("#delete").click(function () {
+    deleteComment(0);
+});
+
+$(".delete").click(function () {
+    id = $(this).attr("id");
+    deleteComment(id);
+});
+
+function deleteComment(userId) {
     $.ajax({
         type: "DELETE",
         datatype: "JSON",
+        data: { userId },
         url: "/comment/delete/" + getId(),
         success: function (result) {
-            location.reload();
+            alert(result + " " + userId);
+            if (result) {
+                location.reload();
+            }
         },
         error: function (results) {
             console.log("Error Delete!!");
         },
     });
-})
+}
