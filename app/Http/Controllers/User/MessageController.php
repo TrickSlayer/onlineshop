@@ -31,10 +31,11 @@ class MessageController extends Controller
         $messages = $this->messageService->get($groupChat);
 
         return view('logged.user.messages.message', [
-            'messages' => $messages,
+            'messages' => $messages['messages'],
             'user' => Auth::user(),
             'group_chat' => $groupChat,
             'groups' => $groups,
+            'more' => $messages['more'],
         ]);
     }
 
@@ -48,7 +49,7 @@ class MessageController extends Controller
 
         $html = '';
 
-        foreach ($messages as $message) {
+        foreach ($messages['messages'] as $message) {
             $html .= view('layouts.messages.message', [
                 'user' => Auth::user(),
                 'message' => $message,
@@ -57,7 +58,7 @@ class MessageController extends Controller
 
         return response()->json([
             "html" => $html,
-            "more" => count($this->messageService->get($groupChat, $page + 1)) > 0
+            "more" => $messages['more']
         ]);
     }
 

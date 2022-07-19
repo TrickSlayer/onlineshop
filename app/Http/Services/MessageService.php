@@ -34,11 +34,20 @@ class MessageService
 
     public function get(GroupChat $groupChat, $page = 0)
     {
+        $messages = self::getPage($groupChat, $page);
+
+        return [
+            'messages' => $messages,
+            'more' => count(self::getPage($groupChat, $page + 1)) > 0 && $messages == self::LIMIT ,
+        ];
+    }
+
+    public function getPage(GroupChat $groupChat, $page){
         return Message::where("group_chat_id", $groupChat->id)
-            ->with(['user', 'groupchat'])->latest()
-            ->skip(self::LIMIT * $page)
-            ->take(self::LIMIT)->get()
-            ->reverse();
+        ->with(['user', 'groupchat'])->latest()
+        ->skip(self::LIMIT * $page)
+        ->take(self::LIMIT)->get()
+        ->reverse();
     }
 
     public function hasUser($groupChat, $user)

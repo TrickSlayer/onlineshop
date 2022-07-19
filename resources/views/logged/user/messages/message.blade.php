@@ -21,7 +21,11 @@
                     </div>
 
                         <ul id="chat" class="content overflow-auto">
-                            <a href="#" class="text-blue-500 w-full text-center block" id="focus-top">Load more</a>
+                            <a href="#" class="text-blue-500 w-full text-center
+                            @if( !$more  )
+                                hidden
+                            @endif
+                            " id="focus-top">Load more</a>
                             @foreach ($messages as $message)
                                 @include('layouts.messages.message')
                             @endforeach
@@ -61,7 +65,7 @@
                         </label>
 
                         {{-- Text --}}
-                        <textarea name="content" id="content" class="m-2 rounded w-8/12 flex-1"></textarea>
+                        <textarea name="content" id="content" class="m-2 rounded w-8/12 flex-1" autocomplete="off"></textarea>
                         <button id="send" class="mr-5 bg-blue-400 h-10 my-auto px-2 rounded-lg font-bold text-white">Send</button>
                     </div>
 
